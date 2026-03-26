@@ -44,6 +44,8 @@
             idPaciente = new Label();
             txtIdPaciente = new TextBox();
             cmdSalir = new Button();
+            cboMedico = new ComboBox();
+            lblMedico = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             SuspendLayout();
             // 
@@ -59,7 +61,7 @@
             // cboPaciente
             // 
             cboPaciente.FormattingEnabled = true;
-            cboPaciente.Location = new Point(31, 154);
+            cboPaciente.Location = new Point(31, 211);
             cboPaciente.Margin = new Padding(4, 3, 4, 3);
             cboPaciente.Name = "cboPaciente";
             cboPaciente.Size = new Size(358, 23);
@@ -67,7 +69,7 @@
             // 
             // cmdCancelar
             // 
-            cmdCancelar.Location = new Point(213, 267);
+            cmdCancelar.Location = new Point(213, 324);
             cmdCancelar.Margin = new Padding(4, 3, 4, 3);
             cmdCancelar.Name = "cmdCancelar";
             cmdCancelar.Size = new Size(176, 23);
@@ -79,7 +81,7 @@
             // lblSeleccionarPaciente
             // 
             lblSeleccionarPaciente.AutoSize = true;
-            lblSeleccionarPaciente.Location = new Point(31, 136);
+            lblSeleccionarPaciente.Location = new Point(31, 193);
             lblSeleccionarPaciente.Margin = new Padding(4, 0, 4, 0);
             lblSeleccionarPaciente.Name = "lblSeleccionarPaciente";
             lblSeleccionarPaciente.Size = new Size(115, 15);
@@ -138,7 +140,7 @@
             // 
             // cmdRegistrar
             // 
-            cmdRegistrar.Location = new Point(31, 267);
+            cmdRegistrar.Location = new Point(31, 324);
             cmdRegistrar.Margin = new Padding(4, 3, 4, 3);
             cmdRegistrar.Name = "cmdRegistrar";
             cmdRegistrar.Size = new Size(165, 23);
@@ -160,7 +162,7 @@
             // txtTelefono
             // 
             txtTelefono.Enabled = false;
-            txtTelefono.Location = new Point(142, 228);
+            txtTelefono.Location = new Point(142, 285);
             txtTelefono.Margin = new Padding(4, 3, 4, 3);
             txtTelefono.Mask = "(52) 000-000-0000";
             txtTelefono.Name = "txtTelefono";
@@ -170,7 +172,7 @@
             // lblTelefono
             // 
             lblTelefono.AutoSize = true;
-            lblTelefono.Location = new Point(31, 236);
+            lblTelefono.Location = new Point(31, 293);
             lblTelefono.Margin = new Padding(4, 0, 4, 0);
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(53, 15);
@@ -180,7 +182,7 @@
             // idPaciente
             // 
             idPaciente.AutoSize = true;
-            idPaciente.Location = new Point(31, 207);
+            idPaciente.Location = new Point(31, 264);
             idPaciente.Margin = new Padding(4, 0, 4, 0);
             idPaciente.Name = "idPaciente";
             idPaciente.Size = new Size(17, 15);
@@ -190,7 +192,7 @@
             // txtIdPaciente
             // 
             txtIdPaciente.Enabled = false;
-            txtIdPaciente.Location = new Point(142, 199);
+            txtIdPaciente.Location = new Point(142, 256);
             txtIdPaciente.Margin = new Padding(4, 3, 4, 3);
             txtIdPaciente.Name = "txtIdPaciente";
             txtIdPaciente.Size = new Size(54, 23);
@@ -198,7 +200,7 @@
             // 
             // cmdSalir
             // 
-            cmdSalir.Location = new Point(31, 292);
+            cmdSalir.Location = new Point(31, 349);
             cmdSalir.Margin = new Padding(4, 3, 4, 3);
             cmdSalir.Name = "cmdSalir";
             cmdSalir.Size = new Size(358, 23);
@@ -207,11 +209,32 @@
             cmdSalir.UseVisualStyleBackColor = true;
             cmdSalir.Click += cmdSalir_Click;
             // 
+            // cboMedico
+            // 
+            cboMedico.FormattingEnabled = true;
+            cboMedico.Location = new Point(31, 157);
+            cboMedico.Margin = new Padding(4, 3, 4, 3);
+            cboMedico.Name = "cboMedico";
+            cboMedico.Size = new Size(358, 23);
+            cboMedico.TabIndex = 135;
+            // 
+            // lblMedico
+            // 
+            lblMedico.AutoSize = true;
+            lblMedico.Location = new Point(31, 139);
+            lblMedico.Margin = new Padding(4, 0, 4, 0);
+            lblMedico.Name = "lblMedico";
+            lblMedico.Size = new Size(110, 15);
+            lblMedico.TabIndex = 134;
+            lblMedico.Text = "Seleccionar Medico";
+            // 
             // frmCitas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1094, 337);
+            ClientSize = new Size(1094, 399);
+            Controls.Add(cboMedico);
+            Controls.Add(lblMedico);
             Controls.Add(cmdSalir);
             Controls.Add(idPaciente);
             Controls.Add(txtIdPaciente);
@@ -255,5 +278,7 @@
         private Label idPaciente;
         private TextBox txtIdPaciente;
         private Button cmdSalir;
+        private ComboBox cboMedico;
+        private Label lblMedico;
     }
 }

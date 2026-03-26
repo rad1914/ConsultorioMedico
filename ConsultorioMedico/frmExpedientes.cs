@@ -175,12 +175,10 @@ namespace ConsultorioMedico
 
             cmd.ExecuteNonQuery();
 
-            SqlCommand update = new SqlCommand(
-                "UPDATE Citas SET Estado = 'A' WHERE IdCita = @idCita",
-                conn);
-
-            update.Parameters.Add("@idCita", SqlDbType.Int).Value = idCita;
-            update.ExecuteNonQuery();
+            string update = "UPDATE Citas SET Estado = 'A' WHERE IdCita = @idCita";
+            SqlCommand cmdUpdate = new SqlCommand(update, conn);
+            cmdUpdate.Parameters.AddWithValue("@idCita", idCita);
+            cmdUpdate.ExecuteNonQuery();
 
             conn.Close();
 
@@ -192,7 +190,19 @@ namespace ConsultorioMedico
 
         private void cmdAtender_Click(object sender, EventArgs e)
         {
+            if (cboCitas.SelectedValue == null) return;
+
             int idCita = (int)cboCitas.SelectedValue;
+
+            string update = "UPDATE Citas SET Estado = 'A' WHERE IdCita = @idCita";
+            SqlCommand cmdUpdate = new SqlCommand(update, conn);
+            cmdUpdate.Parameters.AddWithValue("@idCita", idCita);
+
+            conn.Open();
+            cmdUpdate.ExecuteNonQuery();
+            conn.Close();
+
+            MessageBox.Show("Cita finalizada");
         }
     }
 }

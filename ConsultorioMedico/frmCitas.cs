@@ -14,15 +14,16 @@ namespace ConsultorioMedico
 
         const string CS = "Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;";
         const string Q = @"SELECT 
-                   c.IdCita,
-                   c.IdPaciente,
-                   c.Fecha,
-                   c.Hora,
-                   p.Nombre,
-                   p.Telefono,
-                   c.Estado
-                   FROM Citas c 
-                   INNER JOIN Pacientes p ON c.IdPaciente=p.IdPaciente";
+                    c.IdCita,
+                    c.IdPaciente,
+                    c.IdMedico,
+                    c.Fecha,
+                    c.Hora,
+                    p.Nombre,
+                    p.Telefono,
+                    c.Estado
+                    FROM Citas c 
+                    INNER JOIN Pacientes p ON c.IdPaciente=p.IdPaciente";
 
         public frmCitas() { InitializeComponent(); }
 
@@ -48,6 +49,7 @@ namespace ConsultorioMedico
             txtIdPaciente.DataBindings.Add("Text", bs, "IdPaciente", true, DataSourceUpdateMode.Never);
             txtTelefono.DataBindings.Add("Text", bs, "Telefono", true, DataSourceUpdateMode.Never);
 
+            // PACIENTES
             var daPac = new SqlDataAdapter("SELECT IdPaciente,Nombre FROM Pacientes", conn);
             pacientes = new DataTable();
             daPac.Fill(pacientes);
@@ -56,16 +58,26 @@ namespace ConsultorioMedico
             cboPaciente.DisplayMember = "Nombre";
             cboPaciente.ValueMember = "IdPaciente";
 
-            adapter.InsertCommand = new SqlCommand("INSERT INTO Citas(IdPaciente,Fecha,Hora,Estado) VALUES(@IdPaciente,@Fecha,@Hora,@Estado)", conn);
+            // MEDICOS
+            var daMed = new SqlDataAdapter("SELECT IdMedico,Nombre FROM Medicos", conn);
+            DataTable medicos = new DataTable();
+            daMed.Fill(medicos);
 
+            cboMedico.DataSource = medicos;
+            cboMedico.DisplayMember = "Nombre";
+            cboMedico.ValueMember = "IdMedico";
+
+            // Comandos del Adapter
+            adapter.InsertCommand = new SqlCommand("INSERT INTO Citas(IdPaciente,IdMedico,Fecha,Hora,Estado) VALUES(@IdPaciente,@IdMedico,@Fecha,@Hora,@Estado)", conn);
             adapter.InsertCommand.Parameters.Add("@IdPaciente", SqlDbType.Int, 0, "IdPaciente");
+            adapter.InsertCommand.Parameters.Add("@IdMedico", SqlDbType.Int, 0, "IdMedico");
             adapter.InsertCommand.Parameters.Add("@Fecha", SqlDbType.Date, 0, "Fecha");
             adapter.InsertCommand.Parameters.Add("@Hora", SqlDbType.Time, 0, "Hora");
             adapter.InsertCommand.Parameters.Add("@Estado", SqlDbType.Char, 1, "Estado");
 
-            adapter.UpdateCommand = new SqlCommand(@"UPDATE Citas SET IdPaciente=@IdPaciente,Fecha=@Fecha,Hora=@Hora,Estado=@Estado WHERE IdCita=@IdCita", conn);
-
+            adapter.UpdateCommand = new SqlCommand(@"UPDATE Citas SET IdPaciente=@IdPaciente,IdMedico=@IdMedico,Fecha=@Fecha,Hora=@Hora,Estado=@Estado WHERE IdCita=@IdCita", conn);
             adapter.UpdateCommand.Parameters.Add("@IdPaciente", SqlDbType.Int, 0, "IdPaciente");
+            adapter.UpdateCommand.Parameters.Add("@IdMedico", SqlDbType.Int, 0, "IdMedico");
             adapter.UpdateCommand.Parameters.Add("@Fecha", SqlDbType.Date, 0, "Fecha");
             adapter.UpdateCommand.Parameters.Add("@Hora", SqlDbType.Time, 0, "Hora");
             adapter.UpdateCommand.Parameters.Add("@Estado", SqlDbType.Char, 1, "Estado");
@@ -97,18 +109,19 @@ namespace ConsultorioMedico
 
         void cmdRegistrar_Click(object s, EventArgs e)
         {
-            if (cboPaciente.SelectedValue == null || string.IsNullOrWhiteSpace(cboHora.Text))
+            if (cboPaciente.SelectedValue == null || cboMedico.SelectedValue == null || string.IsNullOrWhiteSpace(cboHora.Text))
             {
-                MessageBox.Show("Seleccione paciente y hora");
+                MessageBox.Show("Seleccione paciente, médico y hora");
                 return;
             }
 
             SqlCommand comando = conn.CreateCommand();
 
             comando.CommandText =
-            "INSERT INTO Citas (IdPaciente,Fecha,Hora,Estado) VALUES(@IdPaciente,@Fecha,@Hora,'R')";
+            "INSERT INTO Citas (IdPaciente,IdMedico,Fecha,Hora,Estado) VALUES(@IdPaciente,@IdMedico,@Fecha,@Hora,'R')";
 
             comando.Parameters.AddWithValue("@IdPaciente", cboPaciente.SelectedValue);
+            comando.Parameters.AddWithValue("@IdMedico", cboMedico.SelectedValue);
             comando.Parameters.AddWithValue("@Fecha", dtpFecha.Value.Date);
 
             TimeSpan hora = TimeSpan.Parse(cboHora.Text);
@@ -131,7 +144,8 @@ namespace ConsultorioMedico
             if (dgvData.CurrentRow != null)
                 dgvData.CurrentRow.Cells["Estado"].Value = "C";
 
-            dgvData.EndEdit(); bs.EndEdit();
+            dgvData.EndEdit();
+            bs.EndEdit();
             adapter.Update(citas);
 
             MessageBox.Show("Cita cancelada");

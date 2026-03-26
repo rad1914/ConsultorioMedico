@@ -45,5 +45,23 @@ namespace ConsultorioMedico
             var FrmExpedientes = new frmExpedientes();
             FrmExpedientes.Show();
         }
+
+        private void recetasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var FrmRecetas = new frmRecetas();
+            FrmRecetas.Show();
+        }
+
+        private void cobrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var FrmCobros = new frmCobros();
+            FrmCobros.Show();
+        }
+
+        private void facturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var FrmFacturas = new frmFacturas();
+            FrmFacturas.Show();
+        }
     }
 }
