@@ -8,12 +8,11 @@ namespace ConsultorioMedico
     public partial class frmCitas : Form
     {
         SqlConnection conn;
-        SqlDataAdapter adapter;
         DataTable citas, pacientes;
         BindingSource bs = new BindingSource();
 
         const string CS = "Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;";
-        const string Q = @"SELECT 
+        string R = @"SELECT 
                     c.IdCita,
                     c.IdPaciente,
                     c.IdMedico,
@@ -30,12 +29,19 @@ namespace ConsultorioMedico
         void frmCitas_Load(object s, EventArgs e)
         {
             conn = new SqlConnection(CS);
-            adapter = new SqlDataAdapter(Q, conn);
             citas = new DataTable();
-            adapter.Fill(citas);
 
+            // ===== LOAD DATA (MANUAL READER) =====
+            SqlCommand comando = new SqlCommand(R, conn);
+            conn.Open();
+            SqlDataReader reader = comando.ExecuteReader();
+            citas.Load(reader);
+            conn.Close();
+
+            // ===== UI BINDING =====
             bs.DataSource = citas;
             dgvData.DataSource = bs;
+
             dgvData.Columns["Telefono"].Visible = false;
             citas.Columns["IdCita"].ReadOnly = true;
             dgvData.Columns["IdPaciente"].ReadOnly = true;
@@ -49,49 +55,45 @@ namespace ConsultorioMedico
             txtIdPaciente.DataBindings.Add("Text", bs, "IdPaciente", true, DataSourceUpdateMode.Never);
             txtTelefono.DataBindings.Add("Text", bs, "Telefono", true, DataSourceUpdateMode.Never);
 
-            // PACIENTES
-            var daPac = new SqlDataAdapter("SELECT IdPaciente,Nombre FROM Pacientes", conn);
+            // ===== PACIENTES =====
             pacientes = new DataTable();
-            daPac.Fill(pacientes);
+            comando = new SqlCommand("SELECT IdPaciente,Nombre FROM Pacientes", conn);
+
+            conn.Open();
+            reader = comando.ExecuteReader();
+            pacientes.Load(reader);
+            conn.Close();
 
             cboPaciente.DataSource = pacientes;
             cboPaciente.DisplayMember = "Nombre";
             cboPaciente.ValueMember = "IdPaciente";
 
-            // MEDICOS
-            var daMed = new SqlDataAdapter("SELECT IdMedico,Nombre FROM Medicos", conn);
+            // ===== MEDICOS =====
             DataTable medicos = new DataTable();
-            daMed.Fill(medicos);
+            comando = new SqlCommand("SELECT IdMedico,Nombre FROM Medicos", conn);
+
+            conn.Open();
+            reader = comando.ExecuteReader();
+            medicos.Load(reader);
+            conn.Close();
 
             cboMedico.DataSource = medicos;
             cboMedico.DisplayMember = "Nombre";
             cboMedico.ValueMember = "IdMedico";
-
-            // Comandos del Adapter
-            adapter.InsertCommand = new SqlCommand("INSERT INTO Citas(IdPaciente,IdMedico,Fecha,Hora,Estado) VALUES(@IdPaciente,@IdMedico,@Fecha,@Hora,@Estado)", conn);
-            adapter.InsertCommand.Parameters.Add("@IdPaciente", SqlDbType.Int, 0, "IdPaciente");
-            adapter.InsertCommand.Parameters.Add("@IdMedico", SqlDbType.Int, 0, "IdMedico");
-            adapter.InsertCommand.Parameters.Add("@Fecha", SqlDbType.Date, 0, "Fecha");
-            adapter.InsertCommand.Parameters.Add("@Hora", SqlDbType.Time, 0, "Hora");
-            adapter.InsertCommand.Parameters.Add("@Estado", SqlDbType.Char, 1, "Estado");
-
-            adapter.UpdateCommand = new SqlCommand(@"UPDATE Citas SET IdPaciente=@IdPaciente,IdMedico=@IdMedico,Fecha=@Fecha,Hora=@Hora,Estado=@Estado WHERE IdCita=@IdCita", conn);
-            adapter.UpdateCommand.Parameters.Add("@IdPaciente", SqlDbType.Int, 0, "IdPaciente");
-            adapter.UpdateCommand.Parameters.Add("@IdMedico", SqlDbType.Int, 0, "IdMedico");
-            adapter.UpdateCommand.Parameters.Add("@Fecha", SqlDbType.Date, 0, "Fecha");
-            adapter.UpdateCommand.Parameters.Add("@Hora", SqlDbType.Time, 0, "Hora");
-            adapter.UpdateCommand.Parameters.Add("@Estado", SqlDbType.Char, 1, "Estado");
-            adapter.UpdateCommand.Parameters.Add("@IdCita", SqlDbType.Int, 0, "IdCita");
         }
 
         void cmdBuscar_Click(object s, EventArgs e)
         {
-            adapter.SelectCommand.CommandText = Q + " WHERE c.Fecha=@f";
-            adapter.SelectCommand.Parameters.Clear();
-            adapter.SelectCommand.Parameters.AddWithValue("@f", dtpFecha.Value.Date);
-
             citas.Clear();
-            adapter.Fill(citas);
+
+            SqlCommand comando = new SqlCommand(R + " WHERE c.Fecha=@f", conn);
+            comando.Parameters.AddWithValue("@f", dtpFecha.Value.Date);
+
+            conn.Open();
+            SqlDataReader reader = comando.ExecuteReader();
+            citas.Load(reader);
+            conn.Close();
+
             cboHora.Items.Clear();
 
             for (int i = 12; i <= 20; i++)
@@ -123,9 +125,7 @@ namespace ConsultorioMedico
             comando.Parameters.AddWithValue("@IdPaciente", cboPaciente.SelectedValue);
             comando.Parameters.AddWithValue("@IdMedico", cboMedico.SelectedValue);
             comando.Parameters.AddWithValue("@Fecha", dtpFecha.Value.Date);
-
-            TimeSpan hora = TimeSpan.Parse(cboHora.Text);
-            comando.Parameters.AddWithValue("@Hora", hora);
+            comando.Parameters.AddWithValue("@Hora", TimeSpan.Parse(cboHora.Text));
 
             conn.Open();
             comando.ExecuteNonQuery();
@@ -133,20 +133,41 @@ namespace ConsultorioMedico
 
             MessageBox.Show("Cita registrada");
 
+            // Reload
             citas.Clear();
-            adapter.SelectCommand.CommandText = Q;
-            adapter.SelectCommand.Parameters.Clear();
-            adapter.Fill(citas);
+            comando = new SqlCommand(R, conn);
+
+            conn.Open();
+            SqlDataReader reader = comando.ExecuteReader();
+            citas.Load(reader);
+            conn.Close();
         }
 
         void cmdCancelar_Click(object s, EventArgs e)
         {
-            if (dgvData.CurrentRow != null)
-                dgvData.CurrentRow.Cells["Estado"].Value = "C";
+            if (dgvData.CurrentRow == null) return;
 
             dgvData.EndEdit();
             bs.EndEdit();
-            adapter.Update(citas);
+
+            foreach (DataRow row in citas.Rows)
+            {
+                if (row.RowState == DataRowState.Modified)
+                {
+                    SqlCommand comando = conn.CreateCommand();
+
+                    comando.CommandText = @"UPDATE Citas 
+                                           SET Estado=@Estado 
+                                           WHERE IdCita=@IdCita";
+
+                    comando.Parameters.AddWithValue("@Estado", row["Estado"]);
+                    comando.Parameters.AddWithValue("@IdCita", row["IdCita"]);
+
+                    conn.Open();
+                    comando.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
 
             MessageBox.Show("Cita cancelada");
         }

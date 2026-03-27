@@ -10,30 +10,6 @@ namespace ConsultorioMedico
             InitializeComponent();
         }
 
-        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pacientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var FrmPacientes = new frmPacientes();
-            FrmPacientes.Show();
-
-        }
-
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var FrmClientes = new frmClientes();
-            FrmClientes.Show();
-        }
-
-        private void medicosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var FrmMedicos = new frmMedicos();
-            FrmMedicos.Show();
-        }
-
         private void citasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var FrmCitas = new frmCitas();
@@ -62,6 +38,30 @@ namespace ConsultorioMedico
         {
             var FrmFacturas = new frmFacturas();
             FrmFacturas.Show();
+        }
+
+        private void pacientesToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var FrmPacientes = new frmPacientes();
+            FrmPacientes.Show();
+        }
+
+        private void clientesToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var FrmClientes = new frmClientes();
+            FrmClientes.Show();
+        }
+
+        private void medicosToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var FrmMedicos = new frmMedicos();
+            FrmMedicos.Show();
+        }
+
+        private void consIndivCobrosIdCobroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var FrmCIReceta = new frmCIReceta();
+            FrmCIReceta.Show();
         }
     }
 }

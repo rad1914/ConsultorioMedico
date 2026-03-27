@@ -44,13 +44,13 @@ namespace ConsultorioMedico
             recetasToolStripMenuItem = new ToolStripMenuItem();
             cobrosToolStripMenuItem = new ToolStripMenuItem();
             facturasToolStripMenuItem = new ToolStripMenuItem();
-            reportesToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripMenuItem();
             consIndivCobrosIdCobroToolStripMenuItem = new ToolStripMenuItem();
             consIndivCobrosIdCobroToolStripMenuItem1 = new ToolStripMenuItem();
             consIndivFactuasIdFacturaToolStripMenuItem = new ToolStripMenuItem();
             consGralCobrosPorFechaToolStripMenuItem = new ToolStripMenuItem();
             consGralFacturasPorFechaToolStripMenuItem = new ToolStripMenuItem();
+            reportesToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -75,18 +75,21 @@ namespace ConsultorioMedico
             pacientesToolStripMenuItem.Name = "pacientesToolStripMenuItem";
             pacientesToolStripMenuItem.Size = new Size(124, 22);
             pacientesToolStripMenuItem.Text = "Pacientes";
+            pacientesToolStripMenuItem.Click += pacientesToolStripMenuItem_Click_1;
             // 
             // clientesToolStripMenuItem
             // 
             clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             clientesToolStripMenuItem.Size = new Size(124, 22);
             clientesToolStripMenuItem.Text = "Clientes";
+            clientesToolStripMenuItem.Click += clientesToolStripMenuItem_Click_1;
             // 
             // medicosToolStripMenuItem
             // 
             medicosToolStripMenuItem.Name = "medicosToolStripMenuItem";
             medicosToolStripMenuItem.Size = new Size(124, 22);
             medicosToolStripMenuItem.Text = "Medicos";
+            medicosToolStripMenuItem.Click += medicosToolStripMenuItem_Click_1;
             // 
             // movimientosToolStripMenuItem
             // 
@@ -130,12 +133,6 @@ namespace ConsultorioMedico
             facturasToolStripMenuItem.Text = "Facturas";
             facturasToolStripMenuItem.Click += facturasToolStripMenuItem_Click;
             // 
-            // reportesToolStripMenuItem
-            // 
-            reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            reportesToolStripMenuItem.Size = new Size(65, 20);
-            reportesToolStripMenuItem.Text = "Reportes";
-            // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { consIndivCobrosIdCobroToolStripMenuItem, consIndivCobrosIdCobroToolStripMenuItem1, consIndivFactuasIdFacturaToolStripMenuItem, consGralCobrosPorFechaToolStripMenuItem, consGralFacturasPorFechaToolStripMenuItem });
@@ -148,11 +145,12 @@ namespace ConsultorioMedico
             consIndivCobrosIdCobroToolStripMenuItem.Name = "consIndivCobrosIdCobroToolStripMenuItem";
             consIndivCobrosIdCobroToolStripMenuItem.Size = new Size(233, 22);
             consIndivCobrosIdCobroToolStripMenuItem.Text = "Cons. Indiv. Receta idReceta";
+            consIndivCobrosIdCobroToolStripMenuItem.Click += consIndivCobrosIdCobroToolStripMenuItem_Click;
             // 
             // consIndivCobrosIdCobroToolStripMenuItem1
             // 
             consIndivCobrosIdCobroToolStripMenuItem1.Name = "consIndivCobrosIdCobroToolStripMenuItem1";
-            consIndivCobrosIdCobroToolStripMenuItem1.Size = new Size(223, 22);
+            consIndivCobrosIdCobroToolStripMenuItem1.Size = new Size(233, 22);
             consIndivCobrosIdCobroToolStripMenuItem1.Text = "Cons. Indiv. Cobros IdCobro";
             // 
             // consIndivFactuasIdFacturaToolStripMenuItem
@@ -172,6 +170,12 @@ namespace ConsultorioMedico
             consGralFacturasPorFechaToolStripMenuItem.Name = "consGralFacturasPorFechaToolStripMenuItem";
             consGralFacturasPorFechaToolStripMenuItem.Size = new Size(233, 22);
             consGralFacturasPorFechaToolStripMenuItem.Text = "Cons. Gral. Facturas por Fecha";
+            // 
+            // reportesToolStripMenuItem
+            // 
+            reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            reportesToolStripMenuItem.Size = new Size(65, 20);
+            reportesToolStripMenuItem.Text = "Reportes";
             // 
             // frmMenu
             // 

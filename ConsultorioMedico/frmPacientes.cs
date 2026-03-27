@@ -37,7 +37,7 @@ namespace ConsultorioMedico
             pacientesBindingSource.DataSource = tablaPacientes;
             dgvData.DataSource = pacientesBindingSource;
 
-            cboGenero.Items.AddRange(new object[] { "MASCULINO", "FEMENINO", "NO BINARIO" });
+            cboGenero.Items.AddRange(new object[] { "M", "F", "X" });
             cboSangre.Items.AddRange(new object[] { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" });
 
             txtidPaciente.DataBindings.Add("Text", pacientesBindingSource, "idPaciente", true, DataSourceUpdateMode.OnPropertyChanged);

@@ -55,10 +55,10 @@
             // 
             // cmdNuevo
             // 
-            cmdNuevo.Location = new Point(131, 234);
+            cmdNuevo.Location = new Point(109, 190);
             cmdNuevo.Margin = new Padding(4, 3, 4, 3);
             cmdNuevo.Name = "cmdNuevo";
-            cmdNuevo.Size = new Size(160, 23);
+            cmdNuevo.Size = new Size(121, 23);
             cmdNuevo.TabIndex = 67;
             cmdNuevo.Text = "Nuevo";
             cmdNuevo.UseVisualStyleBackColor = true;
@@ -66,16 +66,15 @@
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new Point(825, 23);
+            txtBuscar.Location = new Point(652, 23);
             txtBuscar.Margin = new Padding(4, 3, 4, 3);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(97, 23);
             txtBuscar.TabIndex = 66;
-//            txtBuscar.TextChanged += txtBuscar_TextChanged;
             // 
             // cmdBuscar
             // 
-            cmdBuscar.Location = new Point(930, 21);
+            cmdBuscar.Location = new Point(753, 23);
             cmdBuscar.Margin = new Padding(4, 3, 4, 3);
             cmdBuscar.Name = "cmdBuscar";
             cmdBuscar.Size = new Size(78, 23);
@@ -86,17 +85,16 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(144, 113);
+            txtNombre.Location = new Point(109, 73);
             txtNombre.Margin = new Padding(4, 3, 4, 3);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(247, 23);
+            txtNombre.Size = new Size(197, 23);
             txtNombre.TabIndex = 64;
-         //   txtNombre.TextChanged += txtNombre_TextChanged;
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(33, 115);
+            lblNombre.Location = new Point(36, 75);
             lblNombre.Margin = new Padding(4, 0, 4, 0);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(51, 15);
@@ -105,18 +103,17 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(144, 204);
+            txtEmail.Location = new Point(109, 159);
             txtEmail.Margin = new Padding(4, 3, 4, 3);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(247, 23);
+            txtEmail.Size = new Size(197, 23);
             txtEmail.TabIndex = 62;
-        //    txtEmail.TextChanged += //txtEmail_TextChanged;
             // 
             // lblHeader
             // 
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblHeader.Location = new Point(29, 43);
+            lblHeader.Location = new Point(30, 37);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(257, 32);
@@ -126,20 +123,19 @@
             // dgvData
             // 
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Location = new Point(428, 51);
+            dgvData.Location = new Point(316, 52);
             dgvData.Margin = new Padding(4, 3, 4, 3);
             dgvData.Name = "dgvData";
             dgvData.RowTemplate.Height = 25;
-            dgvData.Size = new Size(580, 292);
+            dgvData.Size = new Size(515, 246);
             dgvData.TabIndex = 60;
-        //    dgvData.CellContentClick += dgvData_CellContentClick;
             // 
             // cmdPrimero
             // 
-            cmdPrimero.Location = new Point(298, 263);
+            cmdPrimero.Location = new Point(238, 219);
             cmdPrimero.Margin = new Padding(4, 3, 4, 3);
             cmdPrimero.Name = "cmdPrimero";
-            cmdPrimero.Size = new Size(93, 23);
+            cmdPrimero.Size = new Size(68, 23);
             cmdPrimero.TabIndex = 59;
             cmdPrimero.Text = "Primero";
             cmdPrimero.UseVisualStyleBackColor = true;
@@ -147,10 +143,10 @@
             // 
             // cmdUltimo
             // 
-            cmdUltimo.Location = new Point(33, 263);
+            cmdUltimo.Location = new Point(36, 219);
             cmdUltimo.Margin = new Padding(4, 3, 4, 3);
             cmdUltimo.Name = "cmdUltimo";
-            cmdUltimo.Size = new Size(93, 23);
+            cmdUltimo.Size = new Size(68, 23);
             cmdUltimo.TabIndex = 58;
             cmdUltimo.Text = "Ultimo";
             cmdUltimo.UseVisualStyleBackColor = true;
@@ -158,10 +154,10 @@
             // 
             // cmdSiguiente
             // 
-            cmdSiguiente.Location = new Point(298, 234);
+            cmdSiguiente.Location = new Point(238, 189);
             cmdSiguiente.Margin = new Padding(4, 3, 4, 3);
             cmdSiguiente.Name = "cmdSiguiente";
-            cmdSiguiente.Size = new Size(93, 23);
+            cmdSiguiente.Size = new Size(68, 23);
             cmdSiguiente.TabIndex = 57;
             cmdSiguiente.Text = "Siguiente";
             cmdSiguiente.UseVisualStyleBackColor = true;
@@ -169,10 +165,10 @@
             // 
             // cmdAnterior
             // 
-            cmdAnterior.Location = new Point(33, 234);
+            cmdAnterior.Location = new Point(36, 190);
             cmdAnterior.Margin = new Padding(4, 3, 4, 3);
             cmdAnterior.Name = "cmdAnterior";
-            cmdAnterior.Size = new Size(93, 23);
+            cmdAnterior.Size = new Size(68, 23);
             cmdAnterior.TabIndex = 56;
             cmdAnterior.Text = "Anterior";
             cmdAnterior.UseVisualStyleBackColor = true;
@@ -180,10 +176,10 @@
             // 
             // cmdSalir
             // 
-            cmdSalir.Location = new Point(33, 320);
+            cmdSalir.Location = new Point(36, 276);
             cmdSalir.Margin = new Padding(4, 3, 4, 3);
             cmdSalir.Name = "cmdSalir";
-            cmdSalir.Size = new Size(358, 23);
+            cmdSalir.Size = new Size(270, 23);
             cmdSalir.TabIndex = 55;
             cmdSalir.Text = "Salir";
             cmdSalir.UseVisualStyleBackColor = true;
@@ -191,10 +187,10 @@
             // 
             // cmdModificar
             // 
-            cmdModificar.Location = new Point(132, 263);
+            cmdModificar.Location = new Point(109, 218);
             cmdModificar.Margin = new Padding(4, 3, 4, 3);
             cmdModificar.Name = "cmdModificar";
-            cmdModificar.Size = new Size(160, 23);
+            cmdModificar.Size = new Size(121, 23);
             cmdModificar.TabIndex = 54;
             cmdModificar.Text = "Modificar";
             cmdModificar.UseVisualStyleBackColor = true;
@@ -202,10 +198,10 @@
             // 
             // cmdGrabar
             // 
-            cmdGrabar.Location = new Point(33, 291);
+            cmdGrabar.Location = new Point(36, 247);
             cmdGrabar.Margin = new Padding(4, 3, 4, 3);
             cmdGrabar.Name = "cmdGrabar";
-            cmdGrabar.Size = new Size(358, 23);
+            cmdGrabar.Size = new Size(270, 23);
             cmdGrabar.TabIndex = 53;
             cmdGrabar.Text = "Grabar";
             cmdGrabar.UseVisualStyleBackColor = true;
@@ -214,7 +210,7 @@
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(33, 207);
+            lblEmail.Location = new Point(36, 162);
             lblEmail.Margin = new Padding(4, 0, 4, 0);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(36, 15);
@@ -223,36 +219,34 @@
             // 
             // txtDomicilioFiscal
             // 
-            txtDomicilioFiscal.Location = new Point(144, 175);
+            txtDomicilioFiscal.Location = new Point(109, 130);
             txtDomicilioFiscal.Margin = new Padding(4, 3, 4, 3);
             txtDomicilioFiscal.Name = "txtDomicilioFiscal";
-            txtDomicilioFiscal.Size = new Size(247, 23);
+            txtDomicilioFiscal.Size = new Size(197, 23);
             txtDomicilioFiscal.TabIndex = 51;
-      //      txtDomicilioFiscal.TextChanged += txtDomicilioFiscal_TextChanged;
             // 
             // lblDomicilioFiscal
             // 
             lblDomicilioFiscal.AutoSize = true;
-            lblDomicilioFiscal.Location = new Point(33, 178);
+            lblDomicilioFiscal.Location = new Point(36, 133);
             lblDomicilioFiscal.Margin = new Padding(4, 0, 4, 0);
             lblDomicilioFiscal.Name = "lblDomicilioFiscal";
-            lblDomicilioFiscal.Size = new Size(90, 15);
+            lblDomicilioFiscal.Size = new Size(68, 15);
             lblDomicilioFiscal.TabIndex = 50;
-            lblDomicilioFiscal.Text = "Domicilio Fiscal";
+            lblDomicilioFiscal.Text = "Dom. Fiscal";
             // 
             // txtRfc
             // 
-            txtRfc.Location = new Point(144, 146);
+            txtRfc.Location = new Point(109, 101);
             txtRfc.Margin = new Padding(4, 3, 4, 3);
             txtRfc.Name = "txtRfc";
-            txtRfc.Size = new Size(247, 23);
+            txtRfc.Size = new Size(197, 23);
             txtRfc.TabIndex = 49;
-     //       txtRfc.TextChanged += txtRfc_TextChanged;
             // 
             // lblRfc
             // 
             lblRfc.AutoSize = true;
-            lblRfc.Location = new Point(33, 149);
+            lblRfc.Location = new Point(36, 104);
             lblRfc.Margin = new Padding(4, 0, 4, 0);
             lblRfc.Name = "lblRfc";
             lblRfc.Size = new Size(28, 15);
@@ -262,17 +256,16 @@
             // txtIdCliente
             // 
             txtIdCliente.Enabled = false;
-            txtIdCliente.Location = new Point(144, 84);
+            txtIdCliente.Location = new Point(369, 25);
             txtIdCliente.Margin = new Padding(4, 3, 4, 3);
             txtIdCliente.Name = "txtIdCliente";
-            txtIdCliente.Size = new Size(74, 23);
+            txtIdCliente.Size = new Size(47, 23);
             txtIdCliente.TabIndex = 47;
-        //    txtIdCliente.TextChanged += txtIdCliente_TextChanged;
             // 
             // lblIdCliente
             // 
             lblIdCliente.AutoSize = true;
-            lblIdCliente.Location = new Point(33, 89);
+            lblIdCliente.Location = new Point(313, 30);
             lblIdCliente.Margin = new Padding(4, 0, 4, 0);
             lblIdCliente.Name = "lblIdCliente";
             lblIdCliente.Size = new Size(54, 15);
@@ -283,7 +276,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1037, 372);
+            ClientSize = new Size(864, 325);
             Controls.Add(cmdNuevo);
             Controls.Add(txtBuscar);
             Controls.Add(cmdBuscar);

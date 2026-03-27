@@ -11,7 +11,7 @@ namespace ConsultorioMedico
         int idCita;
         DataTable tablaDetalle = new DataTable();
         int idExpediente;
-        int idReceta;
+        int idRecetas;
         int consecutivo;
 
         public frmRecetas()
@@ -93,26 +93,26 @@ namespace ConsultorioMedico
             cmdMed.Parameters.AddWithValue("@idCita", idCita);
             int idMedico = Convert.ToInt32(cmdMed.ExecuteScalar());
 
-            SqlCommand cmdReceta = new SqlCommand(@"
-                IF NOT EXISTS (SELECT 1 FROM Receta WHERE IdExpediente = @idExp)
+            SqlCommand cmdRecetas = new SqlCommand(@"
+                IF NOT EXISTS (SELECT 1 FROM Recetas WHERE IdExpediente = @idExp)
                 BEGIN
-                    INSERT INTO Receta (IdExpediente, IdMedico)
+                    INSERT INTO Recetas (IdExpediente, IdMedico)
                     VALUES (@idExp, @idMedico);
                 END
 
-                SELECT IdReceta FROM Receta WHERE IdExpediente = @idExp;", conn);
+                SELECT IdRecetas FROM Recetas WHERE IdExpediente = @idExp;", conn);
 
-            cmdReceta.Parameters.AddWithValue("@idExp", idExpediente);
-            cmdReceta.Parameters.AddWithValue("@idMedico", idMedico);
+            cmdRecetas.Parameters.AddWithValue("@idExp", idExpediente);
+            cmdRecetas.Parameters.AddWithValue("@idMedico", idMedico);
 
-            idReceta = Convert.ToInt32(cmdReceta.ExecuteScalar());
+            idRecetas = Convert.ToInt32(cmdRecetas.ExecuteScalar());
 
             SqlCommand cmdNR = new SqlCommand(@"
                 SELECT ISNULL(MAX(IdConsec), 0)
-                FROM DetReceta
-                WHERE IdReceta = @idReceta", conn);
+                FROM DetRecetas
+                WHERE IdRecetas = @idRecetas", conn);
 
-            cmdNR.Parameters.AddWithValue("@idReceta", idReceta);
+            cmdNR.Parameters.AddWithValue("@idRecetas", idRecetas);
             int consecutivo = Convert.ToInt32(cmdNR.ExecuteScalar());
 
             foreach (DataRow row in tablaDetalle.Rows)
@@ -120,10 +120,10 @@ namespace ConsultorioMedico
                 consecutivo++;
 
                 SqlCommand cmdDet = new SqlCommand(@"
-                    INSERT INTO DetReceta (IdReceta, IdConsec, Medicamento, Indicaciones)
-                    VALUES (@idReceta, @nr, @med, @ind)", conn);
+                    INSERT INTO DetRecetas (IdRecetas, IdConsec, Medicamento, Indicaciones)
+                    VALUES (@idRecetas, @nr, @med, @ind)", conn);
 
-                cmdDet.Parameters.AddWithValue("@idReceta", idReceta);
+                cmdDet.Parameters.AddWithValue("@idRecetas", idRecetas);
                 cmdDet.Parameters.AddWithValue("@nr", consecutivo);
                 cmdDet.Parameters.AddWithValue("@med", row["Medicamento"]);
                 cmdDet.Parameters.AddWithValue("@ind", row["Indicaciones"]);

@@ -8,9 +8,10 @@ namespace ConsultorioMedico
     public partial class frmMedicos : Form
     {
         SqlConnection conn;
-        SqlDataAdapter adapter;
         DataTable tablaMedicos;
         BindingSource medicosBindingSource;
+
+        string R = "SELECT * FROM Medicos"; // reusable query
 
         public frmMedicos()
         {
@@ -25,17 +26,20 @@ namespace ConsultorioMedico
 
             conn = new SqlConnection(connectionString);
 
-            adapter = new SqlDataAdapter("SELECT * FROM Medicos", conn);
-
-            SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
-
             tablaMedicos = new DataTable();
-            adapter.Fill(tablaMedicos);
+
+            // 🔥 MANUAL LOAD
+            using (SqlCommand comando = new SqlCommand(R, conn))
+            {
+                conn.Open();
+                SqlDataReader reader = comando.ExecuteReader();
+                tablaMedicos.Load(reader);
+                conn.Close();
+            }
 
             tablaMedicos.Columns["IdMedico"].ReadOnly = true;
 
             medicosBindingSource.DataSource = tablaMedicos;
-
             dgvData.DataSource = medicosBindingSource;
 
             txtIdMedico.DataBindings.Add("Text", medicosBindingSource, "IdMedico", true, DataSourceUpdateMode.OnPropertyChanged);
@@ -65,10 +69,49 @@ namespace ConsultorioMedico
         {
             medicosBindingSource.EndEdit();
 
-            adapter.Update(tablaMedicos);
+            conn.Open();
 
+            foreach (DataRow row in tablaMedicos.Rows)
+            {
+                if (row.RowState == DataRowState.Added)
+                {
+                    using (SqlCommand comando = new SqlCommand(
+                        "INSERT INTO Medicos (Nombre, CedProfesional, Domicilio) VALUES (@Nombre, @Ced, @Dom)", conn))
+                    {
+                        comando.Parameters.AddWithValue("@Nombre", row["Nombre"]);
+                        comando.Parameters.AddWithValue("@Ced", row["CedProfesional"]);
+                        comando.Parameters.AddWithValue("@Dom", row["Domicilio"]);
+
+                        comando.ExecuteNonQuery();
+                    }
+                }
+                else if (row.RowState == DataRowState.Modified)
+                {
+                    using (SqlCommand comando = new SqlCommand(
+                        "UPDATE Medicos SET Nombre=@Nombre, CedProfesional=@Ced, Domicilio=@Dom WHERE IdMedico=@Id", conn))
+                    {
+                        comando.Parameters.AddWithValue("@Nombre", row["Nombre"]);
+                        comando.Parameters.AddWithValue("@Ced", row["CedProfesional"]);
+                        comando.Parameters.AddWithValue("@Dom", row["Domicilio"]);
+                        comando.Parameters.AddWithValue("@Id", row["IdMedico"]);
+
+                        comando.ExecuteNonQuery();
+                    }
+                }
+            }
+
+            conn.Close();
+
+            // 🔁 Reload manually
             tablaMedicos.Clear();
-            adapter.Fill(tablaMedicos);
+
+            using (SqlCommand comando = new SqlCommand(R, conn))
+            {
+                conn.Open();
+                SqlDataReader reader = comando.ExecuteReader();
+                tablaMedicos.Load(reader);
+                conn.Close();
+            }
 
             MessageBox.Show("Registro Guardado");
 

@@ -8,9 +8,10 @@ namespace ConsultorioMedico
     public partial class frmClientes : Form
     {
         SqlConnection conn;
-        SqlDataAdapter adapter;
         DataTable tablaClientes;
         BindingSource clientesBindingSource;
+
+        string R = "SELECT * FROM Clientes";
 
         public frmClientes()
         {
@@ -24,12 +25,15 @@ namespace ConsultorioMedico
             "Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;";
 
             conn = new SqlConnection(connectionString);
-            adapter = new SqlDataAdapter("SELECT * FROM Clientes", conn);
-
-            SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
 
             tablaClientes = new DataTable();
-            adapter.Fill(tablaClientes);
+
+            conn.Open();
+            SqlCommand comando = new SqlCommand(R, conn);
+            SqlDataReader reader = comando.ExecuteReader();
+            tablaClientes.Load(reader);
+            reader.Close();
+            conn.Close();
 
             tablaClientes.Columns["IdCliente"].ReadOnly = true;
 
@@ -63,10 +67,49 @@ namespace ConsultorioMedico
         private void cmdGrabar_Click(object sender, EventArgs e)
         {
             clientesBindingSource.EndEdit();
-            adapter.Update(tablaClientes);
 
+            conn.Open();
+
+            foreach (DataRow row in tablaClientes.Rows)
+            {
+                if (row.RowState == DataRowState.Added)
+                {
+                    SqlCommand comando = new SqlCommand(
+                        "INSERT INTO Clientes (RFC, NombreContribuyente, DomicilioFiscal, Email) " +
+                        "VALUES (@RFC, @Nombre, @Domicilio, @Email)", conn);
+
+                    comando.Parameters.AddWithValue("@RFC", row["RFC"]);
+                    comando.Parameters.AddWithValue("@Nombre", row["NombreContribuyente"]);
+                    comando.Parameters.AddWithValue("@Domicilio", row["DomicilioFiscal"]);
+                    comando.Parameters.AddWithValue("@Email", row["Email"]);
+
+                    comando.ExecuteNonQuery();
+                }
+                else if (row.RowState == DataRowState.Modified)
+                {
+                    SqlCommand comando = new SqlCommand(
+                        "UPDATE Clientes SET RFC=@RFC, NombreContribuyente=@Nombre, " +
+                        "DomicilioFiscal=@Domicilio, Email=@Email WHERE IdCliente=@Id", conn);
+
+                    comando.Parameters.AddWithValue("@RFC", row["RFC"]);
+                    comando.Parameters.AddWithValue("@Nombre", row["NombreContribuyente"]);
+                    comando.Parameters.AddWithValue("@Domicilio", row["DomicilioFiscal"]);
+                    comando.Parameters.AddWithValue("@Email", row["Email"]);
+                    comando.Parameters.AddWithValue("@Id", row["IdCliente"]);
+
+                    comando.ExecuteNonQuery();
+                }
+            }
+
+            conn.Close();
             tablaClientes.Clear();
-            adapter.Fill(tablaClientes);
+
+            conn.Open();
+            SqlCommand comandoReload = new SqlCommand(R, conn);
+            SqlDataReader reader = comandoReload.ExecuteReader();
+            tablaClientes.Load(reader);
+            reader.Close();
+            conn.Close();
 
             MessageBox.Show("Registro Guardado");
 
@@ -90,16 +133,16 @@ namespace ConsultorioMedico
         }
 
         private void cmdAnterior_Click(object sender, EventArgs e) =>
-        clientesBindingSource.MovePrevious();
+            clientesBindingSource.MovePrevious();
 
         private void cmdSiguiente_Click(object sender, EventArgs e) =>
-        clientesBindingSource.MoveNext();
+            clientesBindingSource.MoveNext();
 
         private void cmdUltimo_Click(object sender, EventArgs e) =>
-        clientesBindingSource.MoveLast();
+            clientesBindingSource.MoveLast();
 
         private void cmdPrimero_Click(object sender, EventArgs e) =>
-        clientesBindingSource.MoveFirst();
+            clientesBindingSource.MoveFirst();
 
         private void cmdSalir_Click(object sender, EventArgs e) => Close();
     }
