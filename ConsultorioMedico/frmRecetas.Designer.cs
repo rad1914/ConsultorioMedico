@@ -127,6 +127,7 @@
             cmdSalir.TabIndex = 263;
             cmdSalir.Text = "Salir";
             cmdSalir.UseVisualStyleBackColor = true;
+            cmdSalir.Click += cmdSalir_Click;
             // 
             // cmdRegistrar
             // 

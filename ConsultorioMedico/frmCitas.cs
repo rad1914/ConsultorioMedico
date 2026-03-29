@@ -86,6 +86,11 @@ namespace ConsultorioMedico
         {
             citas.Clear();
 
+
+            cboHora.Enabled = true;
+            cboMedico.Enabled = true;
+            cboPaciente.Enabled = true;
+
             SqlCommand comando = new SqlCommand(R + " WHERE c.Fecha=@f", conn);
             comando.Parameters.AddWithValue("@f", dtpFecha.Value.Date);
 

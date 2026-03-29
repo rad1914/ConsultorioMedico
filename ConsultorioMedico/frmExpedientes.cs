@@ -82,7 +82,7 @@ namespace ConsultorioMedico
             dtpFechaNacimiento.DataBindings.Clear();
             cboSangre.DataBindings.Clear();
             txtAlergias.DataBindings.Clear();
-            txtEnfermedades.DataBindings.Clear();
+            txtEnfermedadCronica.DataBindings.Clear();
 
             txtIdPaciente.DataBindings.Add("Text", citasBS, "IdPaciente");
             txtNombre.DataBindings.Add("Text", citasBS, "Nombre");
@@ -92,7 +92,7 @@ namespace ConsultorioMedico
             dtpFechaNacimiento.DataBindings.Add("Value", citasBS, "FechaNac");
             cboSangre.DataBindings.Add("Text", citasBS, "TipoSangre");
             txtAlergias.DataBindings.Add("Text", citasBS, "Alergias");
-            txtEnfermedades.DataBindings.Add("Text", citasBS, "EnfermedadCronica");
+            txtEnfermedadCronica.DataBindings.Add("Text", citasBS, "EnfermedadCronica");
 
             int idPaciente = (int)row["IdPaciente"];
 
@@ -203,6 +203,11 @@ namespace ConsultorioMedico
             conn.Close();
 
             MessageBox.Show("Cita finalizada");
+        }
+
+        private void cmdSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

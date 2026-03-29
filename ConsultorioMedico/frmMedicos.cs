@@ -8,10 +8,11 @@ namespace ConsultorioMedico
     public partial class frmMedicos : Form
     {
         SqlConnection conn;
+        SqlCommand comando;
         DataTable tablaMedicos;
         BindingSource medicosBindingSource;
 
-        string R = "SELECT * FROM Medicos"; // reusable query
+        string R = "";
 
         public frmMedicos()
         {
@@ -28,90 +29,85 @@ namespace ConsultorioMedico
 
             tablaMedicos = new DataTable();
 
-            // 🔥 MANUAL LOAD
-            using (SqlCommand comando = new SqlCommand(R, conn))
-            {
-                conn.Open();
-                SqlDataReader reader = comando.ExecuteReader();
-                tablaMedicos.Load(reader);
-                conn.Close();
-            }
+            conn.Open();
+            R = "SELECT * FROM Medicos";
+            comando = new SqlCommand(R, conn);
 
-            tablaMedicos.Columns["IdMedico"].ReadOnly = true;
+            SqlDataReader reader = comando.ExecuteReader();
+            tablaMedicos.Load(reader);
+            conn.Close();
 
             medicosBindingSource.DataSource = tablaMedicos;
             dgvData.DataSource = medicosBindingSource;
 
-            txtIdMedico.DataBindings.Add("Text", medicosBindingSource, "IdMedico", true, DataSourceUpdateMode.OnPropertyChanged);
-            txtNombre.DataBindings.Add("Text", medicosBindingSource, "Nombre", true, DataSourceUpdateMode.OnPropertyChanged);
-            txtCedulaProfesional.DataBindings.Add("Text", medicosBindingSource, "CedProfesional", true, DataSourceUpdateMode.OnPropertyChanged);
-            txtDomicilio.DataBindings.Add("Text", medicosBindingSource, "Domicilio", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtIdMedico.DataBindings.Add("Text", medicosBindingSource, "IdMedico");
+            txtNombre.DataBindings.Add("Text", medicosBindingSource, "Nombre");
+            txtCedulaProfesional.DataBindings.Add("Text", medicosBindingSource, "CedProfesional");
+            txtDomicilio.DataBindings.Add("Text", medicosBindingSource, "Domicilio");
+            txtTelefono.DataBindings.Add("Text", medicosBindingSource, "Telefono");
 
             dgvData.Columns["IdMedico"].ReadOnly = true;
         }
 
-        private void cmdNuevo_Click(object sender, EventArgs e)
+        private void cmdNuevo_Click_1(object sender, EventArgs e)
         {
-            medicosBindingSource.AddNew();
+            txtIdMedico.Clear();
+            txtNombre.Clear();
+            txtCedulaProfesional.Clear();
+            txtDomicilio.Clear();
 
             cmdNuevo.Enabled = false;
             cmdGrabar.Enabled = true;
             cmdModificar.Enabled = false;
         }
 
-        private void cmdModificar_Click(object sender, EventArgs e)
+        private void cmdModificar_Click_1(object sender, EventArgs e)
         {
             cmdModificar.Enabled = false;
             cmdGrabar.Enabled = true;
         }
 
-        private void cmdGrabar_Click(object sender, EventArgs e)
+        private void cmdGrabar_Click_1(object sender, EventArgs e)
         {
-            medicosBindingSource.EndEdit();
-
             conn.Open();
 
-            foreach (DataRow row in tablaMedicos.Rows)
+            if (string.IsNullOrEmpty(txtIdMedico.Text))
             {
-                if (row.RowState == DataRowState.Added)
-                {
-                    using (SqlCommand comando = new SqlCommand(
-                        "INSERT INTO Medicos (Nombre, CedProfesional, Domicilio) VALUES (@Nombre, @Ced, @Dom)", conn))
-                    {
-                        comando.Parameters.AddWithValue("@Nombre", row["Nombre"]);
-                        comando.Parameters.AddWithValue("@Ced", row["CedProfesional"]);
-                        comando.Parameters.AddWithValue("@Dom", row["Domicilio"]);
-
-                        comando.ExecuteNonQuery();
-                    }
-                }
-                else if (row.RowState == DataRowState.Modified)
-                {
-                    using (SqlCommand comando = new SqlCommand(
-                        "UPDATE Medicos SET Nombre=@Nombre, CedProfesional=@Ced, Domicilio=@Dom WHERE IdMedico=@Id", conn))
-                    {
-                        comando.Parameters.AddWithValue("@Nombre", row["Nombre"]);
-                        comando.Parameters.AddWithValue("@Ced", row["CedProfesional"]);
-                        comando.Parameters.AddWithValue("@Dom", row["Domicilio"]);
-                        comando.Parameters.AddWithValue("@Id", row["IdMedico"]);
-
-                        comando.ExecuteNonQuery();
-                    }
-                }
+                // INSERT
+                R = "INSERT INTO Medicos (Nombre, CedProfesional, Domicilio) " +
+                    "VALUES (@Nombre, @CedProfesional, @Domicilio)";
+            }
+            else
+            {
+                // UPDATE
+                R = "UPDATE Medicos SET " +
+                    "Nombre=@Nombre, CedProfesional=@CedProfesional, Domicilio=@Domicilio " +
+                    "WHERE IdMedico=@IdMedico";
             }
 
+            comando = new SqlCommand(R, conn);
+
+            comando.Parameters.AddWithValue("@Nombre", txtNombre.Text);
+            comando.Parameters.AddWithValue("@CedProfesional", txtCedulaProfesional.Text);
+            comando.Parameters.AddWithValue("@Domicilio", txtDomicilio.Text);
+
+            if (!string.IsNullOrEmpty(txtIdMedico.Text))
+            {
+                comando.Parameters.AddWithValue("@IdMedico", txtIdMedico.Text);
+            }
+
+            comando.ExecuteNonQuery();
             conn.Close();
 
-            // 🔁 Reload manually
+
             tablaMedicos.Clear();
 
-            using (SqlCommand comando = new SqlCommand(R, conn))
-            {
-                conn.Open();
-                SqlDataReader reader = comando.ExecuteReader();
-                tablaMedicos.Load(reader);
-                conn.Close();
-            }
+            conn.Open();
+            R = "SELECT * FROM Medicos";
+            comando = new SqlCommand(R, conn);
+            SqlDataReader reader = comando.ExecuteReader();
+            tablaMedicos.Load(reader);
+            conn.Close();
 
             MessageBox.Show("Registro Guardado");
 
@@ -120,7 +116,7 @@ namespace ConsultorioMedico
             cmdModificar.Enabled = true;
         }
 
-        private void cmdBuscar_Click(object sender, EventArgs e)
+        private void cmdBuscar_Click_1(object sender, EventArgs e)
         {
             string nombre = txtBuscar.Text.Trim();
 
@@ -133,19 +129,10 @@ namespace ConsultorioMedico
             medicosBindingSource.Filter = $"Nombre LIKE '%{nombre}%'";
         }
 
-        private void cmdAnterior_Click(object sender, EventArgs e)
-            => medicosBindingSource.MovePrevious();
-
-        private void cmdSiguiente_Click(object sender, EventArgs e)
-            => medicosBindingSource.MoveNext();
-
-        private void cmdUltimo_Click(object sender, EventArgs e)
-            => medicosBindingSource.MoveLast();
-
-        private void cmdPrimero_Click(object sender, EventArgs e)
-            => medicosBindingSource.MoveFirst();
-
-        private void cmdSalir_Click(object sender, EventArgs e)
-            => Close();
+        private void cmdAnterior_Click_1(object sender, EventArgs e) => medicosBindingSource.MovePrevious();
+        private void cmdSiguiente_Click_1(object sender, EventArgs e) => medicosBindingSource.MoveNext();
+        private void cmdUltimo_Click_1(object sender, EventArgs e) => medicosBindingSource.MoveLast();
+        private void cmdPrimero_Click_1(object sender, EventArgs e) => medicosBindingSource.MoveFirst();
+        private void cmdSalir_Click_1(object sender, EventArgs e) => Close();
     }
 }

@@ -172,6 +172,7 @@
             // 
             // cmdModificar
             // 
+            cmdModificar.Enabled = false;
             cmdModificar.Location = new Point(114, 214);
             cmdModificar.Margin = new Padding(4, 3, 4, 3);
             cmdModificar.Name = "cmdModificar";
@@ -182,6 +183,7 @@
             // 
             // cmdGrabar
             // 
+            cmdGrabar.Enabled = false;
             cmdGrabar.Location = new Point(36, 243);
             cmdGrabar.Margin = new Padding(4, 3, 4, 3);
             cmdGrabar.Name = "cmdGrabar";
@@ -192,6 +194,7 @@
             // 
             // cmdNuevo
             // 
+            cmdNuevo.Enabled = false;
             cmdNuevo.Location = new Point(114, 185);
             cmdNuevo.Margin = new Padding(4, 3, 4, 3);
             cmdNuevo.Name = "cmdNuevo";

@@ -51,6 +51,7 @@
             // 
             // cboHora
             // 
+            cboHora.Enabled = false;
             cboHora.FormattingEnabled = true;
             cboHora.Location = new Point(43, 82);
             cboHora.Margin = new Padding(4, 3, 4, 3);
@@ -60,6 +61,7 @@
             // 
             // cboPaciente
             // 
+            cboPaciente.Enabled = false;
             cboPaciente.FormattingEnabled = true;
             cboPaciente.Location = new Point(43, 124);
             cboPaciente.Margin = new Padding(4, 3, 4, 3);
@@ -211,6 +213,7 @@
             // 
             // cboMedico
             // 
+            cboMedico.Enabled = false;
             cboMedico.FormattingEnabled = true;
             cboMedico.Location = new Point(156, 82);
             cboMedico.Margin = new Padding(4, 3, 4, 3);

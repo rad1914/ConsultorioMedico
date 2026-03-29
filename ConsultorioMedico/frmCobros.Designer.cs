@@ -40,19 +40,19 @@
             lblIdPaciente = new Label();
             txtIdPaciente = new TextBox();
             lblCitaPagar = new Label();
-            comboBox1 = new ComboBox();
+            cboCitaPagar = new ComboBox();
             lblTipoPago = new Label();
-            comboBox2 = new ComboBox();
+            cboTipoPago = new ComboBox();
             lblMonto = new Label();
             txtMonto = new TextBox();
             cmdRegistrar = new Button();
-            label1 = new Label();
             cmdSalir = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // dtpFecha
             // 
-            dtpFecha.Location = new Point(115, 73);
+            dtpFecha.Location = new Point(128, 79);
             dtpFecha.Margin = new Padding(4, 3, 4, 3);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(186, 23);
@@ -60,19 +60,20 @@
             // 
             // cmdBuscar
             // 
-            cmdBuscar.Location = new Point(309, 72);
+            cmdBuscar.Location = new Point(317, 79);
             cmdBuscar.Margin = new Padding(4, 3, 4, 3);
             cmdBuscar.Name = "cmdBuscar";
-            cmdBuscar.Size = new Size(72, 24);
+            cmdBuscar.Size = new Size(76, 24);
             cmdBuscar.TabIndex = 141;
             cmdBuscar.Text = "Buscar";
             cmdBuscar.UseVisualStyleBackColor = true;
+            cmdBuscar.Click += cmdBuscar_Click_1;
             // 
             // lblHeader
             // 
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblHeader.Location = new Point(28, 33);
+            lblHeader.Location = new Point(41, 44);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(247, 32);
@@ -83,7 +84,7 @@
             // 
             lblNombre.AutoSize = true;
             lblNombre.Enabled = false;
-            lblNombre.Location = new Point(32, 199);
+            lblNombre.Location = new Point(170, 176);
             lblNombre.Margin = new Padding(4, 0, 4, 0);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(51, 15);
@@ -93,17 +94,17 @@
             // txtNombre
             // 
             txtNombre.Enabled = false;
-            txtNombre.Location = new Point(115, 196);
+            txtNombre.Location = new Point(225, 170);
             txtNombre.Margin = new Padding(4, 3, 4, 3);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(266, 23);
+            txtNombre.Size = new Size(168, 23);
             txtNombre.TabIndex = 242;
             // 
             // lblApellidos
             // 
             lblApellidos.AutoSize = true;
             lblApellidos.Enabled = false;
-            lblApellidos.Location = new Point(32, 229);
+            lblApellidos.Location = new Point(49, 204);
             lblApellidos.Margin = new Padding(4, 0, 4, 0);
             lblApellidos.Name = "lblApellidos";
             lblApellidos.Size = new Size(56, 15);
@@ -113,7 +114,7 @@
             // txtAPaterno
             // 
             txtAPaterno.Enabled = false;
-            txtAPaterno.Location = new Point(115, 225);
+            txtAPaterno.Location = new Point(127, 200);
             txtAPaterno.Margin = new Padding(4, 3, 4, 3);
             txtAPaterno.Name = "txtAPaterno";
             txtAPaterno.Size = new Size(125, 23);
@@ -122,7 +123,7 @@
             // txtAMaterno
             // 
             txtAMaterno.Enabled = false;
-            txtAMaterno.Location = new Point(256, 225);
+            txtAMaterno.Location = new Point(268, 200);
             txtAMaterno.Margin = new Padding(4, 3, 4, 3);
             txtAMaterno.Name = "txtAMaterno";
             txtAMaterno.Size = new Size(125, 23);
@@ -130,19 +131,20 @@
             // 
             // cmdNuevo
             // 
-            cmdNuevo.Location = new Point(114, 256);
+            cmdNuevo.Location = new Point(126, 231);
             cmdNuevo.Margin = new Padding(4, 3, 4, 3);
             cmdNuevo.Name = "cmdNuevo";
             cmdNuevo.Size = new Size(126, 23);
             cmdNuevo.TabIndex = 260;
             cmdNuevo.Text = "Nuevo";
             cmdNuevo.UseVisualStyleBackColor = true;
+            cmdNuevo.Click += cmdNuevo_Click_1;
             // 
             // lblIdPaciente
             // 
             lblIdPaciente.AutoSize = true;
             lblIdPaciente.Enabled = false;
-            lblIdPaciente.Location = new Point(32, 171);
+            lblIdPaciente.Location = new Point(48, 176);
             lblIdPaciente.Margin = new Padding(4, 0, 4, 0);
             lblIdPaciente.Name = "lblIdPaciente";
             lblIdPaciente.Size = new Size(65, 15);
@@ -152,52 +154,52 @@
             // txtIdPaciente
             // 
             txtIdPaciente.Enabled = false;
-            txtIdPaciente.Location = new Point(114, 166);
+            txtIdPaciente.Location = new Point(127, 171);
             txtIdPaciente.Margin = new Padding(4, 3, 4, 3);
             txtIdPaciente.Name = "txtIdPaciente";
-            txtIdPaciente.Size = new Size(71, 23);
+            txtIdPaciente.Size = new Size(40, 23);
             txtIdPaciente.TabIndex = 279;
             // 
             // lblCitaPagar
             // 
             lblCitaPagar.AutoSize = true;
-            lblCitaPagar.Location = new Point(33, 109);
+            lblCitaPagar.Location = new Point(46, 113);
             lblCitaPagar.Margin = new Padding(4, 0, 4, 0);
             lblCitaPagar.Name = "lblCitaPagar";
             lblCitaPagar.Size = new Size(70, 15);
             lblCitaPagar.TabIndex = 280;
             lblCitaPagar.Text = "Cita a Pagar";
             // 
-            // comboBox1
+            // cboCitaPagar
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(115, 105);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(70, 23);
-            comboBox1.TabIndex = 282;
+            cboCitaPagar.FormattingEnabled = true;
+            cboCitaPagar.Location = new Point(128, 109);
+            cboCitaPagar.Name = "cboCitaPagar";
+            cboCitaPagar.Size = new Size(70, 23);
+            cboCitaPagar.TabIndex = 282;
             // 
             // lblTipoPago
             // 
             lblTipoPago.AutoSize = true;
-            lblTipoPago.Location = new Point(192, 109);
+            lblTipoPago.Location = new Point(205, 113);
             lblTipoPago.Margin = new Padding(4, 0, 4, 0);
             lblTipoPago.Name = "lblTipoPago";
             lblTipoPago.Size = new Size(77, 15);
             lblTipoPago.TabIndex = 283;
             lblTipoPago.Text = "Tipo de Pago";
             // 
-            // comboBox2
+            // cboTipoPago
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(274, 104);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(107, 23);
-            comboBox2.TabIndex = 284;
+            cboTipoPago.FormattingEnabled = true;
+            cboTipoPago.Location = new Point(287, 108);
+            cboTipoPago.Name = "cboTipoPago";
+            cboTipoPago.Size = new Size(106, 23);
+            cboTipoPago.TabIndex = 284;
             // 
             // lblMonto
             // 
             lblMonto.AutoSize = true;
-            lblMonto.Location = new Point(34, 138);
+            lblMonto.Location = new Point(47, 142);
             lblMonto.Margin = new Padding(4, 0, 4, 0);
             lblMonto.Name = "lblMonto";
             lblMonto.Size = new Size(43, 15);
@@ -206,7 +208,7 @@
             // 
             // txtMonto
             // 
-            txtMonto.Location = new Point(114, 135);
+            txtMonto.Location = new Point(127, 139);
             txtMonto.Margin = new Padding(4, 3, 4, 3);
             txtMonto.Name = "txtMonto";
             txtMonto.Size = new Size(267, 23);
@@ -215,47 +217,49 @@
             // cmdRegistrar
             // 
             cmdRegistrar.Enabled = false;
-            cmdRegistrar.Location = new Point(255, 256);
+            cmdRegistrar.Location = new Point(267, 231);
             cmdRegistrar.Margin = new Padding(4, 3, 4, 3);
             cmdRegistrar.Name = "cmdRegistrar";
             cmdRegistrar.Size = new Size(126, 23);
             cmdRegistrar.TabIndex = 287;
             cmdRegistrar.Text = "Registrar";
             cmdRegistrar.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(34, 77);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(59, 15);
-            label1.TabIndex = 288;
-            label1.Text = "Sel. Fecha";
+            cmdRegistrar.Click += cmdRegistrar_Click_1;
             // 
             // cmdSalir
             // 
-            cmdSalir.Location = new Point(115, 285);
+            cmdSalir.Location = new Point(127, 260);
             cmdSalir.Margin = new Padding(4, 3, 4, 3);
             cmdSalir.Name = "cmdSalir";
             cmdSalir.Size = new Size(266, 23);
             cmdSalir.TabIndex = 289;
             cmdSalir.Text = "Salir";
             cmdSalir.UseVisualStyleBackColor = true;
+            cmdSalir.Click += cmdSalir_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(46, 84);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(59, 15);
+            label1.TabIndex = 290;
+            label1.Text = "Sel. Fecha";
             // 
             // frmCobros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(427, 345);
-            Controls.Add(cmdSalir);
+            ClientSize = new Size(445, 325);
             Controls.Add(label1);
+            Controls.Add(cmdSalir);
             Controls.Add(cmdRegistrar);
             Controls.Add(txtMonto);
             Controls.Add(lblMonto);
-            Controls.Add(comboBox2);
+            Controls.Add(cboTipoPago);
             Controls.Add(lblTipoPago);
-            Controls.Add(comboBox1);
+            Controls.Add(cboCitaPagar);
             Controls.Add(lblCitaPagar);
             Controls.Add(txtIdPaciente);
             Controls.Add(lblIdPaciente);
@@ -289,13 +293,13 @@
         private Label lblIdPaciente;
         private TextBox txtIdPaciente;
         private Label lblCitaPagar;
-        private ComboBox comboBox1;
+        private ComboBox cboCitaPagar;
         private Label lblTipoPago;
-        private ComboBox comboBox2;
+        private ComboBox cboTipoPago;
         private Label lblMonto;
         private TextBox txtMonto;
         private Button cmdRegistrar;
-        private Label label1;
         private Button cmdSalir;
+        private Label label1;
     }
 }

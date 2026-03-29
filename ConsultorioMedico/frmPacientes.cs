@@ -8,10 +8,11 @@ namespace ConsultorioMedico
     public partial class frmPacientes : Form
     {
         SqlConnection conn;
+        SqlCommand comando;
         DataTable tablaPacientes;
         BindingSource pacientesBindingSource;
 
-        string R = "SELECT * FROM Pacientes"; // reusable query
+        string R = "";
 
         public frmPacientes()
         {
@@ -27,12 +28,12 @@ namespace ConsultorioMedico
             tablaPacientes = new DataTable();
 
             conn.Open();
-            SqlCommand comando = new SqlCommand(R, conn);
+            R = "SELECT * FROM Pacientes";
+            comando = new SqlCommand(R, conn);
+
             SqlDataReader reader = comando.ExecuteReader();
             tablaPacientes.Load(reader);
             conn.Close();
-
-            tablaPacientes.Columns["idPaciente"].ReadOnly = true;
 
             pacientesBindingSource.DataSource = tablaPacientes;
             dgvData.DataSource = pacientesBindingSource;
@@ -40,23 +41,33 @@ namespace ConsultorioMedico
             cboGenero.Items.AddRange(new object[] { "M", "F", "X" });
             cboSangre.Items.AddRange(new object[] { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" });
 
-            txtidPaciente.DataBindings.Add("Text", pacientesBindingSource, "idPaciente", true, DataSourceUpdateMode.OnPropertyChanged);
-            txtNombre.DataBindings.Add("Text", pacientesBindingSource, "Nombre", true, DataSourceUpdateMode.OnPropertyChanged);
-            txtAPaterno.DataBindings.Add("Text", pacientesBindingSource, "APaterno", true, DataSourceUpdateMode.OnPropertyChanged);
-            txtAMaterno.DataBindings.Add("Text", pacientesBindingSource, "AMaterno", true, DataSourceUpdateMode.OnPropertyChanged);
-            txtTelefono.DataBindings.Add("Text", pacientesBindingSource, "Telefono", true, DataSourceUpdateMode.OnPropertyChanged);
-            cboGenero.DataBindings.Add("Text", pacientesBindingSource, "Genero", true, DataSourceUpdateMode.OnPropertyChanged);
-            dtpFechaNacimiento.DataBindings.Add("Value", pacientesBindingSource, "FechaNac", true, DataSourceUpdateMode.OnPropertyChanged);
-            cboSangre.DataBindings.Add("Text", pacientesBindingSource, "TipoSangre", true, DataSourceUpdateMode.OnPropertyChanged);
-            txtAlergias.DataBindings.Add("Text", pacientesBindingSource, "Alergias", true, DataSourceUpdateMode.OnPropertyChanged);
-            txtEnfermedadCronica.DataBindings.Add("Text", pacientesBindingSource, "EnfermedadCronica", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtidPaciente.DataBindings.Add("Text", pacientesBindingSource, "idPaciente");
+            txtNombre.DataBindings.Add("Text", pacientesBindingSource, "Nombre");
+            txtAPaterno.DataBindings.Add("Text", pacientesBindingSource, "APaterno");
+            txtAMaterno.DataBindings.Add("Text", pacientesBindingSource, "AMaterno");
+            txtTelefono.DataBindings.Add("Text", pacientesBindingSource, "Telefono");
+            cboGenero.DataBindings.Add("Text", pacientesBindingSource, "Genero");
+            dtpFechaNacimiento.DataBindings.Add("Value", pacientesBindingSource, "FechaNac");
+            cboSangre.DataBindings.Add("Text", pacientesBindingSource, "TipoSangre");
+            txtAlergias.DataBindings.Add("Text", pacientesBindingSource, "Alergias");
+            txtEnfermedadCronica.DataBindings.Add("Text", pacientesBindingSource, "EnfermedadCronica");
 
             dgvData.Columns["idPaciente"].ReadOnly = true;
         }
 
         private void cmdNuevo_Click(object sender, EventArgs e)
         {
-            pacientesBindingSource.AddNew();
+            txtidPaciente.Clear();
+            txtNombre.Clear();
+            txtAPaterno.Clear();
+            txtAMaterno.Clear();
+            txtTelefono.Clear();
+            cboGenero.SelectedIndex = -1;
+            cboSangre.SelectedIndex = -1;
+            txtAlergias.Clear();
+            txtEnfermedadCronica.Clear();
+            dtpFechaNacimiento.Value = DateTime.Now;
+
             cmdNuevo.Enabled = false;
             cmdGrabar.Enabled = true;
             cmdModificar.Enabled = false;
@@ -70,69 +81,50 @@ namespace ConsultorioMedico
 
         private void cmdGrabar_Click(object sender, EventArgs e)
         {
-            pacientesBindingSource.EndEdit();
-
             conn.Open();
 
-            foreach (DataRow row in tablaPacientes.Rows)
+            if (string.IsNullOrEmpty(txtidPaciente.Text))
             {
-                if (row.RowState == DataRowState.Added)
-                {
-                    SqlCommand comando = new SqlCommand(
-                        @"INSERT INTO Pacientes 
-                        (Nombre, APaterno, AMaterno, Telefono, Genero, FechaNac, TipoSangre, Alergias, EnfermedadCronica)
-                        VALUES 
-                        (@Nombre, @APaterno, @AMaterno, @Telefono, @Genero, @FechaNac, @TipoSangre, @Alergias, @EnfermedadCronica)", conn);
-
-                    comando.Parameters.AddWithValue("@Nombre", row["Nombre"]);
-                    comando.Parameters.AddWithValue("@APaterno", row["APaterno"]);
-                    comando.Parameters.AddWithValue("@AMaterno", row["AMaterno"]);
-                    comando.Parameters.AddWithValue("@Telefono", row["Telefono"]);
-                    comando.Parameters.AddWithValue("@Genero", row["Genero"]);
-                    comando.Parameters.AddWithValue("@FechaNac", row["FechaNac"]);
-                    comando.Parameters.AddWithValue("@TipoSangre", row["TipoSangre"]);
-                    comando.Parameters.AddWithValue("@Alergias", row["Alergias"]);
-                    comando.Parameters.AddWithValue("@EnfermedadCronica", row["EnfermedadCronica"]);
-
-                    comando.ExecuteNonQuery();
-                }
-                else if (row.RowState == DataRowState.Modified)
-                {
-                    SqlCommand comando = new SqlCommand(
-                        @"UPDATE Pacientes SET
-                        Nombre=@Nombre,
-                        APaterno=@APaterno,
-                        AMaterno=@AMaterno,
-                        Telefono=@Telefono,
-                        Genero=@Genero,
-                        FechaNac=@FechaNac,
-                        TipoSangre=@TipoSangre,
-                        Alergias=@Alergias,
-                        EnfermedadCronica=@EnfermedadCronica
-                        WHERE idPaciente=@idPaciente", conn);
-
-                    comando.Parameters.AddWithValue("@idPaciente", row["idPaciente"]);
-                    comando.Parameters.AddWithValue("@Nombre", row["Nombre"]);
-                    comando.Parameters.AddWithValue("@APaterno", row["APaterno"]);
-                    comando.Parameters.AddWithValue("@AMaterno", row["AMaterno"]);
-                    comando.Parameters.AddWithValue("@Telefono", row["Telefono"]);
-                    comando.Parameters.AddWithValue("@Genero", row["Genero"]);
-                    comando.Parameters.AddWithValue("@FechaNac", row["FechaNac"]);
-                    comando.Parameters.AddWithValue("@TipoSangre", row["TipoSangre"]);
-                    comando.Parameters.AddWithValue("@Alergias", row["Alergias"]);
-                    comando.Parameters.AddWithValue("@EnfermedadCronica", row["EnfermedadCronica"]);
-
-                    comando.ExecuteNonQuery();
-                }
+                // INSERT
+                R = "INSERT INTO Pacientes (Nombre, APaterno, AMaterno, Telefono, Genero, FechaNac, TipoSangre, Alergias, EnfermedadCronica) " +
+                    "VALUES (@Nombre, @APaterno, @AMaterno, @Telefono, @Genero, @FechaNac, @TipoSangre, @Alergias, @EnfermedadCronica)";
+            }
+            else
+            {
+                // UPDATE
+                R = "UPDATE Pacientes SET " +
+                    "Nombre=@Nombre, APaterno=@APaterno, AMaterno=@AMaterno, Telefono=@Telefono, Genero=@Genero, " +
+                    "FechaNac=@FechaNac, TipoSangre=@TipoSangre, Alergias=@Alergias, EnfermedadCronica=@EnfermedadCronica " +
+                    "WHERE idPaciente=@idPaciente";
             }
 
+            comando = new SqlCommand(R, conn);
+
+            comando.Parameters.AddWithValue("@Nombre", txtNombre.Text);
+            comando.Parameters.AddWithValue("@APaterno", txtAPaterno.Text);
+            comando.Parameters.AddWithValue("@AMaterno", txtAMaterno.Text);
+            comando.Parameters.AddWithValue("@Telefono", txtTelefono.Text);
+            comando.Parameters.AddWithValue("@Genero", cboGenero.Text);
+            comando.Parameters.AddWithValue("@FechaNac", dtpFechaNacimiento.Value);
+            comando.Parameters.AddWithValue("@TipoSangre", cboSangre.Text);
+            comando.Parameters.AddWithValue("@Alergias", txtAlergias.Text);
+            comando.Parameters.AddWithValue("@EnfermedadCronica", txtEnfermedadCronica.Text);
+
+            if (!string.IsNullOrEmpty(txtidPaciente.Text))
+            {
+                comando.Parameters.AddWithValue("@idPaciente", txtidPaciente.Text);
+            }
+
+            comando.ExecuteNonQuery();
             conn.Close();
 
+            // Reload data manually because automation is forbidden now
             tablaPacientes.Clear();
 
             conn.Open();
-            SqlCommand reload = new SqlCommand(R, conn);
-            SqlDataReader reader = reload.ExecuteReader();
+            R = "SELECT * FROM Pacientes";
+            comando = new SqlCommand(R, conn);
+            SqlDataReader reader = comando.ExecuteReader();
             tablaPacientes.Load(reader);
             conn.Close();
 

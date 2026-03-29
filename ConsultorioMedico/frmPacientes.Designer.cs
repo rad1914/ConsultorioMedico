@@ -368,7 +368,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(903, 445);
+            ClientSize = new Size(903, 439);
             Controls.Add(txtTelefono);
             Controls.Add(txtEnfermedadCronica);
             Controls.Add(lblEnfermedadCronica);
