@@ -186,6 +186,7 @@ namespace ConsultorioMedico
             Margin = new Padding(4, 3, 4, 3);
             Name = "frmMenu";
             Text = "Menu";
+            Load += frmMenu_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
