@@ -1,0 +1,63 @@
+﻿using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+
+namespace ConsultorioMedico
+{
+    public partial class frmCICobros : Form
+    {
+        SqlConnection conn;
+
+        public frmCICobros()
+        {
+            InitializeComponent();
+
+            conn = new SqlConnection(
+                "Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;");
+        }
+
+        private void frmCICobros_Load(object sender, EventArgs e)
+        {
+            dgvData.AutoGenerateColumns = true;
+
+            // Optional: default range (today)
+            dtpFechaInicial.Value = DateTime.Today;
+            dtpFechaFinal.Value = DateTime.Today;
+        }
+
+        private void cmdBuscar_Click(object sender, EventArgs e)
+        {
+            DateTime fechaInicial = dtpFechaInicial.Value.Date;
+            DateTime fechaFinal = dtpFechaFinal.Value.Date;
+
+            SqlDataAdapter da = new SqlDataAdapter(@"
+                SELECT 
+                    c.IdCita,
+                    c.Fecha,
+                    p.Nombre,
+                    p.APaterno,
+                    p.AMaterno,
+                    co.IdCobro,
+                    co.TipoPago,
+                    co.Monto
+                FROM Cobros co
+                INNER JOIN Citas c ON c.IdCita = co.IdCita
+                INNER JOIN Pacientes p ON p.IdPaciente = c.IdPaciente
+                WHERE c.Fecha BETWEEN @FechaInicial AND @FechaFinal
+                ORDER BY c.Fecha
+            ", conn);
+
+            da.SelectCommand.Parameters.AddWithValue("@FechaInicial", fechaInicial);
+            da.SelectCommand.Parameters.AddWithValue("@FechaFinal", fechaFinal);
+
+            DataTable dt = new DataTable();
+
+            conn.Open();
+            da.Fill(dt);
+            conn.Close();
+
+            dgvData.DataSource = dt;
+        }
+    }
+}
