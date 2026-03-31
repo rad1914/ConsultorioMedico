@@ -1,4 +1,5 @@
 using ConsultorioMedico;
+using ConsultorioMedico;
 using System;
 using System.Windows.Forms;
 
@@ -9,6 +10,10 @@ namespace ConsultorioMedico
         public frmMenu()
         {
             InitializeComponent();
+        }
+
+        private void frmMenu_Load(object sender, EventArgs e)
+        {
         }
 
         private void citasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -81,6 +86,12 @@ namespace ConsultorioMedico
         {
             var FrmCIFacturas = new frmCIFacturas();
             FrmCIFacturas.Show();
+        }
+
+        private void consGralFacturasPorFechaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var FrmCGFacturas = new frmCGFacturas();
+            FrmCGFacturas.Show();
         }
     }
 }

@@ -134,5 +134,10 @@ namespace ConsultorioMedico
         private void cmdUltimo_Click_1(object sender, EventArgs e) => medicosBindingSource.MoveLast();
         private void cmdPrimero_Click_1(object sender, EventArgs e) => medicosBindingSource.MoveFirst();
         private void cmdSalir_Click_1(object sender, EventArgs e) => Close();
+
+        private void cmdSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

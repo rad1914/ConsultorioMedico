@@ -123,5 +123,10 @@ namespace ConsultorioMedico
         {
             this.Close();
         }
+
+        private void cmdSalir_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
