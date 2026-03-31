@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace ConsultorioMedico
 {
-    public partial class frmCICobros : Form
+    public partial class frmCGCobros : Form
     {
         SqlConnection conn;
 
-        public frmCICobros()
+        public frmCGCobros()
         {
             InitializeComponent();
 
@@ -20,13 +20,11 @@ namespace ConsultorioMedico
         private void frmCICobros_Load(object sender, EventArgs e)
         {
             dgvData.AutoGenerateColumns = true;
-
-            // Optional: default range (today)
             dtpFechaInicial.Value = DateTime.Today;
             dtpFechaFinal.Value = DateTime.Today;
         }
 
-        private void cmdBuscar_Click(object sender, EventArgs e)
+        private void cmdBuscar_Click_1(object sender, EventArgs e)
         {
             DateTime fechaInicial = dtpFechaInicial.Value.Date;
             DateTime fechaFinal = dtpFechaFinal.Value.Date;
@@ -58,6 +56,11 @@ namespace ConsultorioMedico
             conn.Close();
 
             dgvData.DataSource = dt;
+        }
+
+        private void cmdSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

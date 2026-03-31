@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace ConsultorioMedico
 {
-    public partial class frmCIReceta : Form
+    public partial class frmCIRecetas : Form
     {
         SqlConnection conn;
 
-        public frmCIReceta()
+        public frmCIRecetas()
         {
             InitializeComponent();
 

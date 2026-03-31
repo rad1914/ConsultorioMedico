@@ -45,7 +45,7 @@ namespace ConsultorioMedico
             cobrosToolStripMenuItem = new ToolStripMenuItem();
             facturasToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripMenuItem();
-            consIndivCobrosIdCobroToolStripMenuItem = new ToolStripMenuItem();
+            consIndivRecetaIdRecetaToolStripMenuItem1 = new ToolStripMenuItem();
             consIndivCobrosIdCobroToolStripMenuItem1 = new ToolStripMenuItem();
             consIndivFactuasIdFacturaToolStripMenuItem = new ToolStripMenuItem();
             consGralCobrosPorFechaToolStripMenuItem = new ToolStripMenuItem();
@@ -67,27 +67,27 @@ namespace ConsultorioMedico
             // 
             catalgosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pacientesToolStripMenuItem, clientesToolStripMenuItem, medicosToolStripMenuItem });
             catalgosToolStripMenuItem.Name = "catalgosToolStripMenuItem";
-            catalgosToolStripMenuItem.Size = new Size(72, 20);
+            catalgosToolStripMenuItem.Size = new Size(76, 20);
             catalgosToolStripMenuItem.Text = "Catalogos";
             // 
             // pacientesToolStripMenuItem
             // 
             pacientesToolStripMenuItem.Name = "pacientesToolStripMenuItem";
-            pacientesToolStripMenuItem.Size = new Size(124, 22);
+            pacientesToolStripMenuItem.Size = new Size(126, 22);
             pacientesToolStripMenuItem.Text = "Pacientes";
             pacientesToolStripMenuItem.Click += pacientesToolStripMenuItem_Click_1;
             // 
             // clientesToolStripMenuItem
             // 
             clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            clientesToolStripMenuItem.Size = new Size(124, 22);
+            clientesToolStripMenuItem.Size = new Size(126, 22);
             clientesToolStripMenuItem.Text = "Clientes";
             clientesToolStripMenuItem.Click += clientesToolStripMenuItem_Click_1;
             // 
             // medicosToolStripMenuItem
             // 
             medicosToolStripMenuItem.Name = "medicosToolStripMenuItem";
-            medicosToolStripMenuItem.Size = new Size(124, 22);
+            medicosToolStripMenuItem.Size = new Size(126, 22);
             medicosToolStripMenuItem.Text = "Medicos";
             medicosToolStripMenuItem.Click += medicosToolStripMenuItem_Click_1;
             // 
@@ -95,95 +95,98 @@ namespace ConsultorioMedico
             // 
             movimientosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { citasToolStripMenuItem, eToolStripMenuItem, recetasToolStripMenuItem, cobrosToolStripMenuItem, facturasToolStripMenuItem });
             movimientosToolStripMenuItem.Name = "movimientosToolStripMenuItem";
-            movimientosToolStripMenuItem.Size = new Size(89, 20);
+            movimientosToolStripMenuItem.Size = new Size(91, 20);
             movimientosToolStripMenuItem.Text = "Movimientos";
             // 
             // citasToolStripMenuItem
             // 
             citasToolStripMenuItem.Name = "citasToolStripMenuItem";
-            citasToolStripMenuItem.Size = new Size(180, 22);
+            citasToolStripMenuItem.Size = new Size(142, 22);
             citasToolStripMenuItem.Text = "Citas";
             citasToolStripMenuItem.Click += citasToolStripMenuItem_Click;
             // 
             // eToolStripMenuItem
             // 
             eToolStripMenuItem.Name = "eToolStripMenuItem";
-            eToolStripMenuItem.Size = new Size(180, 22);
+            eToolStripMenuItem.Size = new Size(142, 22);
             eToolStripMenuItem.Text = "Expedientes";
             eToolStripMenuItem.Click += eToolStripMenuItem_Click;
             // 
             // recetasToolStripMenuItem
             // 
             recetasToolStripMenuItem.Name = "recetasToolStripMenuItem";
-            recetasToolStripMenuItem.Size = new Size(180, 22);
+            recetasToolStripMenuItem.Size = new Size(142, 22);
             recetasToolStripMenuItem.Text = "Recetas";
             recetasToolStripMenuItem.Click += recetasToolStripMenuItem_Click;
             // 
             // cobrosToolStripMenuItem
             // 
             cobrosToolStripMenuItem.Name = "cobrosToolStripMenuItem";
-            cobrosToolStripMenuItem.Size = new Size(180, 22);
+            cobrosToolStripMenuItem.Size = new Size(142, 22);
             cobrosToolStripMenuItem.Text = "Cobros";
             cobrosToolStripMenuItem.Click += cobrosToolStripMenuItem_Click;
             // 
             // facturasToolStripMenuItem
             // 
             facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
-            facturasToolStripMenuItem.Size = new Size(180, 22);
+            facturasToolStripMenuItem.Size = new Size(142, 22);
             facturasToolStripMenuItem.Text = "Facturas";
             facturasToolStripMenuItem.Click += facturasToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { consIndivCobrosIdCobroToolStripMenuItem, consIndivCobrosIdCobroToolStripMenuItem1, consIndivFactuasIdFacturaToolStripMenuItem, consGralCobrosPorFechaToolStripMenuItem, consGralFacturasPorFechaToolStripMenuItem });
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { consIndivRecetaIdRecetaToolStripMenuItem1, consIndivCobrosIdCobroToolStripMenuItem1, consIndivFactuasIdFacturaToolStripMenuItem, consGralCobrosPorFechaToolStripMenuItem, consGralFacturasPorFechaToolStripMenuItem });
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(71, 20);
+            toolStripMenuItem1.Size = new Size(73, 20);
             toolStripMenuItem1.Text = "Consultas";
             // 
-            // consIndivCobrosIdCobroToolStripMenuItem
+            // consIndivRecetaIdRecetaToolStripMenuItem1
             // 
-            consIndivCobrosIdCobroToolStripMenuItem.Name = "consIndivCobrosIdCobroToolStripMenuItem";
-            consIndivCobrosIdCobroToolStripMenuItem.Size = new Size(233, 22);
-            consIndivCobrosIdCobroToolStripMenuItem.Text = "Cons. Indiv. Receta idReceta";
-            consIndivCobrosIdCobroToolStripMenuItem.Click += consIndivCobrosIdCobroToolStripMenuItem_Click;
+            consIndivRecetaIdRecetaToolStripMenuItem1.Name = "consIndivRecetaIdRecetaToolStripMenuItem1";
+            consIndivRecetaIdRecetaToolStripMenuItem1.Size = new Size(247, 22);
+            consIndivRecetaIdRecetaToolStripMenuItem1.Text = "Cons. Indiv. Receta idReceta";
+            consIndivRecetaIdRecetaToolStripMenuItem1.Click += consIndivRecetaIdRecetaToolStripMenuItem1_Click;
             // 
             // consIndivCobrosIdCobroToolStripMenuItem1
             // 
             consIndivCobrosIdCobroToolStripMenuItem1.Name = "consIndivCobrosIdCobroToolStripMenuItem1";
-            consIndivCobrosIdCobroToolStripMenuItem1.Size = new Size(233, 22);
+            consIndivCobrosIdCobroToolStripMenuItem1.Size = new Size(247, 22);
             consIndivCobrosIdCobroToolStripMenuItem1.Text = "Cons. Indiv. Cobros IdCobro";
+            consIndivCobrosIdCobroToolStripMenuItem1.Click += consIndivCobrosIdCobroToolStripMenuItem1_Click;
             // 
             // consIndivFactuasIdFacturaToolStripMenuItem
             // 
             consIndivFactuasIdFacturaToolStripMenuItem.Name = "consIndivFactuasIdFacturaToolStripMenuItem";
-            consIndivFactuasIdFacturaToolStripMenuItem.Size = new Size(233, 22);
+            consIndivFactuasIdFacturaToolStripMenuItem.Size = new Size(247, 22);
             consIndivFactuasIdFacturaToolStripMenuItem.Text = "Cons. Indiv. Factuas idFactura";
+            consIndivFactuasIdFacturaToolStripMenuItem.Click += consIndivFactuasIdFacturaToolStripMenuItem_Click;
             // 
             // consGralCobrosPorFechaToolStripMenuItem
             // 
             consGralCobrosPorFechaToolStripMenuItem.Name = "consGralCobrosPorFechaToolStripMenuItem";
-            consGralCobrosPorFechaToolStripMenuItem.Size = new Size(233, 22);
+            consGralCobrosPorFechaToolStripMenuItem.Size = new Size(247, 22);
             consGralCobrosPorFechaToolStripMenuItem.Text = "Cons. Gral. Cobros por Fecha";
+            consGralCobrosPorFechaToolStripMenuItem.Click += consGralCobrosPorFechaToolStripMenuItem_Click;
             // 
             // consGralFacturasPorFechaToolStripMenuItem
             // 
             consGralFacturasPorFechaToolStripMenuItem.Name = "consGralFacturasPorFechaToolStripMenuItem";
-            consGralFacturasPorFechaToolStripMenuItem.Size = new Size(233, 22);
+            consGralFacturasPorFechaToolStripMenuItem.Size = new Size(247, 22);
             consGralFacturasPorFechaToolStripMenuItem.Text = "Cons. Gral. Facturas por Fecha";
             // 
             // reportesToolStripMenuItem
             // 
             reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            reportesToolStripMenuItem.Size = new Size(65, 20);
+            reportesToolStripMenuItem.Size = new Size(70, 20);
             reportesToolStripMenuItem.Text = "Reportes";
             // 
             // frmMenu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 360);
             Controls.Add(menuStrip1);
-            Margin = new Padding(4, 3, 4, 3);
+            Margin = new Padding(4, 2, 4, 2);
             Name = "frmMenu";
             Text = "Menu";
             Load += frmMenu_Load;
@@ -214,5 +217,6 @@ namespace ConsultorioMedico
         private ToolStripMenuItem consIndivFactuasIdFacturaToolStripMenuItem;
         private ToolStripMenuItem consGralCobrosPorFechaToolStripMenuItem;
         private ToolStripMenuItem consGralFacturasPorFechaToolStripMenuItem;
+        private ToolStripMenuItem consIndivRecetaIdRecetaToolStripMenuItem1;
     }
 }

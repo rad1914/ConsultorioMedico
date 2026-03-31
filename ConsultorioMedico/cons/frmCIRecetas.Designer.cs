@@ -1,6 +1,6 @@
 ﻿namespace ConsultorioMedico
 {
-    partial class frmCIReceta
+    partial class frmCIRecetas
     {
         /// <summary>
         /// Required designer variable.
@@ -112,6 +112,7 @@
             // 
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHeader.ForeColor = SystemColors.ControlDarkDark;
             lblHeader.Location = new Point(46, 72);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
@@ -408,7 +409,7 @@
             label1.TabIndex = 357;
             label1.Text = "Recetas";
             // 
-            // frmCIReceta
+            // frmCIRecetas
             // 
             AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -423,7 +424,7 @@
             Controls.Add(lblHeader);
             Controls.Add(dgvData);
             Margin = new Padding(3, 2, 3, 2);
-            Name = "frmCIReceta";
+            Name = "frmCIRecetas";
             Text = "frmCIReceta";
             Load += frmCIReceta_Load;
             ((System.ComponentModel.ISupportInitialize)dgvData).EndInit();

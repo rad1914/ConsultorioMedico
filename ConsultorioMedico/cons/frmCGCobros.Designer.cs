@@ -1,6 +1,6 @@
-﻿namespace ConsultorioMedico.cons
+﻿namespace ConsultorioMedico
 {
-    partial class frmCICobros
+    partial class frmCGCobros
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             cmdSalir = new Button();
             lblHeader = new Label();
             dgvData = new DataGridView();
-            dateTimePicker1 = new DateTimePicker();
+            dtpFechaInicial = new DateTimePicker();
             lblFechaInicial = new Label();
             lblFechaFinal = new Label();
             dtpFechaFinal = new DateTimePicker();
@@ -44,6 +44,7 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Arial", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = SystemColors.ActiveCaptionText;
             lblTitulo.Location = new Point(44, 44);
             lblTitulo.Margin = new Padding(4, 0, 4, 0);
             lblTitulo.Name = "lblTitulo";
@@ -60,6 +61,7 @@
             cmdBuscar.TabIndex = 361;
             cmdBuscar.Text = "Buscar";
             cmdBuscar.UseVisualStyleBackColor = true;
+            cmdBuscar.Click += cmdBuscar_Click_1;
             // 
             // cmdSalir
             // 
@@ -70,11 +72,13 @@
             cmdSalir.TabIndex = 360;
             cmdSalir.Text = "Salir";
             cmdSalir.UseVisualStyleBackColor = true;
+            cmdSalir.Click += cmdSalir_Click;
             // 
             // lblHeader
             // 
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHeader.ForeColor = SystemColors.ControlDarkDark;
             lblHeader.Location = new Point(48, 82);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
@@ -91,12 +95,12 @@
             dgvData.Size = new Size(461, 188);
             dgvData.TabIndex = 358;
             // 
-            // dateTimePicker1
+            // dtpFechaInicial
             // 
-            dateTimePicker1.Location = new Point(52, 122);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(210, 23);
-            dateTimePicker1.TabIndex = 367;
+            dtpFechaInicial.Location = new Point(52, 122);
+            dtpFechaInicial.Name = "dtpFechaInicial";
+            dtpFechaInicial.Size = new Size(210, 23);
+            dtpFechaInicial.TabIndex = 367;
             // 
             // lblFechaInicial
             // 
@@ -133,7 +137,7 @@
             Controls.Add(lblFechaFinal);
             Controls.Add(dtpFechaFinal);
             Controls.Add(lblFechaInicial);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(dtpFechaInicial);
             Controls.Add(lblTitulo);
             Controls.Add(cmdBuscar);
             Controls.Add(cmdSalir);
@@ -154,7 +158,7 @@
         private Button cmdSalir;
         private Label lblHeader;
         private DataGridView dgvData;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpFechaInicial;
         private Label lblFechaInicial;
         private Label lblFechaFinal;
         private DateTimePicker dtpFechaFinal;

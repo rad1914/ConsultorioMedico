@@ -7,7 +7,7 @@ namespace ConsultorioMedico
         {
             ApplicationConfiguration.Initialize();
 
-           // Application.SetColorMode(SystemColorMode.Dark);
+            Application.SetColorMode(SystemColorMode.Dark);
             Application.Run(new frmMenu());
         }
     }

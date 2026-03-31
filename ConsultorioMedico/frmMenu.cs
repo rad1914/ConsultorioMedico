@@ -1,3 +1,4 @@
+using ConsultorioMedico;
 using System;
 using System.Windows.Forms;
 
@@ -58,15 +59,33 @@ namespace ConsultorioMedico
             FrmMedicos.Show();
         }
 
-        private void consIndivCobrosIdCobroToolStripMenuItem_Click(object sender, EventArgs e)
+        private void consIndivCobrosIdCobroToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var FrmCIReceta = new frmCIReceta();
-            FrmCIReceta.Show();
+            // var FrmCICobros = new frmCICobros();
+            //  FrmCICobros.Show();
         }
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void consIndivRecetaIdRecetaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var FrmCIRecetas = new frmCIRecetas();
+            FrmCIRecetas.Show();
+        }
+
+        private void consGralCobrosPorFechaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var FrmCGCobros = new frmCGCobros();
+            FrmCGCobros.Show();
+        }
+
+        private void consIndivFactuasIdFacturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var FrmCIFacturas = new frmCIFacturas();
+            FrmCIFacturas.Show();
         }
     }
 }
