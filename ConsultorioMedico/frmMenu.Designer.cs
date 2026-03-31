@@ -51,6 +51,7 @@ namespace ConsultorioMedico
             consGralCobrosPorFechaToolStripMenuItem = new ToolStripMenuItem();
             consGralFacturasPorFechaToolStripMenuItem = new ToolStripMenuItem();
             reportesToolStripMenuItem = new ToolStripMenuItem();
+            consultasToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -135,7 +136,7 @@ namespace ConsultorioMedico
             // 
             // toolStripMenuItem1
             // 
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { consIndivRecetaIdRecetaToolStripMenuItem1, consIndivCobrosIdCobroToolStripMenuItem1, consIndivFactuasIdFacturaToolStripMenuItem, consGralCobrosPorFechaToolStripMenuItem, consGralFacturasPorFechaToolStripMenuItem });
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { consIndivRecetaIdRecetaToolStripMenuItem1, consIndivCobrosIdCobroToolStripMenuItem1, consIndivFactuasIdFacturaToolStripMenuItem, consGralCobrosPorFechaToolStripMenuItem, consGralFacturasPorFechaToolStripMenuItem, consultasToolStripMenuItem });
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new Size(73, 20);
             toolStripMenuItem1.Text = "Consultas";
@@ -180,6 +181,12 @@ namespace ConsultorioMedico
             reportesToolStripMenuItem.Size = new Size(70, 20);
             reportesToolStripMenuItem.Text = "Reportes";
             // 
+            // consultasToolStripMenuItem
+            // 
+            consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
+            consultasToolStripMenuItem.Size = new Size(247, 22);
+            consultasToolStripMenuItem.Text = "Consultas";
+            // 
             // frmMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 12F);
@@ -218,5 +225,6 @@ namespace ConsultorioMedico
         private ToolStripMenuItem consGralCobrosPorFechaToolStripMenuItem;
         private ToolStripMenuItem consGralFacturasPorFechaToolStripMenuItem;
         private ToolStripMenuItem consIndivRecetaIdRecetaToolStripMenuItem1;
+        private ToolStripMenuItem consultasToolStripMenuItem;
     }
 }

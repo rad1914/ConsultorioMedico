@@ -53,28 +53,28 @@
             // 
             cboHora.Enabled = false;
             cboHora.FormattingEnabled = true;
-            cboHora.Location = new Point(43, 82);
-            cboHora.Margin = new Padding(4, 3, 4, 3);
+            cboHora.Location = new Point(43, 66);
+            cboHora.Margin = new Padding(4, 2, 4, 2);
             cboHora.Name = "cboHora";
-            cboHora.Size = new Size(110, 23);
+            cboHora.Size = new Size(110, 20);
             cboHora.TabIndex = 86;
             // 
             // cboPaciente
             // 
             cboPaciente.Enabled = false;
             cboPaciente.FormattingEnabled = true;
-            cboPaciente.Location = new Point(43, 124);
-            cboPaciente.Margin = new Padding(4, 3, 4, 3);
+            cboPaciente.Location = new Point(43, 99);
+            cboPaciente.Margin = new Padding(4, 2, 4, 2);
             cboPaciente.Name = "cboPaciente";
-            cboPaciente.Size = new Size(231, 23);
+            cboPaciente.Size = new Size(231, 20);
             cboPaciente.TabIndex = 85;
             // 
             // cmdCancelar
             // 
-            cmdCancelar.Location = new Point(166, 201);
-            cmdCancelar.Margin = new Padding(4, 3, 4, 3);
+            cmdCancelar.Location = new Point(166, 161);
+            cmdCancelar.Margin = new Padding(4, 2, 4, 2);
             cmdCancelar.Name = "cmdCancelar";
-            cmdCancelar.Size = new Size(110, 23);
+            cmdCancelar.Size = new Size(110, 18);
             cmdCancelar.TabIndex = 84;
             cmdCancelar.Text = "Cancelar";
             cmdCancelar.UseVisualStyleBackColor = true;
@@ -83,29 +83,29 @@
             // lblSeleccionarPaciente
             // 
             lblSeleccionarPaciente.AutoSize = true;
-            lblSeleccionarPaciente.Location = new Point(40, 107);
+            lblSeleccionarPaciente.Location = new Point(40, 86);
             lblSeleccionarPaciente.Margin = new Padding(4, 0, 4, 0);
             lblSeleccionarPaciente.Name = "lblSeleccionarPaciente";
-            lblSeleccionarPaciente.Size = new Size(115, 15);
+            lblSeleccionarPaciente.Size = new Size(126, 12);
             lblSeleccionarPaciente.TabIndex = 83;
             lblSeleccionarPaciente.Text = "Seleccionar Paciente";
             // 
             // lblSeleccionarHora
             // 
             lblSeleccionarHora.AutoSize = true;
-            lblSeleccionarHora.Location = new Point(40, 65);
+            lblSeleccionarHora.Location = new Point(40, 52);
             lblSeleccionarHora.Margin = new Padding(4, 0, 4, 0);
             lblSeleccionarHora.Name = "lblSeleccionarHora";
-            lblSeleccionarHora.Size = new Size(54, 15);
+            lblSeleccionarHora.Size = new Size(57, 12);
             lblSeleccionarHora.TabIndex = 82;
             lblSeleccionarHora.Text = "Sel. Hora";
             // 
             // cmdBuscar
             // 
-            cmdBuscar.Location = new Point(642, 38);
-            cmdBuscar.Margin = new Padding(4, 3, 4, 3);
+            cmdBuscar.Location = new Point(642, 30);
+            cmdBuscar.Margin = new Padding(4, 2, 4, 2);
             cmdBuscar.Name = "cmdBuscar";
-            cmdBuscar.Size = new Size(93, 24);
+            cmdBuscar.Size = new Size(93, 19);
             cmdBuscar.TabIndex = 81;
             cmdBuscar.Text = "Buscar";
             cmdBuscar.UseVisualStyleBackColor = true;
@@ -113,8 +113,8 @@
             // 
             // dtpFecha
             // 
-            dtpFecha.Location = new Point(449, 39);
-            dtpFecha.Margin = new Padding(4, 3, 4, 3);
+            dtpFecha.Location = new Point(449, 31);
+            dtpFecha.Margin = new Padding(4, 2, 4, 2);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(191, 23);
             dtpFecha.TabIndex = 80;
@@ -122,8 +122,8 @@
             // lblHeader
             // 
             lblHeader.AutoSize = true;
-            lblHeader.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblHeader.Location = new Point(36, 31);
+            lblHeader.Font = new Font("Arial", 20.25F, FontStyle.Bold);
+            lblHeader.Location = new Point(36, 25);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(217, 32);
@@ -133,19 +133,18 @@
             // dgvData
             // 
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Location = new Point(284, 65);
-            dgvData.Margin = new Padding(4, 3, 4, 3);
+            dgvData.Location = new Point(284, 52);
+            dgvData.Margin = new Padding(4, 2, 4, 2);
             dgvData.Name = "dgvData";
-            dgvData.RowTemplate.Height = 25;
-            dgvData.Size = new Size(451, 188);
+            dgvData.Size = new Size(451, 150);
             dgvData.TabIndex = 78;
             // 
             // cmdRegistrar
             // 
-            cmdRegistrar.Location = new Point(43, 201);
-            cmdRegistrar.Margin = new Padding(4, 3, 4, 3);
+            cmdRegistrar.Location = new Point(43, 161);
+            cmdRegistrar.Margin = new Padding(4, 2, 4, 2);
             cmdRegistrar.Name = "cmdRegistrar";
-            cmdRegistrar.Size = new Size(110, 23);
+            cmdRegistrar.Size = new Size(110, 18);
             cmdRegistrar.TabIndex = 77;
             cmdRegistrar.Text = "Registrar";
             cmdRegistrar.UseVisualStyleBackColor = true;
@@ -154,18 +153,18 @@
             // lblFecha
             // 
             lblFecha.AutoSize = true;
-            lblFecha.Location = new Point(521, 43);
+            lblFecha.Location = new Point(521, 34);
             lblFecha.Margin = new Padding(4, 0, 4, 0);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(38, 15);
+            lblFecha.Size = new Size(40, 12);
             lblFecha.TabIndex = 76;
             lblFecha.Text = "Fecha";
             // 
             // txtTelefono
             // 
             txtTelefono.Enabled = false;
-            txtTelefono.Location = new Point(106, 172);
-            txtTelefono.Margin = new Padding(4, 3, 4, 3);
+            txtTelefono.Location = new Point(106, 138);
+            txtTelefono.Margin = new Padding(4, 2, 4, 2);
             txtTelefono.Mask = "(52) 000-000-0000";
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(170, 23);
@@ -174,38 +173,38 @@
             // lblTelefono
             // 
             lblTelefono.AutoSize = true;
-            lblTelefono.Location = new Point(45, 180);
+            lblTelefono.Location = new Point(45, 144);
             lblTelefono.Margin = new Padding(4, 0, 4, 0);
             lblTelefono.Name = "lblTelefono";
-            lblTelefono.Size = new Size(53, 15);
+            lblTelefono.Size = new Size(57, 12);
             lblTelefono.TabIndex = 128;
             lblTelefono.Text = "Telefono";
             // 
             // idPaciente
             // 
             idPaciente.AutoSize = true;
-            idPaciente.Location = new Point(281, 47);
+            idPaciente.Location = new Point(281, 38);
             idPaciente.Margin = new Padding(4, 0, 4, 0);
             idPaciente.Name = "idPaciente";
-            idPaciente.Size = new Size(17, 15);
+            idPaciente.Size = new Size(16, 12);
             idPaciente.TabIndex = 132;
             idPaciente.Text = "Id";
             // 
             // txtIdPaciente
             // 
             txtIdPaciente.Enabled = false;
-            txtIdPaciente.Location = new Point(298, 39);
-            txtIdPaciente.Margin = new Padding(4, 3, 4, 3);
+            txtIdPaciente.Location = new Point(298, 31);
+            txtIdPaciente.Margin = new Padding(4, 2, 4, 2);
             txtIdPaciente.Name = "txtIdPaciente";
             txtIdPaciente.Size = new Size(54, 23);
             txtIdPaciente.TabIndex = 131;
             // 
             // cmdSalir
             // 
-            cmdSalir.Location = new Point(43, 230);
-            cmdSalir.Margin = new Padding(4, 3, 4, 3);
+            cmdSalir.Location = new Point(43, 184);
+            cmdSalir.Margin = new Padding(4, 2, 4, 2);
             cmdSalir.Name = "cmdSalir";
-            cmdSalir.Size = new Size(233, 23);
+            cmdSalir.Size = new Size(233, 18);
             cmdSalir.TabIndex = 133;
             cmdSalir.Text = "Salir";
             cmdSalir.UseVisualStyleBackColor = true;
@@ -215,27 +214,27 @@
             // 
             cboMedico.Enabled = false;
             cboMedico.FormattingEnabled = true;
-            cboMedico.Location = new Point(156, 82);
-            cboMedico.Margin = new Padding(4, 3, 4, 3);
+            cboMedico.Location = new Point(156, 66);
+            cboMedico.Margin = new Padding(4, 2, 4, 2);
             cboMedico.Name = "cboMedico";
-            cboMedico.Size = new Size(118, 23);
+            cboMedico.Size = new Size(118, 20);
             cboMedico.TabIndex = 135;
             // 
             // lblMedico
             // 
             lblMedico.AutoSize = true;
-            lblMedico.Location = new Point(154, 65);
+            lblMedico.Location = new Point(154, 52);
             lblMedico.Margin = new Padding(4, 0, 4, 0);
             lblMedico.Name = "lblMedico";
-            lblMedico.Size = new Size(68, 15);
+            lblMedico.Size = new Size(71, 12);
             lblMedico.TabIndex = 134;
             lblMedico.Text = "Sel. Medico";
             // 
             // frmCitas
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(780, 293);
+            ClientSize = new Size(780, 234);
             Controls.Add(cboMedico);
             Controls.Add(lblMedico);
             Controls.Add(cmdSalir);
@@ -254,6 +253,7 @@
             Controls.Add(dgvData);
             Controls.Add(cmdRegistrar);
             Controls.Add(lblFecha);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmCitas";
             Text = "Form1";
             Load += frmCitas_Load;

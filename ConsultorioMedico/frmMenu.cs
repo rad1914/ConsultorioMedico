@@ -61,13 +61,8 @@ namespace ConsultorioMedico
 
         private void consIndivCobrosIdCobroToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            // var FrmCICobros = new frmCICobros();
-            //  FrmCICobros.Show();
-        }
-
-        private void frmMenu_Load(object sender, EventArgs e)
-        {
-
+            var FrmCICobros = new frmCICobros();
+            FrmCICobros.Show();
         }
 
         private void consIndivRecetaIdRecetaToolStripMenuItem1_Click(object sender, EventArgs e)
