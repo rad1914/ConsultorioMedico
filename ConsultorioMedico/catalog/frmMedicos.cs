@@ -22,19 +22,12 @@ namespace ConsultorioMedico
 
         private void frmMedicos_Load(object sender, EventArgs e)
         {
-            string connectionString =
-            "Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;";
-
-            conn = new SqlConnection(connectionString);
-
+            conn = new SqlConnection("Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;");
             tablaMedicos = new DataTable();
 
             conn.Open();
-            R = "SELECT * FROM Medicos";
-            comando = new SqlCommand(R, conn);
-
-            SqlDataReader reader = comando.ExecuteReader();
-            tablaMedicos.Load(reader);
+            comando = new SqlCommand("SELECT * FROM Medicos", conn);
+            tablaMedicos.Load(comando.ExecuteReader());
             conn.Close();
 
             medicosBindingSource.DataSource = tablaMedicos;
@@ -71,45 +64,35 @@ namespace ConsultorioMedico
         {
             conn.Open();
 
-            if (string.IsNullOrEmpty(txtIdMedico.Text))
+            if (txtIdMedico.Text == "")
             {
-                // INSERT
-                R = "INSERT INTO Medicos (Nombre, CedProfesional, Domicilio) " +
-                    "VALUES (@Nombre, @CedProfesional, @Domicilio)";
+                comando = new SqlCommand(
+                    "INSERT INTO Medicos (Nombre, CedProfesional, Domicilio, Telefono) VALUES (@Nombre, @CedProfesional, @Domicilio, @Telefono)",
+                    conn);
             }
             else
             {
-                // UPDATE
-                R = "UPDATE Medicos SET " +
-                    "Nombre=@Nombre, CedProfesional=@CedProfesional, Domicilio=@Domicilio " +
-                    "WHERE IdMedico=@IdMedico";
-            }
+                comando = new SqlCommand(
+                    "UPDATE Medicos SET Nombre=@Nombre, CedProfesional=@CedProfesional, Domicilio=@Domicilio, Telefono=@Telefono WHERE IdMedico=@IdMedico",
+                    conn);
 
-            comando = new SqlCommand(R, conn);
+                comando.Parameters.AddWithValue("@IdMedico", txtIdMedico.Text);
+            }
 
             comando.Parameters.AddWithValue("@Nombre", txtNombre.Text);
             comando.Parameters.AddWithValue("@CedProfesional", txtCedulaProfesional.Text);
             comando.Parameters.AddWithValue("@Domicilio", txtDomicilio.Text);
-
-            if (!string.IsNullOrEmpty(txtIdMedico.Text))
-            {
-                comando.Parameters.AddWithValue("@IdMedico", txtIdMedico.Text);
-            }
+            comando.Parameters.AddWithValue("@Telefono", txtTelefono.Text);
 
             comando.ExecuteNonQuery();
             conn.Close();
 
-
             tablaMedicos.Clear();
 
             conn.Open();
-            R = "SELECT * FROM Medicos";
-            comando = new SqlCommand(R, conn);
-            SqlDataReader reader = comando.ExecuteReader();
-            tablaMedicos.Load(reader);
+            comando = new SqlCommand("SELECT * FROM Medicos", conn);
+            tablaMedicos.Load(comando.ExecuteReader());
             conn.Close();
-
-            MessageBox.Show("Registro Guardado");
 
             cmdNuevo.Enabled = true;
             cmdGrabar.Enabled = false;
@@ -118,26 +101,17 @@ namespace ConsultorioMedico
 
         private void cmdBuscar_Click_1(object sender, EventArgs e)
         {
-            string nombre = txtBuscar.Text.Trim();
-
-            if (string.IsNullOrEmpty(nombre))
-            {
+            if (txtBuscar.Text == "")
                 medicosBindingSource.RemoveFilter();
-                return;
-            }
-
-            medicosBindingSource.Filter = $"Nombre LIKE '%{nombre}%'";
+            else
+                medicosBindingSource.Filter = $"Nombre LIKE '%{txtBuscar.Text}%'";
         }
 
-        private void cmdAnterior_Click_1(object sender, EventArgs e) => medicosBindingSource.MovePrevious();
-        private void cmdSiguiente_Click_1(object sender, EventArgs e) => medicosBindingSource.MoveNext();
-        private void cmdUltimo_Click_1(object sender, EventArgs e) => medicosBindingSource.MoveLast();
-        private void cmdPrimero_Click_1(object sender, EventArgs e) => medicosBindingSource.MoveFirst();
-        private void cmdSalir_Click_1(object sender, EventArgs e) => Close();
+        private void cmdAnterior_Click(object sender, EventArgs e) => medicosBindingSource.MovePrevious();
+        private void cmdSiguiente_Click(object sender, EventArgs e) => medicosBindingSource.MoveNext();
+        private void cmdUltimo_Click(object sender, EventArgs e) => medicosBindingSource.MoveLast();
+        private void cmdPrimero_Click(object sender, EventArgs e) => medicosBindingSource.MoveFirst();
+        private void cmdSalir_Click(object sender, EventArgs e) => Close();
 
-        private void cmdSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
     }
 }

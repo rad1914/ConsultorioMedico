@@ -65,14 +65,10 @@ namespace ConsultorioMedico
 
         private void cboCitas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboCitas.SelectedValue == null ||
-                cboCitas.SelectedValue is DataRowView ||
-                cboCitas.SelectedItem == null)
-                return;
-
             DataRowView row = (DataRowView)cboCitas.SelectedItem;
 
             int idCita = (int)row["IdCita"];
+            int idPaciente = (int)row["IdPaciente"];
 
             txtIdPaciente.DataBindings.Clear();
             txtNombre.DataBindings.Clear();
@@ -93,8 +89,6 @@ namespace ConsultorioMedico
             cboSangre.DataBindings.Add("Text", citasBS, "TipoSangre");
             txtAlergias.DataBindings.Add("Text", citasBS, "Alergias");
             txtEnfermedadCronica.DataBindings.Add("Text", citasBS, "EnfermedadCronica");
-
-            int idPaciente = (int)row["IdPaciente"];
 
             string qExp = @"
             SELECT E.IdExpediente AS idExp, E.IdCita, 
@@ -155,7 +149,6 @@ namespace ConsultorioMedico
                 @peso, @est, @temp)";
 
             SqlCommand cmd = new SqlCommand(insert, conn);
-
             cmd.Parameters.AddWithValue("@idCita", idCita);
             cmd.Parameters.AddWithValue("@sin", txtSintomas.Text);
             cmd.Parameters.AddWithValue("@diag", txtDiagnostico.Text);
@@ -172,7 +165,6 @@ namespace ConsultorioMedico
             cmd.Parameters.Add("@temp", SqlDbType.Decimal).Value = temp;
 
             conn.Open();
-
             cmd.ExecuteNonQuery();
 
             string update = "UPDATE Citas SET Estado = 'A' WHERE IdCita = @idCita";
@@ -190,8 +182,6 @@ namespace ConsultorioMedico
 
         private void cmdAtender_Click(object sender, EventArgs e)
         {
-            if (cboCitas.SelectedValue == null) return;
-
             int idCita = (int)cboCitas.SelectedValue;
 
             string update = "UPDATE Citas SET Estado = 'A' WHERE IdCita = @idCita";

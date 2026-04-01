@@ -70,6 +70,7 @@
             cmdBuscar.TabIndex = 110;
             cmdBuscar.Text = "Buscar";
             cmdBuscar.UseVisualStyleBackColor = true;
+            cmdBuscar.Click += cmdBuscar_Click_1;
             // 
             // lblTelefono
             // 
@@ -128,6 +129,7 @@
             cmdPrimero.TabIndex = 103;
             cmdPrimero.Text = "Primero";
             cmdPrimero.UseVisualStyleBackColor = true;
+            cmdPrimero.Click += cmdPrimero_Click;
             // 
             // cmdUltimo
             // 
@@ -138,6 +140,7 @@
             cmdUltimo.TabIndex = 102;
             cmdUltimo.Text = "Ultimo";
             cmdUltimo.UseVisualStyleBackColor = true;
+            cmdUltimo.Click += cmdUltimo_Click;
             // 
             // cmdSiguiente
             // 
@@ -148,6 +151,7 @@
             cmdSiguiente.TabIndex = 101;
             cmdSiguiente.Text = "Siguiente";
             cmdSiguiente.UseVisualStyleBackColor = true;
+            cmdSiguiente.Click += cmdSiguiente_Click;
             // 
             // cmdAnterior
             // 
@@ -158,6 +162,7 @@
             cmdAnterior.TabIndex = 100;
             cmdAnterior.Text = "Anterior";
             cmdAnterior.UseVisualStyleBackColor = true;
+            cmdAnterior.Click += cmdAnterior_Click;
             // 
             // cmdSalir
             // 
@@ -172,7 +177,6 @@
             // 
             // cmdModificar
             // 
-            cmdModificar.Enabled = false;
             cmdModificar.Location = new Point(114, 171);
             cmdModificar.Margin = new Padding(4, 2, 4, 2);
             cmdModificar.Name = "cmdModificar";
@@ -180,10 +184,10 @@
             cmdModificar.TabIndex = 98;
             cmdModificar.Text = "Modificar";
             cmdModificar.UseVisualStyleBackColor = true;
+            cmdModificar.Click += cmdModificar_Click_1;
             // 
             // cmdGrabar
             // 
-            cmdGrabar.Enabled = false;
             cmdGrabar.Location = new Point(36, 194);
             cmdGrabar.Margin = new Padding(4, 2, 4, 2);
             cmdGrabar.Name = "cmdGrabar";
@@ -191,10 +195,10 @@
             cmdGrabar.TabIndex = 97;
             cmdGrabar.Text = "Grabar";
             cmdGrabar.UseVisualStyleBackColor = true;
+            cmdGrabar.Click += cmdGrabar_Click_1;
             // 
             // cmdNuevo
             // 
-            cmdNuevo.Enabled = false;
             cmdNuevo.Location = new Point(114, 148);
             cmdNuevo.Margin = new Padding(4, 2, 4, 2);
             cmdNuevo.Name = "cmdNuevo";
@@ -202,6 +206,7 @@
             cmdNuevo.TabIndex = 96;
             cmdNuevo.Text = "Nuevo";
             cmdNuevo.UseVisualStyleBackColor = true;
+            cmdNuevo.Click += cmdNuevo_Click_1;
             // 
             // txtDomicilio
             // 

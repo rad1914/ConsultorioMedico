@@ -8,7 +8,7 @@ namespace ConsultorioMedico
     public partial class frmCobros : Form
     {
         SqlConnection conn;
-        DataTable citas, pagos;
+        DataTable citas;
         BindingSource bs = new BindingSource();
 
         const string CS = "Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;";
@@ -39,8 +39,7 @@ namespace ConsultorioMedico
 
             SqlCommand comando = new SqlCommand(R, conn);
             conn.Open();
-            SqlDataReader reader = comando.ExecuteReader();
-            citas.Load(reader);
+            citas.Load(comando.ExecuteReader());
             conn.Close();
 
             bs.DataSource = citas;
@@ -51,16 +50,15 @@ namespace ConsultorioMedico
 
             cboTipoPago.Items.AddRange(new object[] { "EFECTIVO", "TARJETA", "TRANSFERENCIA" });
 
-            // ===== BINDINGS =====
             txtIdPaciente.DataBindings.Clear();
             txtNombre.DataBindings.Clear();
             txtAPaterno.DataBindings.Clear();
             txtAMaterno.DataBindings.Clear();
 
-            txtIdPaciente.DataBindings.Add("Text", bs, "IdPaciente", true, DataSourceUpdateMode.Never);
-            txtNombre.DataBindings.Add("Text", bs, "Nombre", true, DataSourceUpdateMode.Never);
-            txtAPaterno.DataBindings.Add("Text", bs, "APaterno", true, DataSourceUpdateMode.Never);
-            txtAMaterno.DataBindings.Add("Text", bs, "AMaterno", true, DataSourceUpdateMode.Never);
+            txtIdPaciente.DataBindings.Add("Text", bs, "IdPaciente");
+            txtNombre.DataBindings.Add("Text", bs, "Nombre");
+            txtAPaterno.DataBindings.Add("Text", bs, "APaterno");
+            txtAMaterno.DataBindings.Add("Text", bs, "AMaterno");
         }
 
         private void cmdBuscar_Click_1(object sender, EventArgs e)
@@ -71,8 +69,7 @@ namespace ConsultorioMedico
             comando.Parameters.AddWithValue("@f", dtpFecha.Value.Date);
 
             conn.Open();
-            SqlDataReader reader = comando.ExecuteReader();
-            citas.Load(reader);
+            citas.Load(comando.ExecuteReader());
             conn.Close();
 
             bs.DataSource = citas;
@@ -88,48 +85,56 @@ namespace ConsultorioMedico
             cmdNuevo.Enabled = false;
         }
 
-        private void cmdRegistrar_Click_1(object sender, EventArgs e)
-        {
-            if (cboCitaPagar.SelectedValue == null || string.IsNullOrWhiteSpace(cboTipoPago.Text))
-            {
-                MessageBox.Show("Seleccione cita y tipo de pago");
-                return;
-            }
+private void cmdRegistrar_Click_1(object sender, EventArgs e)
+{
+    if (cboCitaPagar.SelectedIndex == -1 || cboTipoPago.SelectedIndex == -1)
+    {
+        MessageBox.Show("Selecciona cita y tipo de pago.");
+        return;
+    }
 
-            SqlCommand comando = conn.CreateCommand();
+    SqlCommand comando = conn.CreateCommand();
 
-            comando.CommandText =
-            @"INSERT INTO Cobros (IdCita, TipoPago, Monto)
-  VALUES (@IdCita, @TipoPago, @Monto);
+    comando.CommandText =
+    @"IF NOT EXISTS (SELECT 1 FROM Cobros WHERE IdCita = @IdCita)
+      BEGIN
+          INSERT INTO Cobros (IdCita, TipoPago, Monto)
+          VALUES (@IdCita, @TipoPago, @Monto);
 
-  UPDATE Citas SET Estado='P' WHERE IdCita=@IdCita";
+          UPDATE Citas SET Estado='P' WHERE IdCita=@IdCita;
+      END
+      ELSE
+      BEGIN
+          SELECT -1;
+      END";
 
-            comando.Parameters.AddWithValue("@IdCita", cboCitaPagar.SelectedValue);
-            comando.Parameters.AddWithValue("@TipoPago", cboTipoPago.Text);
-            comando.Parameters.AddWithValue("@Monto", decimal.Parse(txtMonto.Text));
+    comando.Parameters.AddWithValue("@IdCita", cboCitaPagar.SelectedValue);
+    comando.Parameters.AddWithValue("@TipoPago", cboTipoPago.Text);
+    comando.Parameters.AddWithValue("@Monto", decimal.Parse(txtMonto.Text));
 
-            conn.Open();
-            comando.ExecuteNonQuery();
-            conn.Close();
+    conn.Open();
+    object result = comando.ExecuteScalar();
+    conn.Close();
 
-            MessageBox.Show("Pago registrado");
+    if (result != null && result.ToString() == "-1")
+    {
+        MessageBox.Show("Esta cita ya fue cobrada.");
+        return;
+    }
 
-            // Reload citas pendientes
-            citas.Clear();
-            comando = new SqlCommand(R, conn);
+    citas.Clear();
 
-            conn.Open();
-            SqlDataReader reader = comando.ExecuteReader();
-            citas.Load(reader);
-            conn.Close();
+    comando = new SqlCommand(R, conn);
+    conn.Open();
+    citas.Load(comando.ExecuteReader());
+    conn.Close();
 
-            bs.DataSource = citas;
-            cboCitaPagar.DataSource = bs;
-        }
-
+    bs.DataSource = citas;
+    cboCitaPagar.DataSource = bs;
+}
         private void cmdSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

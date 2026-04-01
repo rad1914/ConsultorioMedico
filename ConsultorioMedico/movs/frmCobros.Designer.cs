@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             dtpFecha = new DateTimePicker();
-            cmdBuscar = new Button();
             lblHeader = new Label();
             lblNombre = new Label();
             txtNombre = new TextBox();
@@ -52,28 +51,17 @@
             // 
             // dtpFecha
             // 
-            dtpFecha.Location = new Point(128, 79);
-            dtpFecha.Margin = new Padding(4, 3, 4, 3);
+            dtpFecha.Location = new Point(134, 81);
+            dtpFecha.Margin = new Padding(4, 2, 4, 2);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(186, 23);
             dtpFecha.TabIndex = 140;
             // 
-            // cmdBuscar
-            // 
-            cmdBuscar.Location = new Point(317, 79);
-            cmdBuscar.Margin = new Padding(4, 3, 4, 3);
-            cmdBuscar.Name = "cmdBuscar";
-            cmdBuscar.Size = new Size(76, 24);
-            cmdBuscar.TabIndex = 141;
-            cmdBuscar.Text = "Buscar";
-            cmdBuscar.UseVisualStyleBackColor = true;
-            cmdBuscar.Click += cmdBuscar_Click_1;
-            // 
             // lblHeader
             // 
             lblHeader.AutoSize = true;
-            lblHeader.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblHeader.Location = new Point(41, 44);
+            lblHeader.Font = new Font("Arial", 20.25F, FontStyle.Bold);
+            lblHeader.Location = new Point(38, 43);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(247, 32);
@@ -84,57 +72,57 @@
             // 
             lblNombre.AutoSize = true;
             lblNombre.Enabled = false;
-            lblNombre.Location = new Point(170, 176);
+            lblNombre.Location = new Point(44, 219);
             lblNombre.Margin = new Padding(4, 0, 4, 0);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(51, 15);
+            lblNombre.Size = new Size(53, 12);
             lblNombre.TabIndex = 241;
             lblNombre.Text = "Nombre";
             // 
             // txtNombre
             // 
             txtNombre.Enabled = false;
-            txtNombre.Location = new Point(225, 170);
-            txtNombre.Margin = new Padding(4, 3, 4, 3);
+            txtNombre.Location = new Point(133, 211);
+            txtNombre.Margin = new Padding(4, 2, 4, 2);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(168, 23);
+            txtNombre.Size = new Size(187, 23);
             txtNombre.TabIndex = 242;
             // 
             // lblApellidos
             // 
             lblApellidos.AutoSize = true;
             lblApellidos.Enabled = false;
-            lblApellidos.Location = new Point(49, 204);
+            lblApellidos.Location = new Point(44, 250);
             lblApellidos.Margin = new Padding(4, 0, 4, 0);
             lblApellidos.Name = "lblApellidos";
-            lblApellidos.Size = new Size(56, 15);
+            lblApellidos.Size = new Size(60, 12);
             lblApellidos.TabIndex = 243;
             lblApellidos.Text = "Apellidos";
             // 
             // txtAPaterno
             // 
             txtAPaterno.Enabled = false;
-            txtAPaterno.Location = new Point(127, 200);
-            txtAPaterno.Margin = new Padding(4, 3, 4, 3);
+            txtAPaterno.Location = new Point(134, 242);
+            txtAPaterno.Margin = new Padding(4, 2, 4, 2);
             txtAPaterno.Name = "txtAPaterno";
-            txtAPaterno.Size = new Size(125, 23);
+            txtAPaterno.Size = new Size(89, 23);
             txtAPaterno.TabIndex = 244;
             // 
             // txtAMaterno
             // 
             txtAMaterno.Enabled = false;
-            txtAMaterno.Location = new Point(268, 200);
-            txtAMaterno.Margin = new Padding(4, 3, 4, 3);
+            txtAMaterno.Location = new Point(230, 241);
+            txtAMaterno.Margin = new Padding(4, 2, 4, 2);
             txtAMaterno.Name = "txtAMaterno";
-            txtAMaterno.Size = new Size(125, 23);
+            txtAMaterno.Size = new Size(90, 23);
             txtAMaterno.TabIndex = 246;
             // 
             // cmdNuevo
             // 
-            cmdNuevo.Location = new Point(126, 231);
-            cmdNuevo.Margin = new Padding(4, 3, 4, 3);
+            cmdNuevo.Location = new Point(134, 269);
+            cmdNuevo.Margin = new Padding(4, 2, 4, 2);
             cmdNuevo.Name = "cmdNuevo";
-            cmdNuevo.Size = new Size(126, 23);
+            cmdNuevo.Size = new Size(88, 22);
             cmdNuevo.TabIndex = 260;
             cmdNuevo.Text = "Nuevo";
             cmdNuevo.UseVisualStyleBackColor = true;
@@ -144,83 +132,85 @@
             // 
             lblIdPaciente.AutoSize = true;
             lblIdPaciente.Enabled = false;
-            lblIdPaciente.Location = new Point(48, 176);
+            lblIdPaciente.Location = new Point(44, 192);
             lblIdPaciente.Margin = new Padding(4, 0, 4, 0);
             lblIdPaciente.Name = "lblIdPaciente";
-            lblIdPaciente.Size = new Size(65, 15);
+            lblIdPaciente.Size = new Size(69, 12);
             lblIdPaciente.TabIndex = 278;
             lblIdPaciente.Text = "Id Paciente";
             // 
             // txtIdPaciente
             // 
             txtIdPaciente.Enabled = false;
-            txtIdPaciente.Location = new Point(127, 171);
-            txtIdPaciente.Margin = new Padding(4, 3, 4, 3);
+            txtIdPaciente.Location = new Point(133, 184);
+            txtIdPaciente.Margin = new Padding(4, 2, 4, 2);
             txtIdPaciente.Name = "txtIdPaciente";
-            txtIdPaciente.Size = new Size(40, 23);
+            txtIdPaciente.Size = new Size(90, 23);
             txtIdPaciente.TabIndex = 279;
             // 
             // lblCitaPagar
             // 
             lblCitaPagar.AutoSize = true;
-            lblCitaPagar.Location = new Point(46, 113);
+            lblCitaPagar.Location = new Point(44, 110);
             lblCitaPagar.Margin = new Padding(4, 0, 4, 0);
             lblCitaPagar.Name = "lblCitaPagar";
-            lblCitaPagar.Size = new Size(70, 15);
+            lblCitaPagar.Size = new Size(75, 12);
             lblCitaPagar.TabIndex = 280;
             lblCitaPagar.Text = "Cita a Pagar";
             // 
             // cboCitaPagar
             // 
             cboCitaPagar.FormattingEnabled = true;
-            cboCitaPagar.Location = new Point(128, 109);
+            cboCitaPagar.Location = new Point(134, 107);
+            cboCitaPagar.Margin = new Padding(3, 2, 3, 2);
             cboCitaPagar.Name = "cboCitaPagar";
-            cboCitaPagar.Size = new Size(70, 23);
+            cboCitaPagar.Size = new Size(186, 20);
             cboCitaPagar.TabIndex = 282;
             // 
             // lblTipoPago
             // 
             lblTipoPago.AutoSize = true;
-            lblTipoPago.Location = new Point(205, 113);
+            lblTipoPago.Location = new Point(44, 135);
             lblTipoPago.Margin = new Padding(4, 0, 4, 0);
             lblTipoPago.Name = "lblTipoPago";
-            lblTipoPago.Size = new Size(77, 15);
+            lblTipoPago.Size = new Size(84, 12);
             lblTipoPago.TabIndex = 283;
             lblTipoPago.Text = "Tipo de Pago";
             // 
             // cboTipoPago
             // 
             cboTipoPago.FormattingEnabled = true;
-            cboTipoPago.Location = new Point(287, 108);
+            cboTipoPago.Location = new Point(134, 131);
+            cboTipoPago.Margin = new Padding(3, 2, 3, 2);
             cboTipoPago.Name = "cboTipoPago";
-            cboTipoPago.Size = new Size(106, 23);
+            cboTipoPago.Size = new Size(186, 20);
             cboTipoPago.TabIndex = 284;
             // 
             // lblMonto
             // 
             lblMonto.AutoSize = true;
-            lblMonto.Location = new Point(47, 142);
+            lblMonto.Location = new Point(45, 161);
             lblMonto.Margin = new Padding(4, 0, 4, 0);
             lblMonto.Name = "lblMonto";
-            lblMonto.Size = new Size(43, 15);
+            lblMonto.Size = new Size(42, 12);
             lblMonto.TabIndex = 285;
             lblMonto.Text = "Monto";
             // 
             // txtMonto
             // 
-            txtMonto.Location = new Point(127, 139);
-            txtMonto.Margin = new Padding(4, 3, 4, 3);
+            txtMonto.Location = new Point(133, 154);
+            txtMonto.Margin = new Padding(4, 2, 4, 2);
             txtMonto.Name = "txtMonto";
-            txtMonto.Size = new Size(267, 23);
+            txtMonto.Size = new Size(187, 23);
             txtMonto.TabIndex = 286;
             // 
             // cmdRegistrar
             // 
             cmdRegistrar.Enabled = false;
-            cmdRegistrar.Location = new Point(267, 231);
-            cmdRegistrar.Margin = new Padding(4, 3, 4, 3);
+            cmdRegistrar.Location = new Point(230, 269);
+            cmdRegistrar.Margin = new Padding(4, 2, 4, 2);
             cmdRegistrar.Name = "cmdRegistrar";
-            cmdRegistrar.Size = new Size(126, 23);
+            cmdRegistrar.Size = new Size(90, 22);
             cmdRegistrar.TabIndex = 287;
             cmdRegistrar.Text = "Registrar";
             cmdRegistrar.UseVisualStyleBackColor = true;
@@ -228,10 +218,10 @@
             // 
             // cmdSalir
             // 
-            cmdSalir.Location = new Point(127, 260);
-            cmdSalir.Margin = new Padding(4, 3, 4, 3);
+            cmdSalir.Location = new Point(134, 295);
+            cmdSalir.Margin = new Padding(4, 2, 4, 2);
             cmdSalir.Name = "cmdSalir";
-            cmdSalir.Size = new Size(266, 23);
+            cmdSalir.Size = new Size(186, 23);
             cmdSalir.TabIndex = 289;
             cmdSalir.Text = "Salir";
             cmdSalir.UseVisualStyleBackColor = true;
@@ -240,18 +230,18 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(46, 84);
+            label1.Location = new Point(44, 85);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(59, 15);
+            label1.Size = new Size(63, 12);
             label1.TabIndex = 290;
             label1.Text = "Sel. Fecha";
             // 
             // frmCobros
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(445, 325);
+            ClientSize = new Size(384, 375);
             Controls.Add(label1);
             Controls.Add(cmdSalir);
             Controls.Add(cmdRegistrar);
@@ -270,8 +260,8 @@
             Controls.Add(txtNombre);
             Controls.Add(lblNombre);
             Controls.Add(lblHeader);
-            Controls.Add(cmdBuscar);
             Controls.Add(dtpFecha);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmCobros";
             Text = "frmCobros";
             Load += frmCobros_Load;
@@ -282,7 +272,6 @@
         #endregion
 
         private DateTimePicker dtpFecha;
-        private Button cmdBuscar;
         private Label lblHeader;
         private Label lblNombre;
         private TextBox txtNombre;

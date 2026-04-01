@@ -8,34 +8,24 @@ namespace ConsultorioMedico
     public partial class frmClientes : Form
     {
         SqlConnection conn;
-        DataTable tablaClientes;
-        BindingSource clientesBindingSource;
+        DataTable tablaClientes = new DataTable();
+        BindingSource clientesBindingSource = new BindingSource();
 
-        string R = "SELECT * FROM Clientes";
+        string connectionString =
+        "Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;";
 
         public frmClientes()
         {
             InitializeComponent();
-            clientesBindingSource = new BindingSource();
         }
 
         private void frmClientes_Load(object sender, EventArgs e)
         {
-            string connectionString =
-            "Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;";
-
             conn = new SqlConnection(connectionString);
 
-            tablaClientes = new DataTable();
-
             conn.Open();
-            SqlCommand comando = new SqlCommand(R, conn);
-            SqlDataReader reader = comando.ExecuteReader();
-            tablaClientes.Load(reader);
-            reader.Close();
+            new SqlDataAdapter("SELECT * FROM Clientes", conn).Fill(tablaClientes);
             conn.Close();
-
-            tablaClientes.Columns["IdCliente"].ReadOnly = true;
 
             clientesBindingSource.DataSource = tablaClientes;
             dgvData.DataSource = clientesBindingSource;
@@ -45,23 +35,16 @@ namespace ConsultorioMedico
             txtNombre.DataBindings.Add("Text", clientesBindingSource, "NombreContribuyente");
             txtDomicilioFiscal.DataBindings.Add("Text", clientesBindingSource, "DomicilioFiscal");
             txtEmail.DataBindings.Add("Text", clientesBindingSource, "Email");
-
-            dgvData.Columns["IdCliente"].ReadOnly = true;
         }
 
         private void cmdNuevo_Click(object sender, EventArgs e)
         {
             clientesBindingSource.AddNew();
-
-            cmdNuevo.Enabled = false;
-            cmdGrabar.Enabled = true;
-            cmdModificar.Enabled = false;
         }
 
         private void cmdModificar_Click(object sender, EventArgs e)
         {
-            cmdModificar.Enabled = false;
-            cmdGrabar.Enabled = true;
+
         }
 
         private void cmdGrabar_Click(object sender, EventArgs e)
@@ -74,62 +57,52 @@ namespace ConsultorioMedico
             {
                 if (row.RowState == DataRowState.Added)
                 {
-                    SqlCommand comando = new SqlCommand(
+                    new SqlCommand(
                         "INSERT INTO Clientes (RFC, NombreContribuyente, DomicilioFiscal, Email) " +
-                        "VALUES (@RFC, @Nombre, @Domicilio, @Email)", conn);
-
-                    comando.Parameters.AddWithValue("@RFC", row["RFC"]);
-                    comando.Parameters.AddWithValue("@Nombre", row["NombreContribuyente"]);
-                    comando.Parameters.AddWithValue("@Domicilio", row["DomicilioFiscal"]);
-                    comando.Parameters.AddWithValue("@Email", row["Email"]);
-
-                    comando.ExecuteNonQuery();
+                        "VALUES (@RFC, @Nombre, @Domicilio, @Email)", conn)
+                    {
+                        Parameters =
+                        {
+                            new SqlParameter("@RFC", row["RFC"]),
+                            new SqlParameter("@Nombre", row["NombreContribuyente"]),
+                            new SqlParameter("@Domicilio", row["DomicilioFiscal"]),
+                            new SqlParameter("@Email", row["Email"])
+                        }
+                    }.ExecuteNonQuery();
                 }
                 else if (row.RowState == DataRowState.Modified)
                 {
-                    SqlCommand comando = new SqlCommand(
+                    new SqlCommand(
                         "UPDATE Clientes SET RFC=@RFC, NombreContribuyente=@Nombre, " +
-                        "DomicilioFiscal=@Domicilio, Email=@Email WHERE IdCliente=@Id", conn);
-
-                    comando.Parameters.AddWithValue("@RFC", row["RFC"]);
-                    comando.Parameters.AddWithValue("@Nombre", row["NombreContribuyente"]);
-                    comando.Parameters.AddWithValue("@Domicilio", row["DomicilioFiscal"]);
-                    comando.Parameters.AddWithValue("@Email", row["Email"]);
-                    comando.Parameters.AddWithValue("@Id", row["IdCliente"]);
-
-                    comando.ExecuteNonQuery();
+                        "DomicilioFiscal=@Domicilio, Email=@Email WHERE IdCliente=@Id", conn)
+                    {
+                        Parameters =
+                        {
+                            new SqlParameter("@RFC", row["RFC"]),
+                            new SqlParameter("@Nombre", row["NombreContribuyente"]),
+                            new SqlParameter("@Domicilio", row["DomicilioFiscal"]),
+                            new SqlParameter("@Email", row["Email"]),
+                            new SqlParameter("@Id", row["IdCliente"])
+                        }
+                    }.ExecuteNonQuery();
                 }
             }
 
             conn.Close();
+
             tablaClientes.Clear();
 
             conn.Open();
-            SqlCommand comandoReload = new SqlCommand(R, conn);
-            SqlDataReader reader = comandoReload.ExecuteReader();
-            tablaClientes.Load(reader);
-            reader.Close();
+            new SqlDataAdapter("SELECT * FROM Clientes", conn).Fill(tablaClientes);
             conn.Close();
 
-            MessageBox.Show("Registro Guardado");
-
-            cmdNuevo.Enabled = true;
-            cmdGrabar.Enabled = false;
-            cmdModificar.Enabled = true;
+            MessageBox.Show("Guardado");
         }
 
         private void cmdBuscar_Click(object sender, EventArgs e)
         {
-            string nombre = txtBuscar.Text.Trim();
-
-            if (string.IsNullOrEmpty(nombre))
-            {
-                clientesBindingSource.RemoveFilter();
-                return;
-            }
-
             clientesBindingSource.Filter =
-            $"NombreContribuyente LIKE '%{nombre}%'";
+            $"NombreContribuyente LIKE '%{txtBuscar.Text}%'";
         }
 
         private void cmdAnterior_Click(object sender, EventArgs e) =>

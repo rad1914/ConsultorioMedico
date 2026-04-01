@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -22,17 +22,12 @@ namespace ConsultorioMedico
 
         private void frmPacientes_Load(object sender, EventArgs e)
         {
-            string connectionString = "Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;";
-            conn = new SqlConnection(connectionString);
-
+            conn = new SqlConnection("Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;");
             tablaPacientes = new DataTable();
 
             conn.Open();
-            R = "SELECT * FROM Pacientes";
-            comando = new SqlCommand(R, conn);
-
-            SqlDataReader reader = comando.ExecuteReader();
-            tablaPacientes.Load(reader);
+            comando = new SqlCommand("SELECT * FROM Pacientes", conn);
+            tablaPacientes.Load(comando.ExecuteReader());
             conn.Close();
 
             pacientesBindingSource.DataSource = tablaPacientes;
@@ -57,15 +52,15 @@ namespace ConsultorioMedico
 
         private void cmdNuevo_Click(object sender, EventArgs e)
         {
-            txtidPaciente.Clear();
-            txtNombre.Clear();
-            txtAPaterno.Clear();
-            txtAMaterno.Clear();
-            txtTelefono.Clear();
+            txtidPaciente.Text = "";
+            txtNombre.Text = "";
+            txtAPaterno.Text = "";
+            txtAMaterno.Text = "";
+            txtTelefono.Text = "";
             cboGenero.SelectedIndex = -1;
             cboSangre.SelectedIndex = -1;
-            txtAlergias.Clear();
-            txtEnfermedadCronica.Clear();
+            txtAlergias.Text = "";
+            txtEnfermedadCronica.Text = "";
             dtpFechaNacimiento.Value = DateTime.Now;
 
             cmdNuevo.Enabled = false;
@@ -83,22 +78,21 @@ namespace ConsultorioMedico
         {
             conn.Open();
 
-            if (string.IsNullOrEmpty(txtidPaciente.Text))
+            if (txtidPaciente.Text == "")
             {
-                // INSERT
-                R = "INSERT INTO Pacientes (Nombre, APaterno, AMaterno, Telefono, Genero, FechaNac, TipoSangre, Alergias, EnfermedadCronica) " +
-                    "VALUES (@Nombre, @APaterno, @AMaterno, @Telefono, @Genero, @FechaNac, @TipoSangre, @Alergias, @EnfermedadCronica)";
+                comando = new SqlCommand(
+                    "INSERT INTO Pacientes (Nombre, APaterno, AMaterno, Telefono, Genero, FechaNac, TipoSangre, Alergias, EnfermedadCronica) " +
+                    "VALUES (@Nombre, @APaterno, @AMaterno, @Telefono, @Genero, @FechaNac, @TipoSangre, @Alergias, @EnfermedadCronica)", conn);
             }
             else
             {
-                // UPDATE
-                R = "UPDATE Pacientes SET " +
-                    "Nombre=@Nombre, APaterno=@APaterno, AMaterno=@AMaterno, Telefono=@Telefono, Genero=@Genero, " +
+                comando = new SqlCommand(
+                    "UPDATE Pacientes SET Nombre=@Nombre, APaterno=@APaterno, AMaterno=@AMaterno, Telefono=@Telefono, Genero=@Genero, " +
                     "FechaNac=@FechaNac, TipoSangre=@TipoSangre, Alergias=@Alergias, EnfermedadCronica=@EnfermedadCronica " +
-                    "WHERE idPaciente=@idPaciente";
-            }
+                    "WHERE idPaciente=@idPaciente", conn);
 
-            comando = new SqlCommand(R, conn);
+                comando.Parameters.AddWithValue("@idPaciente", txtidPaciente.Text);
+            }
 
             comando.Parameters.AddWithValue("@Nombre", txtNombre.Text);
             comando.Parameters.AddWithValue("@APaterno", txtAPaterno.Text);
@@ -110,22 +104,14 @@ namespace ConsultorioMedico
             comando.Parameters.AddWithValue("@Alergias", txtAlergias.Text);
             comando.Parameters.AddWithValue("@EnfermedadCronica", txtEnfermedadCronica.Text);
 
-            if (!string.IsNullOrEmpty(txtidPaciente.Text))
-            {
-                comando.Parameters.AddWithValue("@idPaciente", txtidPaciente.Text);
-            }
-
             comando.ExecuteNonQuery();
             conn.Close();
 
-            // Reload data manually because automation is forbidden now
             tablaPacientes.Clear();
 
             conn.Open();
-            R = "SELECT * FROM Pacientes";
-            comando = new SqlCommand(R, conn);
-            SqlDataReader reader = comando.ExecuteReader();
-            tablaPacientes.Load(reader);
+            comando = new SqlCommand("SELECT * FROM Pacientes", conn);
+            tablaPacientes.Load(comando.ExecuteReader());
             conn.Close();
 
             MessageBox.Show("Registro Guardado");
@@ -137,15 +123,10 @@ namespace ConsultorioMedico
 
         private void cmdBuscar_Click(object sender, EventArgs e)
         {
-            string nombre = txtBuscar.Text.Trim();
-
-            if (string.IsNullOrEmpty(nombre))
-            {
+            if (txtBuscar.Text == "")
                 pacientesBindingSource.RemoveFilter();
-                return;
-            }
-
-            pacientesBindingSource.Filter = $"Nombre LIKE '%{nombre}%'";
+            else
+                pacientesBindingSource.Filter = $"Nombre LIKE '%{txtBuscar.Text}%'";
         }
 
         private void cmdAnterior_Click(object sender, EventArgs e) => pacientesBindingSource.MovePrevious();

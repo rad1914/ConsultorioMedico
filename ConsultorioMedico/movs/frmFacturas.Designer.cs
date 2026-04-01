@@ -36,16 +36,12 @@
             lblIdCobro = new Label();
             lblHeader = new Label();
             dgvData = new DataGridView();
-            txtBuscar = new TextBox();
-            cmdBuscar = new Button();
-            txtIdFactura = new TextBox();
-            lblPaciente = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             SuspendLayout();
             // 
             // cmdSalir
             // 
-            cmdSalir.Location = new Point(42, 173);
+            cmdSalir.Location = new Point(42, 183);
             cmdSalir.Margin = new Padding(4, 2, 4, 2);
             cmdSalir.Name = "cmdSalir";
             cmdSalir.Size = new Size(182, 21);
@@ -56,7 +52,7 @@
             // 
             // cmdRegistrar
             // 
-            cmdRegistrar.Location = new Point(42, 148);
+            cmdRegistrar.Location = new Point(42, 157);
             cmdRegistrar.Margin = new Padding(4, 2, 4, 2);
             cmdRegistrar.Name = "cmdRegistrar";
             cmdRegistrar.Size = new Size(182, 23);
@@ -68,7 +64,7 @@
             // cboIdCliente
             // 
             cboIdCliente.FormattingEnabled = true;
-            cboIdCliente.Location = new Point(110, 125);
+            cboIdCliente.Location = new Point(108, 133);
             cboIdCliente.Margin = new Padding(3, 2, 3, 2);
             cboIdCliente.Name = "cboIdCliente";
             cboIdCliente.Size = new Size(114, 20);
@@ -77,7 +73,7 @@
             // lblIdCliente
             // 
             lblIdCliente.AutoSize = true;
-            lblIdCliente.Location = new Point(108, 111);
+            lblIdCliente.Location = new Point(37, 138);
             lblIdCliente.Margin = new Padding(4, 0, 4, 0);
             lblIdCliente.Name = "lblIdCliente";
             lblIdCliente.Size = new Size(44, 12);
@@ -87,16 +83,16 @@
             // cboIdCobro
             // 
             cboIdCobro.FormattingEnabled = true;
-            cboIdCobro.Location = new Point(42, 125);
+            cboIdCobro.Location = new Point(108, 109);
             cboIdCobro.Margin = new Padding(3, 2, 3, 2);
             cboIdCobro.Name = "cboIdCobro";
-            cboIdCobro.Size = new Size(62, 20);
+            cboIdCobro.Size = new Size(64, 20);
             cboIdCobro.TabIndex = 302;
             // 
             // lblIdCobro
             // 
             lblIdCobro.AutoSize = true;
-            lblIdCobro.Location = new Point(40, 111);
+            lblIdCobro.Location = new Point(38, 114);
             lblIdCobro.Margin = new Padding(4, 0, 4, 0);
             lblIdCobro.Name = "lblIdCobro";
             lblIdCobro.Size = new Size(53, 12);
@@ -107,7 +103,7 @@
             // 
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Arial", 20.25F, FontStyle.Bold);
-            lblHeader.Location = new Point(36, 48);
+            lblHeader.Location = new Point(34, 43);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(142, 64);
@@ -117,59 +113,18 @@
             // dgvData
             // 
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Location = new Point(234, 50);
+            dgvData.Location = new Point(231, 43);
             dgvData.Margin = new Padding(3, 2, 3, 2);
             dgvData.Name = "dgvData";
-            dgvData.Size = new Size(500, 144);
+            dgvData.Size = new Size(500, 161);
             dgvData.TabIndex = 314;
-            // 
-            // txtBuscar
-            // 
-            txtBuscar.Location = new Point(495, 24);
-            txtBuscar.Margin = new Padding(4, 2, 4, 2);
-            txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(158, 23);
-            txtBuscar.TabIndex = 313;
-            // 
-            // cmdBuscar
-            // 
-            cmdBuscar.Location = new Point(655, 26);
-            cmdBuscar.Margin = new Padding(4, 2, 4, 2);
-            cmdBuscar.Name = "cmdBuscar";
-            cmdBuscar.Size = new Size(79, 18);
-            cmdBuscar.TabIndex = 312;
-            cmdBuscar.Text = "Buscar";
-            cmdBuscar.UseVisualStyleBackColor = true;
-            // 
-            // txtIdFactura
-            // 
-            txtIdFactura.Enabled = false;
-            txtIdFactura.Location = new Point(294, 24);
-            txtIdFactura.Margin = new Padding(4, 2, 4, 2);
-            txtIdFactura.Name = "txtIdFactura";
-            txtIdFactura.Size = new Size(45, 23);
-            txtIdFactura.TabIndex = 311;
-            // 
-            // lblPaciente
-            // 
-            lblPaciente.AutoSize = true;
-            lblPaciente.Location = new Point(230, 32);
-            lblPaciente.Margin = new Padding(4, 0, 4, 0);
-            lblPaciente.Name = "lblPaciente";
-            lblPaciente.Size = new Size(60, 12);
-            lblPaciente.TabIndex = 310;
-            lblPaciente.Text = "idFactura";
             // 
             // frmFacturas
             // 
             AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(779, 233);
+            ClientSize = new Size(771, 248);
             Controls.Add(dgvData);
-            Controls.Add(txtBuscar);
-            Controls.Add(cmdBuscar);
-            Controls.Add(txtIdFactura);
-            Controls.Add(lblPaciente);
             Controls.Add(cmdSalir);
             Controls.Add(cmdRegistrar);
             Controls.Add(cboIdCliente);
@@ -197,9 +152,5 @@
         private Label lblHeader;
         private ComboBox cboIdCobro;
         private DataGridView dgvData;
-        private TextBox txtBuscar;
-        private Button cmdBuscar;
-        private TextBox txtIdFactura;
-        private Label lblPaciente;
     }
 }
