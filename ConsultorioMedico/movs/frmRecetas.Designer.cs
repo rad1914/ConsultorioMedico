@@ -138,7 +138,7 @@
             cmdRegistrar.TabIndex = 262;
             cmdRegistrar.Text = "Registrar";
             cmdRegistrar.UseVisualStyleBackColor = true;
-            cmdRegistrar.Click += cmdRegistrar_Click_1;
+            cmdRegistrar.Click += cmdRegistrar_Click;
             // 
             // txtEstudios
             // 

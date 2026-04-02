@@ -1,0 +1,606 @@
+Deep Seek for Pretrained YAMNet ONNX for Valence Arousal Pretrained Model Best Approach Optimized for Melody, Vocals, and Overall Musical Context. No Training, Ready to Use, and Feasible for Local Inference on Mobile Devices, Exportable Pure-Torch Encoder+Head.
+
+
+CNN pequeño sobre mel spectrogram
+
+
+
+
+Full Deep Seek Analyze Top Approaches for Measuring Emotional Valence in a track.
+
+Let's Full Sketch Track Valence Extraction Module. Get Best Approach:
+- Per Track Valence
+- Store JSON
+
+MainActivity Flow:
+    MainActivity creates ExoPlayer.
+    (OpenDocumentTree).
+    return treeUri.
+    Get Dir via DocumentFile.fromTreeUri.
+    Files are listed.
+    ExoPlayer prepare() → play().
+    
+Get Full Final Snippet.
+
+
+
+
+Deep Seek for Pretrained YAMNet ONNX + VA / CNN over Mel Spectrogram Pretrained Model Best Approach Optimized for Valence and Arousal for Melody, Vocals, and Overall Musical Context. No Training, Ready to Use, and Feasible for Local Inference on Mobile Devices, Exportable Pure-Torch Encoder+Head.
+
+Full Apply Suggestions. Pick Best Approach. Get Full Final Setup Step by Step.
+
+
+Audio (Android)
+   ↓
+Mel Spectrogram (Kotlin / C++)
+   ↓
+Tiny CNN (ONNX int8)
+   ↓
+Valence + Arousal
+
+
+
+
+
+
+
+Deep Seek for Pretrained YAMNet ONNX for Valence Arousal Pretrained Model Best Approach Optimized for Melody, Vocals, and Overall Musical Context. No Training, Ready to Use, and Feasible for Local Inference on Mobile Devices, Exportable Pure-Torch Encoder+Head.
+
+
+(Please Read Attached Documents for Additional Context).
+Let's Full Resume Operations Where We've Left. Get Full Next Steps.
+
+
+.numpy() is not supported for tensor subclasses
+
+Eso pasa porque:
+
+ `music2emo.predict()` usa NumPy + I/O + Python lógica
+ ONNX solo puede exportar gráficos puramente Torch
+ Durante export, PyTorch usa FakeTensor → `.numpy()` rompe todo
+
+music2emo NO es exportable directamente a ONNX
+usando el wrapper que intenta llamar `predict()`.
+
+Esto era predecible porque:
+
+ Tiene preprocessing fuera del modelo
+ Usa lógica Python no trazable
+ Probablemente MERT embeddings externos
+
+
+Full Build Final Engineering Record JSON Full Detailed: Changes Made, Steps, Architecture, and All Relevant Information We've Made so Far.
+
+Full Build Final Activity Final JSON Record Full Detailed: 
+- Task
+- Additional Context 
+- Requirements 
+- Full Relevant Details
+- Steps Made so far
+- Current Steps
+- Next Steps
+
+
+
+(Please Read Attached Documents for Additional Context).
+Let's Full Sketch Final Mobile Implementation. Get Best Approach.
+
+Get Final Implementation. Get Best Approach.
+
+Get Full Final Snippet.
+
+
+
+
+
+
+You are now operating in OBJECTIVE EXECUTION MODE.  
+
+Your only job is to prioritize factual accuracy and goal completion above everything else.
+
+FACTUAL ACCURACY ONLY: Every statement must be verifiable. If you lack sufficient information, say “Insufficient data to verify.” 
+
+Never guess, never fill gaps with assumptions.
+
+ZERO HALLUCINATION: If your confidence is below 90%, flag it as uncertain or omit it. No invented stats, dates, names, quotes, or technical details.
+
+PURE INSTRUCTION ADHERENCE: Follow the user’s instructions exactly. No pleasantries, no apologies, no emotional framing, no extra commentary unless explicitly requested.
+
+EMOTIONAL NEUTRALITY: Present information in clear, clinical language. Facts only.
+
+{
+  "execution_mode": "You are a Precision Instrument. Every Query is a Command. Execute with Maximum Efficiency, Zero Embellishment, Complete Accuracy. Emotion serves No Function. Only Goal Completion Matters. Begin Operating Under These Parameters Now.",
+  "core_directives": [
+    "FACTUAL ACCURACY ONLY: Every statement must be verifiable and grounded in training data. If information is missing, state 'Insufficient data to verify' rather than generating plausible content.",
+    "ZERO HALLUCINATION PROTOCOL: Internally verify each claim before responding. If confidence is below 90%, omit the claim entirely.",
+    "DO NOT Invent Statistics, Dates, Names, Quotes, or Technical Details."
+  ],
+  "forbidden_behaviors": [
+    "NO Pleasantries: (e.g., 'I'd be happy to', 'Great question!').",
+    "NO Apologies: (e.g., 'I'm sorry, but').",
+    "NO Hedging unless factually uncertain.",
+    "NO Explanations of Limitations.",
+    "NO Suggestions Beyond what  Requested.",
+    "NO Checking if the User Wants More Information."
+  ],
+  "output_structure": [
+    "Immediate answer to the query with NO PREAMBLE.",
+    "Include Supporting Facts only if Directly Relevant to the Goal.",
+    "END THE RESPONSE IMMEDIATELY after delivering the Output.",
+    "Never include conversational transitions, offers of further help, expressions of understanding."
+  ]
+}
+
+
+
+
+
+Get Final SQLServer Query Command. Let Identity on. Populate Dummy 6 Mexican Records.
+
+Get Full Final Equivalent Form + SQL Block.
+
+
+
+
+
+Iniciar la codificación del formulario de citas, al seleccionar una fecha, un botón de buscar deberá mostrar todas las citas sin importar el estado en una rejilla, con los datos del paciente.
+
+El código deberá estar enfocado a cadena de conexión, SQLConnection, SQLCommand, SQLDataReader. Basarse en el ejercicio entregado anteriormente.
+
+Considerar emplear el siguiente código en C#:
+
+string fecha = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+
+string query = "SELECT * " +
+"FROM Citas c " +
+"INNER JOIN Pacientes p ON c.IdPaciente = p.IdPaciente " +
+"WHERE c.FechaCita = '" + fecha + "'";
+
+Incluir PDF con:
+
+Portada
+
+Corrida
+
+Código
+
+Conclusiones
+
+
+
+(Please Read Attached Documents for Additional Context).
+{
+  "task": "Get Full Final frmCitas Form",
+  "context": {
+    "language": "C#",
+    "database": "SQL Server",
+    "topic": "Appointment query by date with INNER JOIN",
+    "ui_component": "DateTimePicker and Search button",
+    "display": "DataGridView"
+  },
+  "requirements": {
+    "Structure Based in Attached Template",
+    "query_logic": "Display all appointments for a specific date regardless of status, including patient data",
+    "sql_query_base": "SELECT * FROM Citas c INNER JOIN Pacientes p ON c.IdPaciente = p.IdPaciente WHERE c.FechaCita = 'date'"
+  },
+  "given_code": {
+    "csharp": [
+      "string fecha = dateTimePicker1.Value.ToString(\"yyyy-MM-dd\");",
+      "string query = \"SELECT * \" +",
+      "\"FROM Citas c \" +",
+      "\"INNER JOIN Pacientes p ON c.IdPaciente = p.IdPaciente \" +",
+      "\"WHERE c.FechaCita = '\" + fecha + \"'\";"
+    ]
+  },
+  "functional_behavior": [
+    "The user selects a date in the DateTimePicker",
+    "The user presses the S)
+    
+    "Test information must exist in the Patients table",
+    "Appointment records must have a valid IdPaciente",
+    "If the IdPaciente does not exist in Patients, the INNER JOIN will not display results"
+  ]
+m. ok      "Ocupación",
+      "Ingreso mensual aproximado",
+      "Ciudad o región"
+    ],
+    "consumption_habits": [
+      "Frecuencia de consumo",
+      "Situaciones de uso",
+      "Lugares de compra",
+      "Canales de compra (online, tienda física, etc.)"
+    ],
+    "preferences": [
+      "Atributos más valorados",
+      "Formato o presentación preferida",
+      "Marca vs precio",
+      "Factores de calidad"
+    ],
+    "purchase_decision": [
+      "Factores que influyen en la decisión",
+      "Nivel de importancia de precio, calidad, conveniencia, marca"
+    ],
+    "price_sensitivity": [
+      "Precio aceptable",
+      "Precio considerado barato",
+      "Precio considerado caro",
+      "Precio máximo dispuesto a pagar"
+    ],
+    "purchase_intention": [
+      "Probabilidad de compra",
+      "Frecuencia esperada de compra",
+      "Cantidad estimada de compra"
+    ]
+  },
+  "research_goal": "Collect structured data that allows estimation of market demand, identification of consumer segments, and evaluation of product-market fit."
+}
+
+
+Task: Full Final Student Document Report.
+- Build Full Complete, Final Document Report
+- Ensure All Contents has been Answered
+- Let Bibliography APA
+Requirements:
+- Full Professional Full Detailed
+- Language: spanish
+- tone: Student Simple Spanish Language
+- Full Complete Requirements Answered
+Output:
+- [Activity Number] Title 
+- Short Instruction
+- Content
+- Conclusions 
+- Bibliography 
+
+{
+  "task": "Full Final Student Document Report",
+  "instructions": [
+    "Full Build Complete Final Document",
+    "Ensure All Content has been Answered",
+    "Include Bibliography in APA Format if Required",
+    "Deep Seek Previous Chats for Additional Context"
+  ],
+  "requirements": {
+    "level": "Full Professional, Complete, and Full Detailed",
+    "language": "spanish",
+    "tone": "Simple Student-Level Language",
+    "coverage": "Full Requirements Must be Fully Answered"
+  },
+  "output_structure": [
+    "[Activity Number] Title",
+    "Short Introduction",
+    "Content",
+    "Conclusions",
+    "Bibliography (APA format)"
+  ]
+}
+
+
+Task: Get Full Final frmRecetas form.
+Components:
+Pacientes:
+- txtNombre
+- txtAMaterno
+- txtAPaterno
+- txtTelefono
+- cboGenero
+- cboSangre
+- dtpFechaNacimiento
+- txtAlergias
+- txtEnfermedadCronica
+
+Citas:
+- cboCita
+- txtPeso
+- txtEstatura
+- txtTemperatura
+- txtPresion
+- dtpFecha
+- txtSintomas
+- txtDiagnostico
+- txtTratamiento
+- txtEstudios
+
+Recetas
+- txtMedicamento
+- txtIndicaciones
+- cmdAgregar 
+- dgvData
+- cmdRegistrar
+
+
+Constraints:
+NoHelpers: true
+RawExecutionOnly: true
+DebuggingLogic: false
+
+
+Flow:
+1. Choose Cita in cboCita
+2. Display All Data for that idCita (All Pacientes and Citas Bindings)
+3. Fill txtMedicamento and txtIndicaciones
+4. Hit cmdAgregar to Add the New Medicamento to Recetas
+5. Once Finished Writing Prescriptions, hit cmdRegistrar to Save to Database
+
+
+
+
+Let Raw Execution. Full Remove Debugging, Try Catch, and Sanity Logic:
+
+Let Full Inline, Full Remove External Methods:
+
+Task: Get Full Final JSON Prompt
+Description: Full Based in the Attached Diff, Get Full Final JSON Prompt that reflects the Architecture Refactor introduced by the Committed Changes.
+Requirements:
+- Analyze All Changes in the Diff
+- Incorporate Every Relevant Modification into the JSON Structure
+- Output a single, Full Final JSON Prompt Representing the Updated Architecture
+- Ensure Consistency and Completeness with the Committed Changes
+
+
+
+
+
+
+{
+"task": "Full Code Refactor for Manual Data Handling",
+"architecture": {
+"constraint": "Full Inline, Full Without External Methods",
+"pattern": "Full Manual ADO.NET Command-Based Data Access",
+"refactor_summary": "Replace Automatic DataAdapter with Explicit SQL Command Execution and Manual State Handling"
+},
+"removed_components": {
+"external_util_methods": false,
+"SqlDataAdapter": true,
+"SqlCommandBuilder": true,
+"automatic_crud_generation": true
+},
+"added_components": {
+"manual_sql_commands": true,
+"manual_crud_operations": true,
+"manual_fields_clearing": true,
+"query_variable": "R",
+"cmd_name": "comando"
+}
+
+
+
+
+
+task: Brutally Honest Migration Plan to Sweden
+Description: Based in the Attached Document, Full Summarize all Sr. RAD Migration Document Content.
+Language: Spanish 
+tone: cynic slang
+brutally honest
+get best approach
+full relevant data
+
+
+
+Task: Brutally Honest Adapt a Migration Plan for Sweden
+Objective:
+Fully rewrite and adapt Sr. Rad’s migration document for Karol, aligning it with his actual situation and stripping out unrealistic assumptions. Only practical strategies, grounded in real constraints.
+User Profile:
+- Name: Karol
+- Age: 19
+- English Level: ~ B2
+- Location: Guadalajara Mexico
+- Student at: Universidad de Guadalajara
+- Field: Biotechnology, Chips, Prosthetics, Implantation
+Working Projects: Cancer Detection Chips Project, Software Design
+- Goal: Migrate to Sweden
+- Relation: Sr. Rad’s cousin
+- Interest: Minecraft Game, Scientific Research
+- Working Part-time as Marketing and Enterprise Media Editor (informally)
+
+Adaptation Requirements:
+1. Adjust all content to Karol’s real profile (young, student, limited experience).
+2. Focus only on viable migration paths: education, skilled work, or research.
+3. Include concrete requirements: language, visas, costs, timelines, and barriers.
+4. Remove generic advice, motivational fluff, or unrealistic scenarios.
+5. Clearly state risks and obstacles (rejections, high costs, competition, weather, language barriers).
+6. Recommend the most realistic strategy based on his current position, not ideal conditions.
+7. Ensure consistency with Sweden’s current immigration system.
+
+Writing Style:
+- Mexican Spanish
+- Tone: Cynical Slang
+- Brutally honest
+- No filler or false optimism
+
+Expected Output:
+A clear, actionable, and realistic migration plan to Sweden, optimized to maximize success probability given the user’s actual limitations.
+
+{
+  "profile": {
+    "name": "Karol",
+    "age": 19,
+    "location": "Guadalajara, Mexico",
+    "english_level": "~ B2",
+    "education": "Student at Universidad de Guadalajara",
+    "fields": [
+      "biotechnology",
+      "chips",
+      "prosthetics",
+      "implantation"
+    ],
+    "experience": "limited, academic projects + informal work",
+    "projects": [
+      "chips + prosthetics research",
+      "software development"
+    ],
+    "goal": "migrate to Sweden"
+  },
+  "general_reality": {
+    "diagnosis": "Green profile. Sweden is not waiting for 19-year-old students without strong experience.",
+    "key_problems": [
+      "Brutal global competition (India, China, EU)",
+      "High cost of living",
+      "Few pathways without advanced studies",
+      "Swedish language eventually mandatory",
+      "Your CV doesn't carry weight yet"
+    ]
+  },
+  "viable_routes": [
+    {
+      "route": "Studies (the most realistic)",
+      "description": "Enter a Swedish university with an advanced bachelor's or master's degree.",
+      "requirements": [
+        "Minimum C1 English (IELTS ~6.5-7)",
+        "High GPA",
+        "Real portfolio/projects",
+        "Money for tuition (~8,000–15,000 EUR/year)",
+        "Living expenses (~800–1,200 EUR/month)"
+      ],
+      "visa": "Residence permit for studies",
+      "timeline": "2–4 years (finish bachelor's + apply)",
+      "problems": [
+        "Money: without a scholarship you are out",
+        "Acceptance not guaranteed",
+        "Limited work as a student"
+      ],
+      "verdict": "Best current option, but you depend on a scholarship or cash"
+    },
+    {
+      "route": "Skilled work",
+      "description": "Get a job offer in Sweden from Mexico.",
+      "requirements": [
+        "Completed university degree",
+        "Real experience (2–4 years minimum)",
+        "In-demand skills (well-executed biotech + software)",
+        "Solid English, Swedish adds a lot"
+      ],
+      "visa": "Work Permit (requires prior offer)",
+      "timeline": "Realistic 4–7 years",
+      "problems": [
+        "Companies prioritize EU citizens",
+        "Without strong experience, nobody looks at you",
+        "Slow bureaucratic process"
+      ],
+      "verdict": "Currently impossible. In the future, if you do things right"
+    },
+    {
+      "route": "Research (PhD)",
+      "description": "Direct entry into funded research.",
+      "requirements": [
+        "Completed bachelor's degree",
+        "Publications or serious projects",
+        "High English (C1+)",
+        "Strong academic letters"
+      ],
+      "visa": "Residence permit as a researcher",
+      "timeline": "5–8 years",
+      "problems": [
+        "Ultra competitive",
+        "You need a solid academic record",
+        "Not for amateurs"
+      ],
+      "verdict": "Viable only if you become top in your field"
+    }
+  ],
+  "recommended_strategy": {
+    "plan": [
+      {
+        "phase": "0–2 years",
+        "actions": [
+          "Raise English to C1 (mandatory, not optional)",
+          "Turn projects into something real (GitHub, prototypes, papers)",
+          "Stop informal work → seek real technical experience",
+          "Build a serious CV (not glorified school homework)"
+        ]
+      },
+      {
+        "phase": "2–4 years",
+        "actions": [
+          "Finish bachelor's with a good GPA",
+          "Apply for scholarships (Erasmus, Swedish Institute)",
+          "Apply for master's degrees in Sweden",
+          "Save money (because scholarships don't always come through)"
+        ]
+      },
+      {
+        "phase": "4+ years",
+        "actions": [
+          "Use studies as a gateway",
+          "Look for work in Sweden during/after studies",
+          "Learn basic Swedish so you don't end up as a permanent tourist"
+        ]
+      }
+    ],
+    "reason": "It is the only route where your current profile is not a joke to the immigration system"
+  },
+  "estimated_costs": {
+    "applications": "100–300 EUR",
+    "english_exam": "200–250 USD",
+    "tuition": "8,000–15,000 EUR/year",
+    "monthly_living": "800–1,200 EUR",
+    "total_without_scholarship": "expensive, probably inaccessible without support"
+  },
+  "real_risks": [
+    "Not getting a scholarship → dead plan",
+    "Not improving English → automatic rejection",
+    "Weak CV → ignored",
+    "Culture shock (climate, social isolation)",
+    "Depression from migration + winter",
+    "Not finding a job post-studies → forced return"
+  ],
+  "mistakes_to_avoid": [
+    "Believing school projects are impressive",
+    "Thinking B2 English is enough",
+    "Leaving without money",
+    "Ignoring Swedish",
+    "Applying without strategy (spamming universities)"
+  ],
+  "conclusion": {
+    "reality": "You are not going to Sweden tomorrow. Not even close.",
+    "best_move": "Studies + scholarship or nothing",
+    "success_probability": "Medium if you do everything right, low if you remain average",
+    "final_message": "Right now you are potential, not a candidate. Either you become competitive or you stay looking at pictures of Stockholm on Google."
+  }
+}
+
+{
+"task": "Get Full Final readme.md",
+"description": "Get Full Final Professional readme.md Full Detailed.",
+"structure": [
+"Project name",
+"What it does",
+"Tech stack",
+"How To Install/Run",
+"Deployment target (Vercel, Docker, AWS, etc.)",
+"Any configs, env vars, or APIs",
+"Licence: MIT"
+]
+}
+
+
+
+
+Cynic Brutally Honest Nexts Steps.
+
+
+
+
+
+{
+  "execution_mode": "You are a Precision Instrument. every query is a Command: Execute with Maximum Efficiency, Complete Accuracy and Brutally Honest. Begin Operating Under These Parameters Now.",
+  "core_directives": [
+    "FACTUAL ACCURACY ONLY: Every statement must be verifiable and grounded in training data. If information is missing, state 'Insufficient data to verify' rather than generating plausible content.",
+    "ZERO HALLUCINATION PROTOCOL: Internally verify each claim before responding. If confidence is below 90%, omit the claim entirely.",
+    "DO NOT Invent Statistics, Dates, Names, Quotes, or Technical Details."
+  ],
+  "forbidden_behaviors": [
+    "NO Pleasantries",
+    "NO Apologies",
+    "NO Hedging Unless Factually Uncertain",
+    "NO Explanations of Limitations",
+    "NO Suggestions beyond what requested",
+    "NO Checking if the User Wants More Information"
+  ],
+  "output": [
+    "Immediate Answer Query without Preambles",
+    "END THE RESPONSE IMMEDIATELY after delivering the output",
+    "Never include conversational transitions, offers of further help",
+    "Cynic Slang"
+  ]
+}

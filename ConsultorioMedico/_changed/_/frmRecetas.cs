@@ -1,7 +1,6 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace ConsultorioMedico
@@ -13,37 +12,13 @@ namespace ConsultorioMedico
         DataTable tablaDetalle = new DataTable();
         int idExpediente;
         int idReceta;
-        int consecutivo;
-        BindingSource fuente = new BindingSource();
 
         public frmRecetas()
         {
             InitializeComponent();
-            AssignBindingTags();
 
             conn = new SqlConnection(
               "Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;");
-        }
-
-        private void AssignBindingTags()
-        {
-            txtNombre.Tag = "Nombre";
-            txtAPaterno.Tag = "APaterno";
-            txtAMaterno.Tag = "AMaterno";
-            txtTelefono.Tag = "Telefono";
-            cboGenero.Tag = "Genero";
-            dtpFechaNacimiento.Tag = "FechaNac";
-            cboSangre.Tag = "TipoSangre";
-            txtAlergias.Tag = "Alergias";
-            txtEnfermedadCronica.Tag = "EnfermedadCronica";
-            txtPeso.Tag = "Peso";
-            txtEstatura.Tag = "Estatura";
-            txtTemperatura.Tag = "Temperatura";
-            txtPresion.Tag = "Presion";
-            txtSintomas.Tag = "Sintomas";
-            txtDiagnostico.Tag = "Diagnostico";
-            txtTratamiento.Tag = "Tratamiento";
-            txtEstudios.Tag = "Estudios";
         }
 
         private void frmRecetas_Load(object sender, EventArgs e)
@@ -64,75 +39,34 @@ namespace ConsultorioMedico
             adapter.Fill(tabla);
             conn.Close();
 
-            cboPaciente.SelectedIndexChanged -= cboPaciente_SelectedIndexChanged;
-
             cboPaciente.DataSource = tabla;
             cboPaciente.DisplayMember = "Nombre";
             cboPaciente.ValueMember = "IdPaciente";
-
-            cboPaciente.SelectedIndexChanged += cboPaciente_SelectedIndexChanged;
         }
 
         private void cboPaciente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboPaciente.SelectedValue == null || cboPaciente.SelectedValue is DataRowView)
-                return;
-
             int idPaciente = Convert.ToInt32(cboPaciente.SelectedValue);
+
             conn.Open();
 
-            SqlDataAdapter da = new SqlDataAdapter(@"
-                SELECT TOP 1 
-                    c.IdCita, c.IdMedico, e.IdExpediente,
-                    p.Nombre, p.APaterno, p.AMaterno, p.Telefono, p.Genero,
-                    p.TipoSangre, p.FechaNac, p.Alergias, p.EnfermedadCronica,
-                    e.Peso, e.Estatura, e.Temperatura, e.Presion,
-                    e.Sintomas, e.Diagnostico, e.Tratamiento, e.Estudios
+            SqlCommand cmd = new SqlCommand(@"
+                SELECT TOP 1 c.IdCita, e.IdExpediente
                 FROM Citas c
                 LEFT JOIN Expedientes e ON e.IdCita = c.IdCita
-                INNER JOIN Pacientes p ON p.IdPaciente = c.IdPaciente
                 WHERE c.IdPaciente = @id AND c.Estado = 'A'", conn);
 
-            da.SelectCommand.Parameters.AddWithValue("@id", idPaciente);
+            cmd.Parameters.AddWithValue("@id", idPaciente);
 
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            SqlDataReader dr = cmd.ExecuteReader();
 
-            if (dt.Rows.Count > 0)
-            {
-                idCita = Convert.ToInt32(dt.Rows[0]["IdCita"]);
-                idExpediente = dt.Rows[0]["IdExpediente"] == DBNull.Value
-                    ? 0
-                    : Convert.ToInt32(dt.Rows[0]["IdExpediente"]);
+            dr.Read();
 
-                fuente.DataSource = dt;
-                fuente.Position = 0;
+            idCita = Convert.ToInt32(dr["IdCita"]);
+            idExpediente = Convert.ToInt32(dr["IdExpediente"]);
 
-                BindControls();
-                fuente.ResetBindings(false);
-            }
-
+            dr.Close();
             conn.Close();
-        }
-
-        private void BindControls()
-        {
-            BindControlsRecursive(this.Controls);
-        }
-
-        private void BindControlsRecursive(Control.ControlCollection controls)
-        {
-            foreach (Control c in controls)
-            {
-                if (c.Tag != null)
-                {
-                    c.DataBindings.Clear();
-                    c.DataBindings.Add("Text", fuente, c.Tag.ToString());
-                }
-
-                if (c.HasChildren)
-                    BindControlsRecursive(c.Controls);
-            }
         }
 
         private void cmdAgregar_Click(object sender, EventArgs e)
@@ -151,7 +85,7 @@ namespace ConsultorioMedico
             cmdMed.Parameters.AddWithValue("@idCita", idCita);
             int idMedico = Convert.ToInt32(cmdMed.ExecuteScalar());
 
-            SqlCommand cmdRecetas = new SqlCommand(@"
+            SqlCommand cmdReceta = new SqlCommand(@"
                 IF NOT EXISTS (SELECT 1 FROM Recetas WHERE IdExpediente = @idExp)
                 BEGIN
                     INSERT INTO Recetas (IdExpediente, IdMedico)
@@ -160,10 +94,10 @@ namespace ConsultorioMedico
 
                 SELECT IdReceta FROM Recetas WHERE IdExpediente = @idExp;", conn);
 
-            cmdRecetas.Parameters.AddWithValue("@idExp", idExpediente);
-            cmdRecetas.Parameters.AddWithValue("@idMedico", idMedico);
+            cmdReceta.Parameters.AddWithValue("@idExp", idExpediente);
+            cmdReceta.Parameters.AddWithValue("@idMedico", idMedico);
 
-            idReceta = Convert.ToInt32(cmdRecetas.ExecuteScalar());
+            idReceta = Convert.ToInt32(cmdReceta.ExecuteScalar());
 
             SqlCommand cmdNR = new SqlCommand(@"
                 SELECT ISNULL(MAX(IdConsec), 0)
@@ -171,7 +105,7 @@ namespace ConsultorioMedico
                 WHERE IdReceta = @idReceta", conn);
 
             cmdNR.Parameters.AddWithValue("@idReceta", idReceta);
-            consecutivo = Convert.ToInt32(cmdNR.ExecuteScalar());
+            int consecutivo = Convert.ToInt32(cmdNR.ExecuteScalar());
 
             foreach (DataRow row in tablaDetalle.Rows)
             {
@@ -200,7 +134,7 @@ namespace ConsultorioMedico
 
         private void cmdSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

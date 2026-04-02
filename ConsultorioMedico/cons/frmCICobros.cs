@@ -78,37 +78,25 @@ namespace ConsultorioMedico
             da.Fill(dt);
             conn.Close();
 
-            // Prevent crash if no data
-            if (dt.Rows.Count == 0)
-            {
-                MessageBox.Show("No se encontró el cobro.");
-                return;
-            }
-
             DataRow row = dt.Rows[0];
 
-            // Cobro
             txtIdCobro.Text = row["IdCobro"].ToString();
             cboTipoPago.Text = row["TipoPago"].ToString();
             txtMonto.Text = row["Monto"].ToString();
 
-            // Cita
             txtIdCita.Text = row["IdCita"].ToString();
             dtpFecha.Text = Convert.ToDateTime(row["Fecha"]).ToShortDateString();
             cboHora.Text = row["Hora"].ToString();
 
-            // Paciente
             txtNombre.Text = row["Nombre"].ToString();
             txtAPaterno.Text = row["APaterno"].ToString();
             txtAMaterno.Text = row["AMaterno"].ToString();
             txtTelefono.Text = row["Telefono"].ToString();
 
-            // Cliente (nullable)
-            txtCliente.Text = row["NombreContribuyente"] == DBNull.Value ? "" : row["NombreContribuyente"].ToString();
-            txtRfc.Text = row["RFC"] == DBNull.Value ? "" : row["RFC"].ToString();
-            txtEmail.Text = row["Email"] == DBNull.Value ? "" : row["Email"].ToString();
+            txtCliente.Text = row["NombreContribuyente"].ToString();
+            txtRfc.Text = row["RFC"].ToString();
+            txtEmail.Text = row["Email"].ToString();
 
-            // Grid (optional full view)
             dgvData.DataSource = dt;
         }
 

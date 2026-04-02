@@ -1,0 +1,122 @@
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+
+namespace ConsultorioMedico
+{
+    public partial class frmCobros : Form
+    {
+        SqlConnection conn;
+        DataTable citas;
+        BindingSource bs = new BindingSource();
+
+        const string CS = "Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;";
+
+        string R = @"SELECT 
+                        c.IdCita,
+                        c.IdPaciente,
+                        p.Nombre,
+                        p.APaterno,
+                        p.AMaterno,
+                        c.Fecha,
+                        c.Hora,
+                        c.Estado
+                     FROM Citas c
+                     INNER JOIN Pacientes p ON c.IdPaciente = p.IdPaciente
+                     WHERE c.Estado = 'R' OR c.Estado = 'M'";
+
+        public frmCobros()
+        {
+            InitializeComponent();
+        }
+
+        private void frmCobros_Load(object sender, EventArgs e)
+        {
+            conn = new SqlConnection(CS);
+
+            citas = new DataTable();
+
+            SqlCommand comando = new SqlCommand(R, conn);
+            conn.Open();
+            citas.Load(comando.ExecuteReader());
+            conn.Close();
+
+            bs.DataSource = citas;
+
+            cboCitaPagar.DataSource = bs;
+            cboCitaPagar.DisplayMember = "Nombre";
+            cboCitaPagar.ValueMember = "IdCita";
+
+            cboTipoPago.Items.AddRange(new object[] { "EFECTIVO", "TARJETA", "TRANSFERENCIA" });
+
+            txtIdPaciente.DataBindings.Clear();
+            txtNombre.DataBindings.Clear();
+            txtAPaterno.DataBindings.Clear();
+            txtAMaterno.DataBindings.Clear();
+
+            txtIdPaciente.DataBindings.Add("Text", bs, "IdPaciente");
+            txtNombre.DataBindings.Add("Text", bs, "Nombre");
+            txtAPaterno.DataBindings.Add("Text", bs, "APaterno");
+            txtAMaterno.DataBindings.Add("Text", bs, "AMaterno");
+        }
+
+        private void cmdBuscar_Click_1(object sender, EventArgs e)
+        {
+            citas.Clear();
+
+            SqlCommand comando = new SqlCommand(R + " AND c.Fecha=@f", conn);
+            comando.Parameters.AddWithValue("@f", dtpFecha.Value.Date);
+
+            conn.Open();
+            citas.Load(comando.ExecuteReader());
+            conn.Close();
+
+            bs.DataSource = citas;
+            cboCitaPagar.DataSource = bs;
+        }
+
+        private void cmdNuevo_Click_1(object sender, EventArgs e)
+        {
+            cboCitaPagar.SelectedIndex = -1;
+            cboTipoPago.SelectedIndex = -1;
+
+            cmdRegistrar.Enabled = true;
+            cmdNuevo.Enabled = false;
+        }
+
+        private void cmdRegistrar_Click_1(object sender, EventArgs e)
+        {
+            SqlCommand comando = conn.CreateCommand();
+
+            comando.CommandText =
+            @"INSERT INTO Cobros (IdCita, TipoPago, Monto)
+              VALUES (@IdCita, @TipoPago, @Monto);
+
+              UPDATE Citas SET Estado='P' WHERE IdCita=@IdCita";
+
+            comando.Parameters.AddWithValue("@IdCita", cboCitaPagar.SelectedValue);
+            comando.Parameters.AddWithValue("@TipoPago", cboTipoPago.Text);
+            comando.Parameters.AddWithValue("@Monto", decimal.Parse(txtMonto.Text));
+
+            conn.Open();
+            comando.ExecuteNonQuery();
+            conn.Close();
+
+            citas.Clear();
+
+            comando = new SqlCommand(R, conn);
+            conn.Open();
+            citas.Load(comando.ExecuteReader());
+            conn.Close();
+
+            bs.DataSource = citas;
+            cboCitaPagar.DataSource = bs;
+        }
+
+        private void cmdSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+    }
+}

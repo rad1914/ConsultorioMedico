@@ -31,14 +31,12 @@ namespace ConsultorioMedico
             conn = new SqlConnection(CS);
             citas = new DataTable();
 
-            // ===== LOAD DATA (MANUAL READER) =====
             SqlCommand comando = new SqlCommand(R, conn);
             conn.Open();
             SqlDataReader reader = comando.ExecuteReader();
             citas.Load(reader);
             conn.Close();
 
-            // ===== UI BINDING =====
             bs.DataSource = citas;
             dgvData.DataSource = bs;
 
@@ -55,9 +53,12 @@ namespace ConsultorioMedico
             txtIdPaciente.DataBindings.Add("Text", bs, "IdPaciente", true, DataSourceUpdateMode.Never);
             txtTelefono.DataBindings.Add("Text", bs, "Telefono", true, DataSourceUpdateMode.Never);
 
-            // ===== PACIENTES =====
             pacientes = new DataTable();
-            comando = new SqlCommand("SELECT IdPaciente,Nombre FROM Pacientes", conn);
+            comando = new SqlCommand(@"
+                 SELECT 
+                     IdPaciente,
+                     CONCAT(Nombre, ' ', APaterno, ' ', AMaterno) AS NombreCompleto
+                 FROM Pacientes", conn);
 
             conn.Open();
             reader = comando.ExecuteReader();
@@ -65,10 +66,9 @@ namespace ConsultorioMedico
             conn.Close();
 
             cboPaciente.DataSource = pacientes;
-            cboPaciente.DisplayMember = "Nombre";
+            cboPaciente.DisplayMember = "NombreCompleto";
             cboPaciente.ValueMember = "IdPaciente";
 
-            // ===== MEDICOS =====
             DataTable medicos = new DataTable();
             comando = new SqlCommand("SELECT IdMedico,Nombre FROM Medicos", conn);
 
@@ -85,7 +85,6 @@ namespace ConsultorioMedico
         void cmdBuscar_Click(object s, EventArgs e)
         {
             citas.Clear();
-
 
             cboHora.Enabled = true;
             cboMedico.Enabled = true;
@@ -116,12 +115,6 @@ namespace ConsultorioMedico
 
         void cmdRegistrar_Click(object s, EventArgs e)
         {
-            if (cboPaciente.SelectedValue == null || cboMedico.SelectedValue == null || string.IsNullOrWhiteSpace(cboHora.Text))
-            {
-                MessageBox.Show("Seleccione paciente, médico y hora");
-                return;
-            }
-
             SqlCommand comando = conn.CreateCommand();
 
             comando.CommandText =
@@ -136,9 +129,6 @@ namespace ConsultorioMedico
             comando.ExecuteNonQuery();
             conn.Close();
 
-            MessageBox.Show("Cita registrada");
-
-            // Reload
             citas.Clear();
             comando = new SqlCommand(R, conn);
 
@@ -150,8 +140,6 @@ namespace ConsultorioMedico
 
         void cmdCancelar_Click(object s, EventArgs e)
         {
-            if (dgvData.CurrentRow == null) return;
-
             dgvData.EndEdit();
             bs.EndEdit();
 
@@ -173,8 +161,6 @@ namespace ConsultorioMedico
                     conn.Close();
                 }
             }
-
-            MessageBox.Show("Cita cancelada");
         }
 
         private void cmdSalir_Click(object sender, EventArgs e)

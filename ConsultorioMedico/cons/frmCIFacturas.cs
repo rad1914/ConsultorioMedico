@@ -19,10 +19,7 @@ namespace ConsultorioMedico
 
         private void frmCIFacturas_Load(object sender, EventArgs e)
         {
-            SqlDataAdapter da = new SqlDataAdapter(@"
-                SELECT IdFact FROM Facturas
-            ", conn);
-
+            SqlDataAdapter da = new SqlDataAdapter("SELECT IdFact FROM Facturas", conn);
             DataTable dt = new DataTable();
 
             conn.Open();
@@ -38,9 +35,6 @@ namespace ConsultorioMedico
 
         private void cmdBuscar_Click(object sender, EventArgs e)
         {
-            if (cboIdFactura.SelectedValue == null)
-                return;
-
             int idFactura = Convert.ToInt32(cboIdFactura.SelectedValue);
 
             SqlDataAdapter da = new SqlDataAdapter(@"
@@ -75,31 +69,21 @@ namespace ConsultorioMedico
             da.Fill(dt);
             conn.Close();
 
-            if (dt.Rows.Count == 0)
-            {
-                MessageBox.Show("No se encontró la factura.");
-                return;
-            }
-
             DataRow row = dt.Rows[0];
 
-            // Cliente
             txtCliente.Text = row["NombreContribuyente"].ToString();
             txtRfc.Text = row["RFC"].ToString();
             txtEmail.Text = row["Email"].ToString();
             txtDomicilio.Text = row["DomicilioFiscal"].ToString();
 
-            // Paciente
             txtPaciente.Text = row["Nombre"].ToString() + " " +
                                row["APaterno"].ToString() + " " +
                                row["AMaterno"].ToString();
             txtTelefono.Text = row["Telefono"].ToString();
 
-            // Pago
             txtMonto.Text = row["Monto"].ToString();
             cboTipoPago.Text = row["TipoPago"].ToString();
 
-            // DataGrid (por consistencia, aunque aquí es 1 registro)
             dgvData.DataSource = dt;
         }
 

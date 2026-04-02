@@ -7,22 +7,17 @@ namespace ConsultorioMedico
 {
     public partial class frmCIRecetas : Form
     {
-        SqlConnection conn;
+        SqlConnection conn = new SqlConnection(
+            "Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;");
 
         public frmCIRecetas()
         {
             InitializeComponent();
-
-            conn = new SqlConnection(
-                "Server=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Sistema;Integrated Security=True;TrustServerCertificate=True;");
         }
 
         private void frmCIReceta_Load(object sender, EventArgs e)
         {
-            SqlDataAdapter da = new SqlDataAdapter(@"
-                SELECT IdReceta
-                FROM Recetas
-            ", conn);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT IdReceta FROM Recetas", conn);
 
             DataTable dt = new DataTable();
 
@@ -39,8 +34,6 @@ namespace ConsultorioMedico
 
         private void cmdBuscar_Click_1(object sender, EventArgs e)
         {
-            int idReceta = Convert.ToInt32(cboIdReceta.SelectedValue);
-
             SqlDataAdapter da = new SqlDataAdapter(@"
                 SELECT 
                     c.IdCita,
@@ -57,7 +50,6 @@ namespace ConsultorioMedico
                     e.Diagnostico,
                     e.Tratamiento,
                     e.Estudios,
-                    r.IdReceta,
                     d.Medicamento,
                     d.Indicaciones
                 FROM Recetas r
@@ -68,7 +60,7 @@ namespace ConsultorioMedico
                 WHERE r.IdReceta = @idReceta
             ", conn);
 
-            da.SelectCommand.Parameters.AddWithValue("@idReceta", idReceta);
+            da.SelectCommand.Parameters.AddWithValue("@idReceta", cboIdReceta.SelectedValue);
 
             DataTable dt = new DataTable();
 
@@ -76,30 +68,26 @@ namespace ConsultorioMedico
             da.Fill(dt);
             conn.Close();
 
-            DataRow row = dt.Rows[0];
+            txtNombre.Text = dt.Rows[0]["Nombre"].ToString();
+            txtAPaterno.Text = dt.Rows[0]["APaterno"].ToString();
+            txtAMaterno.Text = dt.Rows[0]["AMaterno"].ToString();
+            txtTelefono.Text = dt.Rows[0]["Telefono"].ToString();
+            txtIdExpediente.Text = dt.Rows[0]["IdExpediente"].ToString();
+            txtPeso.Text = dt.Rows[0]["Peso"].ToString();
+            txtEstatura.Text = dt.Rows[0]["Estatura"].ToString();
+            txtTemperatura.Text = dt.Rows[0]["Temperatura"].ToString();
+            txtPresion.Text = dt.Rows[0]["Presion"].ToString();
+            txtSintomas.Text = dt.Rows[0]["Sintomas"].ToString();
+            txtDiagnostico.Text = dt.Rows[0]["Diagnostico"].ToString();
+            txtTratamiento.Text = dt.Rows[0]["Tratamiento"].ToString();
+            txtEstudios.Text = dt.Rows[0]["Estudios"].ToString();
 
-            txtNombre.Text = row["Nombre"].ToString();
-            txtAPaterno.Text = row["APaterno"].ToString();
-            txtAMaterno.Text = row["AMaterno"].ToString();
-            txtTelefono.Text = row["Telefono"].ToString();
-            txtIdExpediente.Text = row["IdExpediente"].ToString();
-            txtPeso.Text = row["Peso"].ToString();
-            txtEstatura.Text = row["Estatura"].ToString();
-            txtTemperatura.Text = row["Temperatura"].ToString();
-            txtPresion.Text = row["Presion"].ToString();
-            txtSintomas.Text = row["Sintomas"].ToString();
-            txtDiagnostico.Text = row["Diagnostico"].ToString();
-            txtTratamiento.Text = row["Tratamiento"].ToString();
-            txtEstudios.Text = row["Estudios"].ToString();
-
-            DataView dv = new DataView(dt);
-            DataTable recetaTable = dv.ToTable(false, "Medicamento", "Indicaciones");
-            dgvData.DataSource = recetaTable;
+            dgvData.DataSource = dt;
         }
 
         private void cmdSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }
