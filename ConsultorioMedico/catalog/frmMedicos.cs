@@ -42,7 +42,7 @@ namespace ConsultorioMedico
             dgvData.Columns["IdMedico"].ReadOnly = true;
         }
 
-        private void cmdNuevo_Click_1(object sender, EventArgs e)
+        private void cmdNuevo_Click(object sender, EventArgs e)
         {
             txtIdMedico.Clear();
             txtNombre.Clear();
@@ -54,13 +54,13 @@ namespace ConsultorioMedico
             cmdModificar.Enabled = false;
         }
 
-        private void cmdModificar_Click_1(object sender, EventArgs e)
+        private void cmdModificar_Click(object sender, EventArgs e)
         {
             cmdModificar.Enabled = false;
             cmdGrabar.Enabled = true;
         }
 
-        private void cmdGrabar_Click_1(object sender, EventArgs e)
+        private void cmdGrabar_Click(object sender, EventArgs e)
         {
             conn.Open();
 
@@ -99,7 +99,7 @@ namespace ConsultorioMedico
             cmdModificar.Enabled = true;
         }
 
-        private void cmdBuscar_Click_1(object sender, EventArgs e)
+        private void cmdBuscar_Click(object sender, EventArgs e)
         {
             if (txtBuscar.Text == "")
                 medicosBindingSource.RemoveFilter();
@@ -112,6 +112,5 @@ namespace ConsultorioMedico
         private void cmdUltimo_Click(object sender, EventArgs e) => medicosBindingSource.MoveLast();
         private void cmdPrimero_Click(object sender, EventArgs e) => medicosBindingSource.MoveFirst();
         private void cmdSalir_Click(object sender, EventArgs e) => Close();
-
     }
 }

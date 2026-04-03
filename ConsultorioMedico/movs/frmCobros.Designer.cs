@@ -32,7 +32,7 @@
             lblHeader = new Label();
             lblNombre = new Label();
             txtNombre = new TextBox();
-            lblApellidos = new Label();
+            lblAPaterno = new Label();
             txtAPaterno = new TextBox();
             txtAMaterno = new TextBox();
             cmdNuevo = new Button();
@@ -47,11 +47,16 @@
             cmdRegistrar = new Button();
             cmdSalir = new Button();
             label1 = new Label();
+            dataGridView1 = new DataGridView();
+            grpDetalle = new GroupBox();
+            lblAMaterno = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            grpDetalle.SuspendLayout();
             SuspendLayout();
             // 
             // dtpFecha
             // 
-            dtpFecha.Location = new Point(134, 81);
+            dtpFecha.Location = new Point(173, 72);
             dtpFecha.Margin = new Padding(4, 2, 4, 2);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(186, 23);
@@ -61,7 +66,7 @@
             // 
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Arial", 20.25F, FontStyle.Bold);
-            lblHeader.Location = new Point(38, 43);
+            lblHeader.Location = new Point(70, 34);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(247, 32);
@@ -72,7 +77,7 @@
             // 
             lblNombre.AutoSize = true;
             lblNombre.Enabled = false;
-            lblNombre.Location = new Point(44, 219);
+            lblNombre.Location = new Point(22, 59);
             lblNombre.Margin = new Padding(4, 0, 4, 0);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(53, 12);
@@ -82,57 +87,57 @@
             // txtNombre
             // 
             txtNombre.Enabled = false;
-            txtNombre.Location = new Point(133, 211);
+            txtNombre.Location = new Point(107, 51);
             txtNombre.Margin = new Padding(4, 2, 4, 2);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(187, 23);
+            txtNombre.Size = new Size(144, 23);
             txtNombre.TabIndex = 242;
             // 
-            // lblApellidos
+            // lblAPaterno
             // 
-            lblApellidos.AutoSize = true;
-            lblApellidos.Enabled = false;
-            lblApellidos.Location = new Point(44, 250);
-            lblApellidos.Margin = new Padding(4, 0, 4, 0);
-            lblApellidos.Name = "lblApellidos";
-            lblApellidos.Size = new Size(60, 12);
-            lblApellidos.TabIndex = 243;
-            lblApellidos.Text = "Apellidos";
+            lblAPaterno.AutoSize = true;
+            lblAPaterno.Enabled = false;
+            lblAPaterno.Location = new Point(22, 88);
+            lblAPaterno.Margin = new Padding(4, 0, 4, 0);
+            lblAPaterno.Name = "lblAPaterno";
+            lblAPaterno.Size = new Size(74, 12);
+            lblAPaterno.TabIndex = 243;
+            lblAPaterno.Text = "Ap. Paterno";
             // 
             // txtAPaterno
             // 
             txtAPaterno.Enabled = false;
-            txtAPaterno.Location = new Point(134, 242);
+            txtAPaterno.Location = new Point(107, 80);
             txtAPaterno.Margin = new Padding(4, 2, 4, 2);
             txtAPaterno.Name = "txtAPaterno";
-            txtAPaterno.Size = new Size(89, 23);
+            txtAPaterno.Size = new Size(143, 23);
             txtAPaterno.TabIndex = 244;
             // 
             // txtAMaterno
             // 
             txtAMaterno.Enabled = false;
-            txtAMaterno.Location = new Point(230, 241);
+            txtAMaterno.Location = new Point(107, 107);
             txtAMaterno.Margin = new Padding(4, 2, 4, 2);
             txtAMaterno.Name = "txtAMaterno";
-            txtAMaterno.Size = new Size(90, 23);
+            txtAMaterno.Size = new Size(144, 23);
             txtAMaterno.TabIndex = 246;
             // 
             // cmdNuevo
             // 
-            cmdNuevo.Location = new Point(134, 269);
+            cmdNuevo.Location = new Point(173, 173);
             cmdNuevo.Margin = new Padding(4, 2, 4, 2);
             cmdNuevo.Name = "cmdNuevo";
-            cmdNuevo.Size = new Size(88, 22);
+            cmdNuevo.Size = new Size(88, 23);
             cmdNuevo.TabIndex = 260;
             cmdNuevo.Text = "Nuevo";
             cmdNuevo.UseVisualStyleBackColor = true;
-            cmdNuevo.Click += cmdNuevo_Click_1;
+            cmdNuevo.Click += cmdNuevo_Click;
             // 
             // lblIdPaciente
             // 
             lblIdPaciente.AutoSize = true;
             lblIdPaciente.Enabled = false;
-            lblIdPaciente.Location = new Point(44, 192);
+            lblIdPaciente.Location = new Point(22, 31);
             lblIdPaciente.Margin = new Padding(4, 0, 4, 0);
             lblIdPaciente.Name = "lblIdPaciente";
             lblIdPaciente.Size = new Size(69, 12);
@@ -142,16 +147,16 @@
             // txtIdPaciente
             // 
             txtIdPaciente.Enabled = false;
-            txtIdPaciente.Location = new Point(133, 184);
+            txtIdPaciente.Location = new Point(107, 23);
             txtIdPaciente.Margin = new Padding(4, 2, 4, 2);
             txtIdPaciente.Name = "txtIdPaciente";
-            txtIdPaciente.Size = new Size(90, 23);
+            txtIdPaciente.Size = new Size(55, 23);
             txtIdPaciente.TabIndex = 279;
             // 
             // lblCitaPagar
             // 
             lblCitaPagar.AutoSize = true;
-            lblCitaPagar.Location = new Point(44, 110);
+            lblCitaPagar.Location = new Point(77, 102);
             lblCitaPagar.Margin = new Padding(4, 0, 4, 0);
             lblCitaPagar.Name = "lblCitaPagar";
             lblCitaPagar.Size = new Size(75, 12);
@@ -161,7 +166,7 @@
             // cboCitaPagar
             // 
             cboCitaPagar.FormattingEnabled = true;
-            cboCitaPagar.Location = new Point(134, 107);
+            cboCitaPagar.Location = new Point(173, 98);
             cboCitaPagar.Margin = new Padding(3, 2, 3, 2);
             cboCitaPagar.Name = "cboCitaPagar";
             cboCitaPagar.Size = new Size(186, 20);
@@ -170,7 +175,7 @@
             // lblTipoPago
             // 
             lblTipoPago.AutoSize = true;
-            lblTipoPago.Location = new Point(44, 135);
+            lblTipoPago.Location = new Point(78, 125);
             lblTipoPago.Margin = new Padding(4, 0, 4, 0);
             lblTipoPago.Name = "lblTipoPago";
             lblTipoPago.Size = new Size(84, 12);
@@ -180,7 +185,7 @@
             // cboTipoPago
             // 
             cboTipoPago.FormattingEnabled = true;
-            cboTipoPago.Location = new Point(134, 131);
+            cboTipoPago.Location = new Point(173, 122);
             cboTipoPago.Margin = new Padding(3, 2, 3, 2);
             cboTipoPago.Name = "cboTipoPago";
             cboTipoPago.Size = new Size(186, 20);
@@ -189,7 +194,7 @@
             // lblMonto
             // 
             lblMonto.AutoSize = true;
-            lblMonto.Location = new Point(45, 161);
+            lblMonto.Location = new Point(81, 153);
             lblMonto.Margin = new Padding(4, 0, 4, 0);
             lblMonto.Name = "lblMonto";
             lblMonto.Size = new Size(42, 12);
@@ -198,7 +203,7 @@
             // 
             // txtMonto
             // 
-            txtMonto.Location = new Point(133, 154);
+            txtMonto.Location = new Point(173, 146);
             txtMonto.Margin = new Padding(4, 2, 4, 2);
             txtMonto.Name = "txtMonto";
             txtMonto.Size = new Size(187, 23);
@@ -207,21 +212,21 @@
             // cmdRegistrar
             // 
             cmdRegistrar.Enabled = false;
-            cmdRegistrar.Location = new Point(230, 269);
+            cmdRegistrar.Location = new Point(269, 173);
             cmdRegistrar.Margin = new Padding(4, 2, 4, 2);
             cmdRegistrar.Name = "cmdRegistrar";
-            cmdRegistrar.Size = new Size(90, 22);
+            cmdRegistrar.Size = new Size(91, 23);
             cmdRegistrar.TabIndex = 287;
             cmdRegistrar.Text = "Registrar";
             cmdRegistrar.UseVisualStyleBackColor = true;
-            cmdRegistrar.Click += cmdRegistrar_Click_1;
+            cmdRegistrar.Click += cmdRegistrar_Click;
             // 
             // cmdSalir
             // 
-            cmdSalir.Location = new Point(134, 295);
+            cmdSalir.Location = new Point(173, 200);
             cmdSalir.Margin = new Padding(4, 2, 4, 2);
             cmdSalir.Name = "cmdSalir";
-            cmdSalir.Size = new Size(186, 23);
+            cmdSalir.Size = new Size(187, 23);
             cmdSalir.TabIndex = 289;
             cmdSalir.Text = "Salir";
             cmdSalir.UseVisualStyleBackColor = true;
@@ -230,18 +235,57 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(44, 85);
+            label1.Location = new Point(78, 79);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(63, 12);
             label1.TabIndex = 290;
             label1.Text = "Sel. Fecha";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(-7, -29);
+            dataGridView1.Margin = new Padding(4, 2, 4, 2);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(57, 328);
+            dataGridView1.TabIndex = 291;
+            // 
+            // grpDetalle
+            // 
+            grpDetalle.Controls.Add(lblAMaterno);
+            grpDetalle.Controls.Add(lblIdPaciente);
+            grpDetalle.Controls.Add(lblNombre);
+            grpDetalle.Controls.Add(txtNombre);
+            grpDetalle.Controls.Add(lblAPaterno);
+            grpDetalle.Controls.Add(txtAPaterno);
+            grpDetalle.Controls.Add(txtAMaterno);
+            grpDetalle.Controls.Add(txtIdPaciente);
+            grpDetalle.Location = new Point(367, 72);
+            grpDetalle.Name = "grpDetalle";
+            grpDetalle.Size = new Size(279, 151);
+            grpDetalle.TabIndex = 292;
+            grpDetalle.TabStop = false;
+            grpDetalle.Text = "Detalle";
+            // 
+            // lblAMaterno
+            // 
+            lblAMaterno.AutoSize = true;
+            lblAMaterno.Enabled = false;
+            lblAMaterno.Location = new Point(22, 118);
+            lblAMaterno.Margin = new Padding(4, 0, 4, 0);
+            lblAMaterno.Name = "lblAMaterno";
+            lblAMaterno.Size = new Size(76, 12);
+            lblAMaterno.TabIndex = 280;
+            lblAMaterno.Text = "Ap. Materno";
+            // 
             // frmCobros
             // 
             AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(384, 375);
+            ClientSize = new Size(703, 269);
+            Controls.Add(grpDetalle);
+            Controls.Add(dataGridView1);
             Controls.Add(label1);
             Controls.Add(cmdSalir);
             Controls.Add(cmdRegistrar);
@@ -251,20 +295,16 @@
             Controls.Add(lblTipoPago);
             Controls.Add(cboCitaPagar);
             Controls.Add(lblCitaPagar);
-            Controls.Add(txtIdPaciente);
-            Controls.Add(lblIdPaciente);
             Controls.Add(cmdNuevo);
-            Controls.Add(txtAMaterno);
-            Controls.Add(txtAPaterno);
-            Controls.Add(lblApellidos);
-            Controls.Add(txtNombre);
-            Controls.Add(lblNombre);
             Controls.Add(lblHeader);
             Controls.Add(dtpFecha);
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmCobros";
             Text = "frmCobros";
             Load += frmCobros_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            grpDetalle.ResumeLayout(false);
+            grpDetalle.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -275,7 +315,7 @@
         private Label lblHeader;
         private Label lblNombre;
         private TextBox txtNombre;
-        private Label lblApellidos;
+        private Label lblAPaterno;
         private TextBox txtAPaterno;
         private TextBox txtAMaterno;
         private Button cmdNuevo;
@@ -290,5 +330,8 @@
         private Button cmdRegistrar;
         private Button cmdSalir;
         private Label label1;
+        private DataGridView dataGridView1;
+        private GroupBox grpDetalle;
+        private Label lblAMaterno;
     }
 }

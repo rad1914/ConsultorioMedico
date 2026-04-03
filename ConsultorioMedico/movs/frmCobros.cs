@@ -61,7 +61,7 @@ namespace ConsultorioMedico
             txtAMaterno.DataBindings.Add("Text", bs, "AMaterno");
         }
 
-        private void cmdBuscar_Click_1(object sender, EventArgs e)
+        private void cmdBuscar_Click(object sender, EventArgs e)
         {
             citas.Clear();
 
@@ -76,7 +76,7 @@ namespace ConsultorioMedico
             cboCitaPagar.DataSource = bs;
         }
 
-        private void cmdNuevo_Click_1(object sender, EventArgs e)
+        private void cmdNuevo_Click(object sender, EventArgs e)
         {
             cboCitaPagar.SelectedIndex = -1;
             cboTipoPago.SelectedIndex = -1;
@@ -85,7 +85,7 @@ namespace ConsultorioMedico
             cmdNuevo.Enabled = false;
         }
 
-private void cmdRegistrar_Click_1(object sender, EventArgs e)
+private void cmdRegistrar_Click(object sender, EventArgs e)
 {
     if (cboCitaPagar.SelectedIndex == -1 || cboTipoPago.SelectedIndex == -1)
     {

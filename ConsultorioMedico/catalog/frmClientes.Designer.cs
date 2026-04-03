@@ -50,15 +50,17 @@
             lblRfc = new Label();
             txtIdCliente = new TextBox();
             lblIdCliente = new Label();
+            dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // cmdNuevo
             // 
-            cmdNuevo.Location = new Point(109, 190);
-            cmdNuevo.Margin = new Padding(4, 3, 4, 3);
+            cmdNuevo.Location = new Point(147, 169);
+            cmdNuevo.Margin = new Padding(4, 2, 4, 2);
             cmdNuevo.Name = "cmdNuevo";
-            cmdNuevo.Size = new Size(121, 23);
+            cmdNuevo.Size = new Size(128, 23);
             cmdNuevo.TabIndex = 67;
             cmdNuevo.Text = "Nuevo";
             cmdNuevo.UseVisualStyleBackColor = true;
@@ -66,18 +68,18 @@
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new Point(652, 23);
-            txtBuscar.Margin = new Padding(4, 3, 4, 3);
+            txtBuscar.Location = new Point(656, 32);
+            txtBuscar.Margin = new Padding(4, 2, 4, 2);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(97, 23);
             txtBuscar.TabIndex = 66;
             // 
             // cmdBuscar
             // 
-            cmdBuscar.Location = new Point(753, 23);
-            cmdBuscar.Margin = new Padding(4, 3, 4, 3);
+            cmdBuscar.Location = new Point(757, 33);
+            cmdBuscar.Margin = new Padding(4, 2, 4, 2);
             cmdBuscar.Name = "cmdBuscar";
-            cmdBuscar.Size = new Size(78, 23);
+            cmdBuscar.Size = new Size(78, 21);
             cmdBuscar.TabIndex = 65;
             cmdBuscar.Text = "Buscar";
             cmdBuscar.UseVisualStyleBackColor = true;
@@ -85,8 +87,8 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(109, 73);
-            txtNombre.Margin = new Padding(4, 3, 4, 3);
+            txtNombre.Location = new Point(147, 60);
+            txtNombre.Margin = new Padding(4, 2, 4, 2);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(197, 23);
             txtNombre.TabIndex = 64;
@@ -94,17 +96,17 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(36, 75);
+            lblNombre.Location = new Point(76, 68);
             lblNombre.Margin = new Padding(4, 0, 4, 0);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(51, 15);
+            lblNombre.Size = new Size(53, 12);
             lblNombre.TabIndex = 63;
             lblNombre.Text = "Nombre";
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(109, 159);
-            txtEmail.Margin = new Padding(4, 3, 4, 3);
+            txtEmail.Location = new Point(147, 142);
+            txtEmail.Margin = new Padding(4, 2, 4, 2);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(197, 23);
             txtEmail.TabIndex = 62;
@@ -112,8 +114,8 @@
             // lblHeader
             // 
             lblHeader.AutoSize = true;
-            lblHeader.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblHeader.Location = new Point(30, 37);
+            lblHeader.Font = new Font("Arial", 20.25F, FontStyle.Bold);
+            lblHeader.Location = new Point(68, 24);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(257, 32);
@@ -123,19 +125,18 @@
             // dgvData
             // 
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Location = new Point(316, 52);
-            dgvData.Margin = new Padding(4, 3, 4, 3);
+            dgvData.Location = new Point(354, 60);
+            dgvData.Margin = new Padding(4, 2, 4, 2);
             dgvData.Name = "dgvData";
-            dgvData.RowTemplate.Height = 25;
-            dgvData.Size = new Size(515, 246);
+            dgvData.Size = new Size(481, 208);
             dgvData.TabIndex = 60;
             // 
             // cmdPrimero
             // 
-            cmdPrimero.Location = new Point(238, 219);
-            cmdPrimero.Margin = new Padding(4, 3, 4, 3);
+            cmdPrimero.Location = new Point(277, 194);
+            cmdPrimero.Margin = new Padding(4, 2, 4, 2);
             cmdPrimero.Name = "cmdPrimero";
-            cmdPrimero.Size = new Size(68, 23);
+            cmdPrimero.Size = new Size(69, 23);
             cmdPrimero.TabIndex = 59;
             cmdPrimero.Text = "Primero";
             cmdPrimero.UseVisualStyleBackColor = true;
@@ -143,8 +144,8 @@
             // 
             // cmdUltimo
             // 
-            cmdUltimo.Location = new Point(36, 219);
-            cmdUltimo.Margin = new Padding(4, 3, 4, 3);
+            cmdUltimo.Location = new Point(76, 194);
+            cmdUltimo.Margin = new Padding(4, 2, 4, 2);
             cmdUltimo.Name = "cmdUltimo";
             cmdUltimo.Size = new Size(68, 23);
             cmdUltimo.TabIndex = 58;
@@ -154,10 +155,10 @@
             // 
             // cmdSiguiente
             // 
-            cmdSiguiente.Location = new Point(238, 189);
-            cmdSiguiente.Margin = new Padding(4, 3, 4, 3);
+            cmdSiguiente.Location = new Point(277, 169);
+            cmdSiguiente.Margin = new Padding(4, 2, 4, 2);
             cmdSiguiente.Name = "cmdSiguiente";
-            cmdSiguiente.Size = new Size(68, 23);
+            cmdSiguiente.Size = new Size(69, 22);
             cmdSiguiente.TabIndex = 57;
             cmdSiguiente.Text = "Siguiente";
             cmdSiguiente.UseVisualStyleBackColor = true;
@@ -165,8 +166,8 @@
             // 
             // cmdAnterior
             // 
-            cmdAnterior.Location = new Point(36, 190);
-            cmdAnterior.Margin = new Padding(4, 3, 4, 3);
+            cmdAnterior.Location = new Point(76, 169);
+            cmdAnterior.Margin = new Padding(4, 2, 4, 2);
             cmdAnterior.Name = "cmdAnterior";
             cmdAnterior.Size = new Size(68, 23);
             cmdAnterior.TabIndex = 56;
@@ -176,8 +177,8 @@
             // 
             // cmdSalir
             // 
-            cmdSalir.Location = new Point(36, 276);
-            cmdSalir.Margin = new Padding(4, 3, 4, 3);
+            cmdSalir.Location = new Point(76, 245);
+            cmdSalir.Margin = new Padding(4, 2, 4, 2);
             cmdSalir.Name = "cmdSalir";
             cmdSalir.Size = new Size(270, 23);
             cmdSalir.TabIndex = 55;
@@ -187,10 +188,10 @@
             // 
             // cmdModificar
             // 
-            cmdModificar.Location = new Point(109, 218);
-            cmdModificar.Margin = new Padding(4, 3, 4, 3);
+            cmdModificar.Location = new Point(147, 194);
+            cmdModificar.Margin = new Padding(4, 2, 4, 2);
             cmdModificar.Name = "cmdModificar";
-            cmdModificar.Size = new Size(121, 23);
+            cmdModificar.Size = new Size(128, 23);
             cmdModificar.TabIndex = 54;
             cmdModificar.Text = "Modificar";
             cmdModificar.UseVisualStyleBackColor = true;
@@ -198,8 +199,8 @@
             // 
             // cmdGrabar
             // 
-            cmdGrabar.Location = new Point(36, 247);
-            cmdGrabar.Margin = new Padding(4, 3, 4, 3);
+            cmdGrabar.Location = new Point(76, 220);
+            cmdGrabar.Margin = new Padding(4, 2, 4, 2);
             cmdGrabar.Name = "cmdGrabar";
             cmdGrabar.Size = new Size(270, 23);
             cmdGrabar.TabIndex = 53;
@@ -210,17 +211,17 @@
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(36, 162);
+            lblEmail.Location = new Point(76, 153);
             lblEmail.Margin = new Padding(4, 0, 4, 0);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(36, 15);
+            lblEmail.Size = new Size(37, 12);
             lblEmail.TabIndex = 52;
             lblEmail.Text = "Email";
             // 
             // txtDomicilioFiscal
             // 
-            txtDomicilioFiscal.Location = new Point(109, 130);
-            txtDomicilioFiscal.Margin = new Padding(4, 3, 4, 3);
+            txtDomicilioFiscal.Location = new Point(147, 114);
+            txtDomicilioFiscal.Margin = new Padding(4, 2, 4, 2);
             txtDomicilioFiscal.Name = "txtDomicilioFiscal";
             txtDomicilioFiscal.Size = new Size(197, 23);
             txtDomicilioFiscal.TabIndex = 51;
@@ -228,17 +229,17 @@
             // lblDomicilioFiscal
             // 
             lblDomicilioFiscal.AutoSize = true;
-            lblDomicilioFiscal.Location = new Point(36, 133);
+            lblDomicilioFiscal.Location = new Point(76, 122);
             lblDomicilioFiscal.Margin = new Padding(4, 0, 4, 0);
             lblDomicilioFiscal.Name = "lblDomicilioFiscal";
-            lblDomicilioFiscal.Size = new Size(68, 15);
+            lblDomicilioFiscal.Size = new Size(72, 12);
             lblDomicilioFiscal.TabIndex = 50;
             lblDomicilioFiscal.Text = "Dom. Fiscal";
             // 
             // txtRfc
             // 
-            txtRfc.Location = new Point(109, 101);
-            txtRfc.Margin = new Padding(4, 3, 4, 3);
+            txtRfc.Location = new Point(147, 87);
+            txtRfc.Margin = new Padding(4, 2, 4, 2);
             txtRfc.Name = "txtRfc";
             txtRfc.Size = new Size(197, 23);
             txtRfc.TabIndex = 49;
@@ -246,18 +247,18 @@
             // lblRfc
             // 
             lblRfc.AutoSize = true;
-            lblRfc.Location = new Point(36, 104);
+            lblRfc.Location = new Point(76, 95);
             lblRfc.Margin = new Padding(4, 0, 4, 0);
             lblRfc.Name = "lblRfc";
-            lblRfc.Size = new Size(28, 15);
+            lblRfc.Size = new Size(28, 12);
             lblRfc.TabIndex = 48;
             lblRfc.Text = "RFC";
             // 
             // txtIdCliente
             // 
             txtIdCliente.Enabled = false;
-            txtIdCliente.Location = new Point(369, 25);
-            txtIdCliente.Margin = new Padding(4, 3, 4, 3);
+            txtIdCliente.Location = new Point(413, 33);
+            txtIdCliente.Margin = new Padding(4, 2, 4, 2);
             txtIdCliente.Name = "txtIdCliente";
             txtIdCliente.Size = new Size(47, 23);
             txtIdCliente.TabIndex = 47;
@@ -265,18 +266,28 @@
             // lblIdCliente
             // 
             lblIdCliente.AutoSize = true;
-            lblIdCliente.Location = new Point(313, 30);
+            lblIdCliente.Location = new Point(353, 41);
             lblIdCliente.Margin = new Padding(4, 0, 4, 0);
             lblIdCliente.Name = "lblIdCliente";
-            lblIdCliente.Size = new Size(54, 15);
+            lblIdCliente.Size = new Size(55, 12);
             lblIdCliente.TabIndex = 46;
             lblIdCliente.Text = "IdCliente";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(-5, -28);
+            dataGridView1.Margin = new Padding(4, 2, 4, 2);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(57, 328);
+            dataGridView1.TabIndex = 68;
+            // 
             // frmClientes
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(864, 325);
+            ClientSize = new Size(885, 291);
+            Controls.Add(dataGridView1);
             Controls.Add(cmdNuevo);
             Controls.Add(txtBuscar);
             Controls.Add(cmdBuscar);
@@ -299,10 +310,12 @@
             Controls.Add(lblRfc);
             Controls.Add(txtIdCliente);
             Controls.Add(lblIdCliente);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmClientes";
             Text = "frmCliente";
             Load += frmClientes_Load;
             ((System.ComponentModel.ISupportInitialize)dgvData).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -331,5 +344,6 @@
         private Label lblRfc;
         private TextBox txtIdCliente;
         private Label lblIdCliente;
+        private DataGridView dataGridView1;
     }
 }

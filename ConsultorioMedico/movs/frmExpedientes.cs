@@ -136,7 +136,7 @@ namespace ConsultorioMedico
             txtPresion.DataBindings.Add("Text", expBS, "Presion");
         }
 
-        private void cmdRegistrar_Click_1(object sender, EventArgs e)
+        private void cmdRegistrar_Click(object sender, EventArgs e)
         {
             int idCita = (int)cboCitas.SelectedValue;
 

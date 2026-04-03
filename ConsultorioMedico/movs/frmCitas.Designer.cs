@@ -41,29 +41,31 @@
             lblFecha = new Label();
             txtTelefono = new MaskedTextBox();
             lblTelefono = new Label();
-            idPaciente = new Label();
+            lblIdCita = new Label();
             txtIdPaciente = new TextBox();
-            cmdSalir = new Button();
             cboMedico = new ComboBox();
             lblMedico = new Label();
+            dataGridView1 = new DataGridView();
+            cmdSalir = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // cboHora
             // 
             cboHora.Enabled = false;
             cboHora.FormattingEnabled = true;
-            cboHora.Location = new Point(43, 66);
+            cboHora.Location = new Point(79, 77);
             cboHora.Margin = new Padding(4, 2, 4, 2);
             cboHora.Name = "cboHora";
-            cboHora.Size = new Size(110, 20);
+            cboHora.Size = new Size(232, 20);
             cboHora.TabIndex = 86;
             // 
             // cboPaciente
             // 
             cboPaciente.Enabled = false;
             cboPaciente.FormattingEnabled = true;
-            cboPaciente.Location = new Point(43, 99);
+            cboPaciente.Location = new Point(80, 155);
             cboPaciente.Margin = new Padding(4, 2, 4, 2);
             cboPaciente.Name = "cboPaciente";
             cboPaciente.Size = new Size(231, 20);
@@ -71,10 +73,10 @@
             // 
             // cmdCancelar
             // 
-            cmdCancelar.Location = new Point(166, 161);
+            cmdCancelar.Location = new Point(204, 211);
             cmdCancelar.Margin = new Padding(4, 2, 4, 2);
             cmdCancelar.Name = "cmdCancelar";
-            cmdCancelar.Size = new Size(110, 18);
+            cmdCancelar.Size = new Size(110, 23);
             cmdCancelar.TabIndex = 84;
             cmdCancelar.Text = "Cancelar";
             cmdCancelar.UseVisualStyleBackColor = true;
@@ -83,7 +85,7 @@
             // lblSeleccionarPaciente
             // 
             lblSeleccionarPaciente.AutoSize = true;
-            lblSeleccionarPaciente.Location = new Point(40, 86);
+            lblSeleccionarPaciente.Location = new Point(77, 140);
             lblSeleccionarPaciente.Margin = new Padding(4, 0, 4, 0);
             lblSeleccionarPaciente.Name = "lblSeleccionarPaciente";
             lblSeleccionarPaciente.Size = new Size(126, 12);
@@ -93,7 +95,7 @@
             // lblSeleccionarHora
             // 
             lblSeleccionarHora.AutoSize = true;
-            lblSeleccionarHora.Location = new Point(40, 52);
+            lblSeleccionarHora.Location = new Point(78, 62);
             lblSeleccionarHora.Margin = new Padding(4, 0, 4, 0);
             lblSeleccionarHora.Name = "lblSeleccionarHora";
             lblSeleccionarHora.Size = new Size(57, 12);
@@ -102,10 +104,10 @@
             // 
             // cmdBuscar
             // 
-            cmdBuscar.Location = new Point(642, 30);
+            cmdBuscar.Location = new Point(705, 37);
             cmdBuscar.Margin = new Padding(4, 2, 4, 2);
             cmdBuscar.Name = "cmdBuscar";
-            cmdBuscar.Size = new Size(93, 19);
+            cmdBuscar.Size = new Size(85, 21);
             cmdBuscar.TabIndex = 81;
             cmdBuscar.Text = "Buscar";
             cmdBuscar.UseVisualStyleBackColor = true;
@@ -113,17 +115,17 @@
             // 
             // dtpFecha
             // 
-            dtpFecha.Location = new Point(449, 31);
+            dtpFecha.Location = new Point(488, 35);
             dtpFecha.Margin = new Padding(4, 2, 4, 2);
             dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(191, 23);
+            dtpFecha.Size = new Size(214, 23);
             dtpFecha.TabIndex = 80;
             // 
             // lblHeader
             // 
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Arial", 20.25F, FontStyle.Bold);
-            lblHeader.Location = new Point(36, 25);
+            lblHeader.Location = new Point(70, 29);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(217, 32);
@@ -133,18 +135,18 @@
             // dgvData
             // 
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Location = new Point(284, 52);
+            dgvData.Location = new Point(326, 62);
             dgvData.Margin = new Padding(4, 2, 4, 2);
             dgvData.Name = "dgvData";
-            dgvData.Size = new Size(451, 150);
+            dgvData.Size = new Size(464, 199);
             dgvData.TabIndex = 78;
             // 
             // cmdRegistrar
             // 
-            cmdRegistrar.Location = new Point(43, 161);
+            cmdRegistrar.Location = new Point(77, 212);
             cmdRegistrar.Margin = new Padding(4, 2, 4, 2);
             cmdRegistrar.Name = "cmdRegistrar";
-            cmdRegistrar.Size = new Size(110, 18);
+            cmdRegistrar.Size = new Size(110, 23);
             cmdRegistrar.TabIndex = 77;
             cmdRegistrar.Text = "Registrar";
             cmdRegistrar.UseVisualStyleBackColor = true;
@@ -153,7 +155,7 @@
             // lblFecha
             // 
             lblFecha.AutoSize = true;
-            lblFecha.Location = new Point(521, 34);
+            lblFecha.Location = new Point(575, 39);
             lblFecha.Margin = new Padding(4, 0, 4, 0);
             lblFecha.Name = "lblFecha";
             lblFecha.Size = new Size(40, 12);
@@ -163,82 +165,92 @@
             // txtTelefono
             // 
             txtTelefono.Enabled = false;
-            txtTelefono.Location = new Point(106, 138);
+            txtTelefono.Location = new Point(145, 182);
             txtTelefono.Margin = new Padding(4, 2, 4, 2);
             txtTelefono.Mask = "(52) 000-000-0000";
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(170, 23);
+            txtTelefono.Size = new Size(166, 23);
             txtTelefono.TabIndex = 129;
             // 
             // lblTelefono
             // 
             lblTelefono.AutoSize = true;
-            lblTelefono.Location = new Point(45, 144);
+            lblTelefono.Location = new Point(80, 189);
             lblTelefono.Margin = new Padding(4, 0, 4, 0);
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(57, 12);
             lblTelefono.TabIndex = 128;
             lblTelefono.Text = "Telefono";
             // 
-            // idPaciente
+            // lblIdCita
             // 
-            idPaciente.AutoSize = true;
-            idPaciente.Location = new Point(281, 38);
-            idPaciente.Margin = new Padding(4, 0, 4, 0);
-            idPaciente.Name = "idPaciente";
-            idPaciente.Size = new Size(16, 12);
-            idPaciente.TabIndex = 132;
-            idPaciente.Text = "Id";
+            lblIdCita.AutoSize = true;
+            lblIdCita.Location = new Point(325, 44);
+            lblIdCita.Margin = new Padding(4, 0, 4, 0);
+            lblIdCita.Name = "lblIdCita";
+            lblIdCita.Size = new Size(38, 12);
+            lblIdCita.TabIndex = 132;
+            lblIdCita.Text = "IdCita";
             // 
             // txtIdPaciente
             // 
             txtIdPaciente.Enabled = false;
-            txtIdPaciente.Location = new Point(298, 31);
+            txtIdPaciente.Location = new Point(366, 35);
             txtIdPaciente.Margin = new Padding(4, 2, 4, 2);
             txtIdPaciente.Name = "txtIdPaciente";
             txtIdPaciente.Size = new Size(54, 23);
             txtIdPaciente.TabIndex = 131;
             // 
-            // cmdSalir
-            // 
-            cmdSalir.Location = new Point(43, 184);
-            cmdSalir.Margin = new Padding(4, 2, 4, 2);
-            cmdSalir.Name = "cmdSalir";
-            cmdSalir.Size = new Size(233, 18);
-            cmdSalir.TabIndex = 133;
-            cmdSalir.Text = "Salir";
-            cmdSalir.UseVisualStyleBackColor = true;
-            cmdSalir.Click += cmdSalir_Click;
-            // 
             // cboMedico
             // 
             cboMedico.Enabled = false;
             cboMedico.FormattingEnabled = true;
-            cboMedico.Location = new Point(156, 66);
+            cboMedico.Location = new Point(80, 116);
             cboMedico.Margin = new Padding(4, 2, 4, 2);
             cboMedico.Name = "cboMedico";
-            cboMedico.Size = new Size(118, 20);
+            cboMedico.Size = new Size(231, 20);
             cboMedico.TabIndex = 135;
             // 
             // lblMedico
             // 
             lblMedico.AutoSize = true;
-            lblMedico.Location = new Point(154, 52);
+            lblMedico.Location = new Point(78, 101);
             lblMedico.Margin = new Padding(4, 0, 4, 0);
             lblMedico.Name = "lblMedico";
             lblMedico.Size = new Size(71, 12);
             lblMedico.TabIndex = 134;
             lblMedico.Text = "Sel. Medico";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(-5, -28);
+            dataGridView1.Margin = new Padding(4, 2, 4, 2);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(57, 328);
+            dataGridView1.TabIndex = 136;
+            // 
+            // cmdSalir
+            // 
+            cmdSalir.Location = new Point(77, 238);
+            cmdSalir.Margin = new Padding(4, 2, 4, 2);
+            cmdSalir.Name = "cmdSalir";
+            cmdSalir.Size = new Size(237, 23);
+            cmdSalir.TabIndex = 137;
+            cmdSalir.Text = "Salir";
+            cmdSalir.UseVisualStyleBackColor = true;
+            cmdSalir.Click += cmdSalir_Click;
+            // 
             // frmCitas
             // 
             AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(780, 234);
+            ClientSize = new Size(822, 284);
+            Controls.Add(cmdSalir);
+            Controls.Add(dataGridView1);
             Controls.Add(cboMedico);
             Controls.Add(lblMedico);
-            Controls.Add(cmdSalir);
-            Controls.Add(idPaciente);
+            Controls.Add(lblIdCita);
             Controls.Add(txtIdPaciente);
             Controls.Add(txtTelefono);
             Controls.Add(lblTelefono);
@@ -255,9 +267,10 @@
             Controls.Add(lblFecha);
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmCitas";
-            Text = "Form1";
+            Text = "frmCitas";
             Load += frmCitas_Load;
             ((System.ComponentModel.ISupportInitialize)dgvData).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -278,10 +291,11 @@
         private DateTimePicker dtpFecha;
         private MaskedTextBox txtTelefono;
         private Label lblTelefono;
-        private Label idPaciente;
+        private Label lblIdCita;
         private TextBox txtIdPaciente;
-        private Button cmdSalir;
         private ComboBox cboMedico;
         private Label lblMedico;
+        private DataGridView dataGridView1;
+        private Button cmdSalir;
     }
 }
