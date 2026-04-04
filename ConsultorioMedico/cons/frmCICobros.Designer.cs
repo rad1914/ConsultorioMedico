@@ -311,7 +311,7 @@
             // cboIdCobro
             // 
             cboIdCobro.FormattingEnabled = true;
-            cboIdCobro.Location = new Point(566, 69);
+            cboIdCobro.Location = new Point(566, 75);
             cboIdCobro.Margin = new Padding(4, 2, 4, 2);
             cboIdCobro.Name = "cboIdCobro";
             cboIdCobro.Size = new Size(53, 20);
@@ -320,7 +320,7 @@
             // lblIdCobro
             // 
             lblIdCobro.AutoSize = true;
-            lblIdCobro.Location = new Point(507, 76);
+            lblIdCobro.Location = new Point(507, 82);
             lblIdCobro.Margin = new Padding(4, 0, 4, 0);
             lblIdCobro.Name = "lblIdCobro";
             lblIdCobro.Size = new Size(56, 12);
@@ -329,7 +329,7 @@
             // 
             // cmdBuscar
             // 
-            cmdBuscar.Location = new Point(622, 70);
+            cmdBuscar.Location = new Point(622, 76);
             cmdBuscar.Margin = new Padding(4, 2, 4, 2);
             cmdBuscar.Name = "cmdBuscar";
             cmdBuscar.Size = new Size(76, 20);
@@ -378,11 +378,11 @@
             grpCita.Controls.Add(lblIdCita);
             grpCita.Controls.Add(lblHora);
             grpCita.Controls.Add(label3);
-            grpCita.Location = new Point(384, 98);
+            grpCita.Location = new Point(384, 97);
             grpCita.Margin = new Padding(3, 2, 3, 2);
             grpCita.Name = "grpCita";
             grpCita.Padding = new Padding(3, 2, 3, 2);
-            grpCita.Size = new Size(314, 125);
+            grpCita.Size = new Size(314, 126);
             grpCita.TabIndex = 382;
             grpCita.TabStop = false;
             grpCita.Text = "Cita";
