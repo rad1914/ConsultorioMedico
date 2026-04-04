@@ -57,17 +57,19 @@ namespace ConsultorioMedico
             lblMonto = new Label();
             cboTipoPago = new ComboBox();
             lblTipoPago = new Label();
+            dataGridView1 = new DataGridView();
             grpCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             grpPaciente.SuspendLayout();
             grpPago.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(36, 25);
+            label1.Location = new Point(68, 33);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(152, 37);
@@ -84,7 +86,7 @@ namespace ConsultorioMedico
             grpCliente.Controls.Add(lblEmail);
             grpCliente.Controls.Add(lblRfc);
             grpCliente.Controls.Add(txtRfc);
-            grpCliente.Location = new Point(40, 82);
+            grpCliente.Location = new Point(75, 90);
             grpCliente.Margin = new Padding(3, 2, 3, 2);
             grpCliente.Name = "grpCliente";
             grpCliente.Padding = new Padding(3, 2, 3, 2);
@@ -168,7 +170,7 @@ namespace ConsultorioMedico
             // cboIdFactura
             // 
             cboIdFactura.FormattingEnabled = true;
-            cboIdFactura.Location = new Point(529, 62);
+            cboIdFactura.Location = new Point(564, 70);
             cboIdFactura.Margin = new Padding(4, 2, 4, 2);
             cboIdFactura.Name = "cboIdFactura";
             cboIdFactura.Size = new Size(53, 20);
@@ -177,7 +179,7 @@ namespace ConsultorioMedico
             // lblIdFactura
             // 
             lblIdFactura.AutoSize = true;
-            lblIdFactura.Location = new Point(464, 69);
+            lblIdFactura.Location = new Point(499, 77);
             lblIdFactura.Margin = new Padding(4, 0, 4, 0);
             lblIdFactura.Name = "lblIdFactura";
             lblIdFactura.Size = new Size(63, 12);
@@ -186,7 +188,7 @@ namespace ConsultorioMedico
             // 
             // cmdBuscar
             // 
-            cmdBuscar.Location = new Point(585, 63);
+            cmdBuscar.Location = new Point(620, 71);
             cmdBuscar.Margin = new Padding(4, 2, 4, 2);
             cmdBuscar.Name = "cmdBuscar";
             cmdBuscar.Size = new Size(76, 20);
@@ -197,10 +199,10 @@ namespace ConsultorioMedico
             // 
             // cmdSalir
             // 
-            cmdSalir.Location = new Point(40, 357);
+            cmdSalir.Location = new Point(75, 362);
             cmdSalir.Margin = new Padding(4, 2, 4, 2);
             cmdSalir.Name = "cmdSalir";
-            cmdSalir.Size = new Size(621, 24);
+            cmdSalir.Size = new Size(621, 26);
             cmdSalir.TabIndex = 360;
             cmdSalir.Text = "Salir";
             cmdSalir.UseVisualStyleBackColor = true;
@@ -211,7 +213,7 @@ namespace ConsultorioMedico
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblHeader.ForeColor = SystemColors.ControlDarkDark;
-            lblHeader.Location = new Point(40, 59);
+            lblHeader.Location = new Point(72, 67);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(156, 19);
@@ -221,7 +223,7 @@ namespace ConsultorioMedico
             // dgvData
             // 
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Location = new Point(40, 243);
+            dgvData.Location = new Point(75, 251);
             dgvData.Margin = new Padding(4, 2, 4, 2);
             dgvData.Name = "dgvData";
             dgvData.Size = new Size(621, 105);
@@ -233,7 +235,7 @@ namespace ConsultorioMedico
             grpPaciente.Controls.Add(lblTelefono);
             grpPaciente.Controls.Add(txtPaciente);
             grpPaciente.Controls.Add(lblPaciente);
-            grpPaciente.Location = new Point(347, 82);
+            grpPaciente.Location = new Point(382, 90);
             grpPaciente.Margin = new Padding(3, 2, 3, 2);
             grpPaciente.Name = "grpPaciente";
             grpPaciente.Padding = new Padding(3, 2, 3, 2);
@@ -284,7 +286,7 @@ namespace ConsultorioMedico
             grpPago.Controls.Add(lblMonto);
             grpPago.Controls.Add(cboTipoPago);
             grpPago.Controls.Add(lblTipoPago);
-            grpPago.Location = new Point(347, 176);
+            grpPago.Location = new Point(382, 184);
             grpPago.Margin = new Padding(3, 2, 3, 2);
             grpPago.Name = "grpPago";
             grpPago.Padding = new Padding(3, 2, 3, 2);
@@ -330,11 +332,21 @@ namespace ConsultorioMedico
             lblTipoPago.TabIndex = 374;
             lblTipoPago.Text = "Tip. Pago";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(-5, -28);
+            dataGridView1.Margin = new Padding(4, 2, 4, 2);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(57, 539);
+            dataGridView1.TabIndex = 372;
+            // 
             // frmCIFacturas
             // 
             AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 408);
+            ClientSize = new Size(740, 417);
+            Controls.Add(dataGridView1);
             Controls.Add(grpPago);
             Controls.Add(grpPaciente);
             Controls.Add(label1);
@@ -356,6 +368,7 @@ namespace ConsultorioMedico
             grpPaciente.PerformLayout();
             grpPago.ResumeLayout(false);
             grpPago.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -388,5 +401,6 @@ namespace ConsultorioMedico
         private Label lblMonto;
         private ComboBox cboTipoPago;
         private Label lblTipoPago;
+        private DataGridView dataGridView1;
     }
 }

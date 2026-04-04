@@ -37,7 +37,9 @@
             lblFechaInicial = new Label();
             lblFechaFinal = new Label();
             dtpFechaFinal = new DateTimePicker();
+            dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // lblTitulo
@@ -45,7 +47,7 @@
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Arial", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitulo.ForeColor = SystemColors.ActiveCaptionText;
-            lblTitulo.Location = new Point(44, 44);
+            lblTitulo.Location = new Point(67, 36);
             lblTitulo.Margin = new Padding(4, 0, 4, 0);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(139, 41);
@@ -54,7 +56,7 @@
             // 
             // cmdBuscar
             // 
-            cmdBuscar.Location = new Point(51, 193);
+            cmdBuscar.Location = new Point(74, 185);
             cmdBuscar.Margin = new Padding(4, 2, 4, 2);
             cmdBuscar.Name = "cmdBuscar";
             cmdBuscar.Size = new Size(211, 22);
@@ -65,7 +67,7 @@
             // 
             // cmdSalir
             // 
-            cmdSalir.Location = new Point(51, 219);
+            cmdSalir.Location = new Point(74, 211);
             cmdSalir.Margin = new Padding(4, 2, 4, 2);
             cmdSalir.Name = "cmdSalir";
             cmdSalir.Size = new Size(210, 26);
@@ -79,7 +81,7 @@
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblHeader.ForeColor = SystemColors.ControlDarkDark;
-            lblHeader.Location = new Point(48, 82);
+            lblHeader.Location = new Point(71, 74);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(156, 19);
@@ -89,7 +91,7 @@
             // dgvData
             // 
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Location = new Point(274, 57);
+            dgvData.Location = new Point(293, 49);
             dgvData.Margin = new Padding(4, 2, 4, 2);
             dgvData.Name = "dgvData";
             dgvData.Size = new Size(461, 188);
@@ -97,7 +99,7 @@
             // 
             // dtpFechaInicial
             // 
-            dtpFechaInicial.Location = new Point(52, 122);
+            dtpFechaInicial.Location = new Point(76, 114);
             dtpFechaInicial.Name = "dtpFechaInicial";
             dtpFechaInicial.Size = new Size(210, 23);
             dtpFechaInicial.TabIndex = 367;
@@ -105,7 +107,7 @@
             // lblFechaInicial
             // 
             lblFechaInicial.AutoSize = true;
-            lblFechaInicial.Location = new Point(51, 107);
+            lblFechaInicial.Location = new Point(75, 99);
             lblFechaInicial.Margin = new Padding(4, 0, 4, 0);
             lblFechaInicial.Name = "lblFechaInicial";
             lblFechaInicial.Size = new Size(76, 12);
@@ -115,7 +117,7 @@
             // lblFechaFinal
             // 
             lblFechaFinal.AutoSize = true;
-            lblFechaFinal.Location = new Point(51, 150);
+            lblFechaFinal.Location = new Point(75, 142);
             lblFechaFinal.Margin = new Padding(4, 0, 4, 0);
             lblFechaFinal.Name = "lblFechaFinal";
             lblFechaFinal.Size = new Size(70, 12);
@@ -124,16 +126,26 @@
             // 
             // dtpFechaFinal
             // 
-            dtpFechaFinal.Location = new Point(52, 165);
+            dtpFechaFinal.Location = new Point(76, 157);
             dtpFechaFinal.Name = "dtpFechaFinal";
             dtpFechaFinal.Size = new Size(210, 23);
             dtpFechaFinal.TabIndex = 369;
             // 
-            // frmCICobros
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(-6, -30);
+            dataGridView1.Margin = new Padding(4, 2, 4, 2);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(57, 328);
+            dataGridView1.TabIndex = 371;
+            // 
+            // frmCGCobros
             // 
             AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(780, 286);
+            ClientSize = new Size(795, 279);
+            Controls.Add(dataGridView1);
             Controls.Add(lblFechaFinal);
             Controls.Add(dtpFechaFinal);
             Controls.Add(lblFechaInicial);
@@ -143,10 +155,11 @@
             Controls.Add(cmdSalir);
             Controls.Add(lblHeader);
             Controls.Add(dgvData);
-            Name = "frmCICobros";
+            Name = "frmCGCobros";
             Text = "frmCICobros";
             Load += frmCICobros_Load;
             ((System.ComponentModel.ISupportInitialize)dgvData).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -162,5 +175,6 @@
         private Label lblFechaInicial;
         private Label lblFechaFinal;
         private DateTimePicker dtpFechaFinal;
+        private DataGridView dataGridView1;
     }
 }

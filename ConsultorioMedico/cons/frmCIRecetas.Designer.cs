@@ -62,15 +62,17 @@
             txtEstatura = new TextBox();
             lblEstatura = new Label();
             label1 = new Label();
+            dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             grpPaciente.SuspendLayout();
             grpConsulta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // cboIdReceta
             // 
             cboIdReceta.FormattingEnabled = true;
-            cboIdReceta.Location = new Point(666, 80);
+            cboIdReceta.Location = new Point(695, 84);
             cboIdReceta.Margin = new Padding(4, 2, 4, 2);
             cboIdReceta.Name = "cboIdReceta";
             cboIdReceta.Size = new Size(53, 20);
@@ -79,7 +81,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(604, 85);
+            label3.Location = new Point(633, 89);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(59, 12);
@@ -88,7 +90,7 @@
             // 
             // cmdBuscar
             // 
-            cmdBuscar.Location = new Point(722, 79);
+            cmdBuscar.Location = new Point(751, 83);
             cmdBuscar.Margin = new Padding(4, 2, 4, 2);
             cmdBuscar.Name = "cmdBuscar";
             cmdBuscar.Size = new Size(76, 22);
@@ -99,10 +101,10 @@
             // 
             // cmdSalir
             // 
-            cmdSalir.Location = new Point(42, 364);
+            cmdSalir.Location = new Point(75, 368);
             cmdSalir.Margin = new Padding(4, 2, 4, 2);
             cmdSalir.Name = "cmdSalir";
-            cmdSalir.Size = new Size(756, 26);
+            cmdSalir.Size = new Size(752, 26);
             cmdSalir.TabIndex = 338;
             cmdSalir.Text = "Salir";
             cmdSalir.UseVisualStyleBackColor = true;
@@ -113,7 +115,7 @@
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblHeader.ForeColor = SystemColors.ControlDarkDark;
-            lblHeader.Location = new Point(46, 72);
+            lblHeader.Location = new Point(72, 76);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(156, 19);
@@ -123,7 +125,7 @@
             // dgvData
             // 
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Location = new Point(46, 219);
+            dgvData.Location = new Point(75, 223);
             dgvData.Margin = new Padding(4, 2, 4, 2);
             dgvData.Name = "dgvData";
             dgvData.Size = new Size(321, 140);
@@ -138,7 +140,7 @@
             grpPaciente.Controls.Add(lblTelefono);
             grpPaciente.Controls.Add(lblApellidos);
             grpPaciente.Controls.Add(txtAPaterno);
-            grpPaciente.Location = new Point(46, 101);
+            grpPaciente.Location = new Point(75, 105);
             grpPaciente.Name = "grpPaciente";
             grpPaciente.Size = new Size(321, 113);
             grpPaciente.TabIndex = 348;
@@ -227,7 +229,7 @@
             grpConsulta.Controls.Add(lblPeso);
             grpConsulta.Controls.Add(txtEstatura);
             grpConsulta.Controls.Add(lblEstatura);
-            grpConsulta.Location = new Point(374, 101);
+            grpConsulta.Location = new Point(403, 105);
             grpConsulta.Name = "grpConsulta";
             grpConsulta.Size = new Size(424, 258);
             grpConsulta.TabIndex = 356;
@@ -402,18 +404,28 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(42, 32);
+            label1.Location = new Point(68, 36);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(150, 41);
             label1.TabIndex = 357;
             label1.Text = "Recetas";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(-6, -28);
+            dataGridView1.Margin = new Padding(4, 2, 4, 2);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(57, 514);
+            dataGridView1.TabIndex = 358;
+            // 
             // frmCIRecetas
             // 
             AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(832, 420);
+            ClientSize = new Size(889, 427);
+            Controls.Add(dataGridView1);
             Controls.Add(label1);
             Controls.Add(grpConsulta);
             Controls.Add(grpPaciente);
@@ -432,6 +444,7 @@
             grpPaciente.PerformLayout();
             grpConsulta.ResumeLayout(false);
             grpConsulta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -471,5 +484,6 @@
         private Label lblEstatura;
         private TextBox txtIdExpediente;
         private Label label2;
+        private DataGridView dataGridView1;
     }
 }

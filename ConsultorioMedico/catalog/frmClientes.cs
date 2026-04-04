@@ -118,5 +118,10 @@ namespace ConsultorioMedico
             clientesBindingSource.MoveFirst();
 
         private void cmdSalir_Click(object sender, EventArgs e) => Close();
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

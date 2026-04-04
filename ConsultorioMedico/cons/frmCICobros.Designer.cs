@@ -64,11 +64,13 @@
             lblIdCita = new Label();
             lblHora = new Label();
             label3 = new Label();
+            dataGridView1 = new DataGridView();
             grpPago.SuspendLayout();
             grpPaciente.SuspendLayout();
             grpCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             grpCita.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // grpPago
@@ -79,11 +81,11 @@
             grpPago.Controls.Add(lblMonto);
             grpPago.Controls.Add(cboTipoPago);
             grpPago.Controls.Add(lblTipoPago);
-            grpPago.Location = new Point(345, 88);
+            grpPago.Location = new Point(77, 224);
             grpPago.Margin = new Padding(3, 2, 3, 2);
             grpPago.Name = "grpPago";
             grpPago.Padding = new Padding(3, 2, 3, 2);
-            grpPago.Size = new Size(314, 132);
+            grpPago.Size = new Size(301, 125);
             grpPago.TabIndex = 381;
             grpPago.TabStop = false;
             grpPago.Text = "Pago";
@@ -99,7 +101,7 @@
             // idCobro
             // 
             idCobro.AutoSize = true;
-            idCobro.Location = new Point(20, 36);
+            idCobro.Location = new Point(19, 36);
             idCobro.Margin = new Padding(4, 0, 4, 0);
             idCobro.Name = "idCobro";
             idCobro.Size = new Size(53, 12);
@@ -127,7 +129,7 @@
             // cboTipoPago
             // 
             cboTipoPago.FormattingEnabled = true;
-            cboTipoPago.Location = new Point(95, 86);
+            cboTipoPago.Location = new Point(95, 85);
             cboTipoPago.Margin = new Padding(3, 2, 3, 2);
             cboTipoPago.Name = "cboTipoPago";
             cboTipoPago.Size = new Size(190, 20);
@@ -136,7 +138,7 @@
             // lblTipoPago
             // 
             lblTipoPago.AutoSize = true;
-            lblTipoPago.Location = new Point(20, 91);
+            lblTipoPago.Location = new Point(20, 90);
             lblTipoPago.Margin = new Padding(4, 0, 4, 0);
             lblTipoPago.Name = "lblTipoPago";
             lblTipoPago.Size = new Size(61, 12);
@@ -152,7 +154,7 @@
             grpPaciente.Controls.Add(lblTelefono);
             grpPaciente.Controls.Add(lblApellidos);
             grpPaciente.Controls.Add(txtAPaterno);
-            grpPaciente.Location = new Point(38, 224);
+            grpPaciente.Location = new Point(77, 97);
             grpPaciente.Margin = new Padding(3, 2, 3, 2);
             grpPaciente.Name = "grpPaciente";
             grpPaciente.Padding = new Padding(3, 2, 3, 2);
@@ -163,7 +165,7 @@
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(87, 81);
+            txtTelefono.Location = new Point(88, 81);
             txtTelefono.Margin = new Padding(4, 2, 4, 2);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(190, 23);
@@ -172,7 +174,7 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(18, 30);
+            lblNombre.Location = new Point(19, 31);
             lblNombre.Margin = new Padding(4, 0, 4, 0);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(53, 12);
@@ -181,7 +183,7 @@
             // 
             // txtAMaterno
             // 
-            txtAMaterno.Location = new Point(183, 54);
+            txtAMaterno.Location = new Point(184, 54);
             txtAMaterno.Margin = new Padding(4, 2, 4, 2);
             txtAMaterno.Name = "txtAMaterno";
             txtAMaterno.Size = new Size(95, 23);
@@ -189,7 +191,7 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(87, 27);
+            txtNombre.Location = new Point(88, 28);
             txtNombre.Margin = new Padding(4, 2, 4, 2);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(191, 23);
@@ -198,7 +200,7 @@
             // lblTelefono
             // 
             lblTelefono.AutoSize = true;
-            lblTelefono.Location = new Point(18, 84);
+            lblTelefono.Location = new Point(19, 84);
             lblTelefono.Margin = new Padding(4, 0, 4, 0);
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(57, 12);
@@ -208,7 +210,7 @@
             // lblApellidos
             // 
             lblApellidos.AutoSize = true;
-            lblApellidos.Location = new Point(18, 60);
+            lblApellidos.Location = new Point(19, 60);
             lblApellidos.Margin = new Padding(4, 0, 4, 0);
             lblApellidos.Name = "lblApellidos";
             lblApellidos.Size = new Size(60, 12);
@@ -217,7 +219,7 @@
             // 
             // txtAPaterno
             // 
-            txtAPaterno.Location = new Point(87, 54);
+            txtAPaterno.Location = new Point(88, 54);
             txtAPaterno.Margin = new Padding(4, 2, 4, 2);
             txtAPaterno.Name = "txtAPaterno";
             txtAPaterno.Size = new Size(95, 23);
@@ -227,7 +229,7 @@
             // 
             lblCobros.AutoSize = true;
             lblCobros.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCobros.Location = new Point(34, 31);
+            lblCobros.Location = new Point(69, 33);
             lblCobros.Margin = new Padding(4, 0, 4, 0);
             lblCobros.Name = "lblCobros";
             lblCobros.Size = new Size(128, 37);
@@ -242,18 +244,19 @@
             grpCliente.Controls.Add(lblEmail);
             grpCliente.Controls.Add(lblRfc);
             grpCliente.Controls.Add(txtRfc);
-            grpCliente.Location = new Point(38, 88);
+            grpCliente.Enabled = false;
+            grpCliente.Location = new Point(384, 224);
             grpCliente.Margin = new Padding(3, 2, 3, 2);
             grpCliente.Name = "grpCliente";
             grpCliente.Padding = new Padding(3, 2, 3, 2);
-            grpCliente.Size = new Size(301, 132);
+            grpCliente.Size = new Size(314, 125);
             grpCliente.TabIndex = 378;
             grpCliente.TabStop = false;
             grpCliente.Text = "Cliente";
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(87, 85);
+            txtEmail.Location = new Point(87, 83);
             txtEmail.Margin = new Padding(4, 2, 4, 2);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(190, 23);
@@ -261,7 +264,7 @@
             // 
             // txtCliente
             // 
-            txtCliente.Location = new Point(87, 28);
+            txtCliente.Location = new Point(87, 26);
             txtCliente.Margin = new Padding(4, 2, 4, 2);
             txtCliente.Name = "txtCliente";
             txtCliente.Size = new Size(191, 23);
@@ -270,7 +273,7 @@
             // lblCliente
             // 
             lblCliente.AutoSize = true;
-            lblCliente.Location = new Point(18, 35);
+            lblCliente.Location = new Point(17, 33);
             lblCliente.Margin = new Padding(4, 0, 4, 0);
             lblCliente.Name = "lblCliente";
             lblCliente.Size = new Size(44, 12);
@@ -280,7 +283,7 @@
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(19, 90);
+            lblEmail.Location = new Point(18, 88);
             lblEmail.Margin = new Padding(4, 0, 4, 0);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(37, 12);
@@ -290,7 +293,7 @@
             // lblRfc
             // 
             lblRfc.AutoSize = true;
-            lblRfc.Location = new Point(19, 62);
+            lblRfc.Location = new Point(18, 60);
             lblRfc.Margin = new Padding(4, 0, 4, 0);
             lblRfc.Name = "lblRfc";
             lblRfc.Size = new Size(28, 12);
@@ -299,7 +302,7 @@
             // 
             // txtRfc
             // 
-            txtRfc.Location = new Point(87, 56);
+            txtRfc.Location = new Point(87, 54);
             txtRfc.Margin = new Padding(4, 2, 4, 2);
             txtRfc.Name = "txtRfc";
             txtRfc.Size = new Size(190, 23);
@@ -308,7 +311,7 @@
             // cboIdCobro
             // 
             cboIdCobro.FormattingEnabled = true;
-            cboIdCobro.Location = new Point(527, 67);
+            cboIdCobro.Location = new Point(566, 69);
             cboIdCobro.Margin = new Padding(4, 2, 4, 2);
             cboIdCobro.Name = "cboIdCobro";
             cboIdCobro.Size = new Size(53, 20);
@@ -317,7 +320,7 @@
             // lblIdCobro
             // 
             lblIdCobro.AutoSize = true;
-            lblIdCobro.Location = new Point(468, 74);
+            lblIdCobro.Location = new Point(507, 76);
             lblIdCobro.Margin = new Padding(4, 0, 4, 0);
             lblIdCobro.Name = "lblIdCobro";
             lblIdCobro.Size = new Size(56, 12);
@@ -326,7 +329,7 @@
             // 
             // cmdBuscar
             // 
-            cmdBuscar.Location = new Point(583, 68);
+            cmdBuscar.Location = new Point(622, 70);
             cmdBuscar.Margin = new Padding(4, 2, 4, 2);
             cmdBuscar.Name = "cmdBuscar";
             cmdBuscar.Size = new Size(76, 20);
@@ -337,7 +340,7 @@
             // 
             // cmdSalir
             // 
-            cmdSalir.Location = new Point(38, 491);
+            cmdSalir.Location = new Point(75, 493);
             cmdSalir.Margin = new Padding(4, 2, 4, 2);
             cmdSalir.Name = "cmdSalir";
             cmdSalir.Size = new Size(621, 24);
@@ -351,7 +354,7 @@
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblHeader.ForeColor = SystemColors.ControlDarkDark;
-            lblHeader.Location = new Point(38, 65);
+            lblHeader.Location = new Point(72, 67);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(156, 19);
@@ -361,7 +364,7 @@
             // dgvData
             // 
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Location = new Point(38, 353);
+            dgvData.Location = new Point(76, 355);
             dgvData.Margin = new Padding(4, 2, 4, 2);
             dgvData.Name = "dgvData";
             dgvData.Size = new Size(621, 132);
@@ -375,7 +378,7 @@
             grpCita.Controls.Add(lblIdCita);
             grpCita.Controls.Add(lblHora);
             grpCita.Controls.Add(label3);
-            grpCita.Location = new Point(345, 224);
+            grpCita.Location = new Point(384, 98);
             grpCita.Margin = new Padding(3, 2, 3, 2);
             grpCita.Name = "grpCita";
             grpCita.Padding = new Padding(3, 2, 3, 2);
@@ -387,7 +390,7 @@
             // cboHora
             // 
             cboHora.FormattingEnabled = true;
-            cboHora.Location = new Point(207, 40);
+            cboHora.Location = new Point(207, 41);
             cboHora.Margin = new Padding(3, 2, 3, 2);
             cboHora.Name = "cboHora";
             cboHora.Size = new Size(77, 20);
@@ -395,7 +398,7 @@
             // 
             // dtpFecha
             // 
-            dtpFecha.Location = new Point(93, 73);
+            dtpFecha.Location = new Point(93, 69);
             dtpFecha.Margin = new Padding(4, 2, 4, 2);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(191, 23);
@@ -403,7 +406,7 @@
             // 
             // txtIdCita
             // 
-            txtIdCita.Location = new Point(93, 39);
+            txtIdCita.Location = new Point(93, 40);
             txtIdCita.Margin = new Padding(4, 2, 4, 2);
             txtIdCita.Name = "txtIdCita";
             txtIdCita.Size = new Size(54, 23);
@@ -412,7 +415,7 @@
             // lblIdCita
             // 
             lblIdCita.AutoSize = true;
-            lblIdCita.Location = new Point(19, 46);
+            lblIdCita.Location = new Point(18, 47);
             lblIdCita.Margin = new Padding(4, 0, 4, 0);
             lblIdCita.Name = "lblIdCita";
             lblIdCita.Size = new Size(38, 12);
@@ -422,7 +425,7 @@
             // lblHora
             // 
             lblHora.AutoSize = true;
-            lblHora.Location = new Point(169, 45);
+            lblHora.Location = new Point(169, 46);
             lblHora.Margin = new Padding(4, 0, 4, 0);
             lblHora.Name = "lblHora";
             lblHora.Size = new Size(34, 12);
@@ -432,18 +435,28 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(18, 73);
+            label3.Location = new Point(18, 69);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(61, 12);
             label3.TabIndex = 374;
             label3.Text = "Tip. Pago";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(-5, -28);
+            dataGridView1.Margin = new Padding(4, 2, 4, 2);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(57, 591);
+            dataGridView1.TabIndex = 383;
+            // 
             // frmCICobros
             // 
             AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(696, 540);
+            ClientSize = new Size(736, 541);
+            Controls.Add(dataGridView1);
             Controls.Add(grpCita);
             Controls.Add(grpPago);
             Controls.Add(grpPaciente);
@@ -467,6 +480,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvData).EndInit();
             grpCita.ResumeLayout(false);
             grpCita.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -510,5 +524,6 @@
         private Label lblHora;
         private Label label3;
         private ComboBox cboHora;
+        private DataGridView dataGridView1;
     }
 }

@@ -93,9 +93,13 @@ namespace ConsultorioMedico
             txtAMaterno.Text = row["AMaterno"].ToString();
             txtTelefono.Text = row["Telefono"].ToString();
 
-            txtCliente.Text = row["NombreContribuyente"].ToString();
-            txtRfc.Text = row["RFC"].ToString();
-            txtEmail.Text = row["Email"].ToString();
+            bool tieneCliente = row["NombreContribuyente"] != DBNull.Value;
+
+            grpCliente.Enabled = tieneCliente;
+
+            txtCliente.Text = tieneCliente ? row["NombreContribuyente"].ToString() : "";
+            txtRfc.Text = tieneCliente ? row["RFC"].ToString() : "";
+            txtEmail.Text = tieneCliente ? row["Email"].ToString() : "";
 
             dgvData.DataSource = dt;
         }
