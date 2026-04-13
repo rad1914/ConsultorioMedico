@@ -37,13 +37,16 @@
             lblHeader = new Label();
             dgvData = new DataGridView();
             dataGridView1 = new DataGridView();
+            cmdBuscar = new Button();
+            label1 = new Label();
+            dtpFecha = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // cmdSalir
             // 
-            cmdSalir.Location = new Point(78, 169);
+            cmdSalir.Location = new Point(78, 188);
             cmdSalir.Margin = new Padding(4, 2, 4, 2);
             cmdSalir.Name = "cmdSalir";
             cmdSalir.Size = new Size(186, 21);
@@ -54,7 +57,7 @@
             // 
             // cmdRegistrar
             // 
-            cmdRegistrar.Location = new Point(78, 143);
+            cmdRegistrar.Location = new Point(78, 162);
             cmdRegistrar.Margin = new Padding(4, 2, 4, 2);
             cmdRegistrar.Name = "cmdRegistrar";
             cmdRegistrar.Size = new Size(186, 23);
@@ -66,7 +69,7 @@
             // cboIdCliente
             // 
             cboIdCliente.FormattingEnabled = true;
-            cboIdCliente.Location = new Point(150, 119);
+            cboIdCliente.Location = new Point(150, 138);
             cboIdCliente.Margin = new Padding(3, 2, 3, 2);
             cboIdCliente.Name = "cboIdCliente";
             cboIdCliente.Size = new Size(114, 20);
@@ -75,7 +78,7 @@
             // lblIdCliente
             // 
             lblIdCliente.AutoSize = true;
-            lblIdCliente.Location = new Point(77, 124);
+            lblIdCliente.Location = new Point(77, 143);
             lblIdCliente.Margin = new Padding(4, 0, 4, 0);
             lblIdCliente.Name = "lblIdCliente";
             lblIdCliente.Size = new Size(44, 12);
@@ -85,7 +88,7 @@
             // cboIdCobro
             // 
             cboIdCobro.FormattingEnabled = true;
-            cboIdCobro.Location = new Point(150, 95);
+            cboIdCobro.Location = new Point(150, 114);
             cboIdCobro.Margin = new Padding(3, 2, 3, 2);
             cboIdCobro.Name = "cboIdCobro";
             cboIdCobro.Size = new Size(114, 20);
@@ -94,7 +97,7 @@
             // lblIdCobro
             // 
             lblIdCobro.AutoSize = true;
-            lblIdCobro.Location = new Point(77, 100);
+            lblIdCobro.Location = new Point(77, 119);
             lblIdCobro.Margin = new Padding(4, 0, 4, 0);
             lblIdCobro.Name = "lblIdCobro";
             lblIdCobro.Size = new Size(53, 12);
@@ -105,7 +108,7 @@
             // 
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Arial", 20.25F, FontStyle.Bold);
-            lblHeader.Location = new Point(70, 29);
+            lblHeader.Location = new Point(70, 43);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(142, 64);
@@ -115,10 +118,10 @@
             // dgvData
             // 
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Location = new Point(271, 29);
+            dgvData.Location = new Point(271, 68);
             dgvData.Margin = new Padding(3, 2, 3, 2);
             dgvData.Name = "dgvData";
-            dgvData.Size = new Size(474, 161);
+            dgvData.Size = new Size(474, 141);
             dgvData.TabIndex = 314;
             // 
             // dataGridView1
@@ -130,11 +133,42 @@
             dataGridView1.Size = new Size(57, 328);
             dataGridView1.TabIndex = 315;
             // 
+            // cmdBuscar
+            // 
+            cmdBuscar.Location = new Point(679, 42);
+            cmdBuscar.Margin = new Padding(4, 2, 4, 2);
+            cmdBuscar.Name = "cmdBuscar";
+            cmdBuscar.Size = new Size(66, 24);
+            cmdBuscar.TabIndex = 318;
+            cmdBuscar.Text = "Buscar";
+            cmdBuscar.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(424, 51);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(63, 12);
+            label1.TabIndex = 317;
+            label1.Text = "Sel. Fecha";
+            // 
+            // dtpFecha
+            // 
+            dtpFecha.Location = new Point(489, 42);
+            dtpFecha.Margin = new Padding(4, 2, 4, 2);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(186, 23);
+            dtpFecha.TabIndex = 316;
+            // 
             // frmFacturas
             // 
             AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(779, 214);
+            ClientSize = new Size(788, 248);
+            Controls.Add(cmdBuscar);
+            Controls.Add(label1);
+            Controls.Add(dtpFecha);
             Controls.Add(dataGridView1);
             Controls.Add(dgvData);
             Controls.Add(cmdSalir);
@@ -166,5 +200,8 @@
         private ComboBox cboIdCobro;
         private DataGridView dgvData;
         private DataGridView dataGridView1;
+        private Button cmdBuscar;
+        private Label label1;
+        private DateTimePicker dtpFecha;
     }
 }
