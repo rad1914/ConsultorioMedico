@@ -32,8 +32,8 @@
             cmdRegistrar = new Button();
             cboIdCliente = new ComboBox();
             lblIdCliente = new Label();
-            cboIdCobro = new ComboBox();
-            lblIdCobro = new Label();
+            cboIdCita = new ComboBox();
+            lblIdCita = new Label();
             lblHeader = new Label();
             dgvData = new DataGridView();
             dataGridView1 = new DataGridView();
@@ -46,7 +46,7 @@
             // 
             // cmdSalir
             // 
-            cmdSalir.Location = new Point(78, 188);
+            cmdSalir.Location = new Point(78, 183);
             cmdSalir.Margin = new Padding(4, 2, 4, 2);
             cmdSalir.Name = "cmdSalir";
             cmdSalir.Size = new Size(186, 21);
@@ -57,7 +57,7 @@
             // 
             // cmdRegistrar
             // 
-            cmdRegistrar.Location = new Point(78, 162);
+            cmdRegistrar.Location = new Point(78, 157);
             cmdRegistrar.Margin = new Padding(4, 2, 4, 2);
             cmdRegistrar.Name = "cmdRegistrar";
             cmdRegistrar.Size = new Size(186, 23);
@@ -69,7 +69,7 @@
             // cboIdCliente
             // 
             cboIdCliente.FormattingEnabled = true;
-            cboIdCliente.Location = new Point(150, 138);
+            cboIdCliente.Location = new Point(150, 133);
             cboIdCliente.Margin = new Padding(3, 2, 3, 2);
             cboIdCliente.Name = "cboIdCliente";
             cboIdCliente.Size = new Size(114, 20);
@@ -78,37 +78,37 @@
             // lblIdCliente
             // 
             lblIdCliente.AutoSize = true;
-            lblIdCliente.Location = new Point(77, 143);
+            lblIdCliente.Location = new Point(77, 138);
             lblIdCliente.Margin = new Padding(4, 0, 4, 0);
             lblIdCliente.Name = "lblIdCliente";
             lblIdCliente.Size = new Size(44, 12);
             lblIdCliente.TabIndex = 303;
             lblIdCliente.Text = "Cliente";
             // 
-            // cboIdCobro
+            // cboIdCita
             // 
-            cboIdCobro.FormattingEnabled = true;
-            cboIdCobro.Location = new Point(150, 114);
-            cboIdCobro.Margin = new Padding(3, 2, 3, 2);
-            cboIdCobro.Name = "cboIdCobro";
-            cboIdCobro.Size = new Size(114, 20);
-            cboIdCobro.TabIndex = 302;
+            cboIdCita.FormattingEnabled = true;
+            cboIdCita.Location = new Point(150, 109);
+            cboIdCita.Margin = new Padding(3, 2, 3, 2);
+            cboIdCita.Name = "cboIdCita";
+            cboIdCita.Size = new Size(114, 20);
+            cboIdCita.TabIndex = 302;
             // 
-            // lblIdCobro
+            // lblIdCita
             // 
-            lblIdCobro.AutoSize = true;
-            lblIdCobro.Location = new Point(77, 119);
-            lblIdCobro.Margin = new Padding(4, 0, 4, 0);
-            lblIdCobro.Name = "lblIdCobro";
-            lblIdCobro.Size = new Size(53, 12);
-            lblIdCobro.TabIndex = 301;
-            lblIdCobro.Text = "idCobro";
+            lblIdCita.AutoSize = true;
+            lblIdCita.Location = new Point(77, 114);
+            lblIdCita.Margin = new Padding(4, 0, 4, 0);
+            lblIdCita.Name = "lblIdCita";
+            lblIdCita.Size = new Size(38, 12);
+            lblIdCita.TabIndex = 301;
+            lblIdCita.Text = "idCita";
             // 
             // lblHeader
             // 
             lblHeader.AutoSize = true;
             lblHeader.Font = new Font("Arial", 20.25F, FontStyle.Bold);
-            lblHeader.Location = new Point(70, 43);
+            lblHeader.Location = new Point(70, 38);
             lblHeader.Margin = new Padding(4, 0, 4, 0);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(142, 64);
@@ -118,10 +118,10 @@
             // dgvData
             // 
             dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvData.Location = new Point(271, 68);
+            dgvData.Location = new Point(271, 48);
             dgvData.Margin = new Padding(3, 2, 3, 2);
             dgvData.Name = "dgvData";
-            dgvData.Size = new Size(474, 141);
+            dgvData.Size = new Size(474, 157);
             dgvData.TabIndex = 314;
             // 
             // dataGridView1
@@ -135,18 +135,19 @@
             // 
             // cmdBuscar
             // 
-            cmdBuscar.Location = new Point(679, 42);
+            cmdBuscar.Location = new Point(679, 22);
             cmdBuscar.Margin = new Padding(4, 2, 4, 2);
             cmdBuscar.Name = "cmdBuscar";
             cmdBuscar.Size = new Size(66, 24);
             cmdBuscar.TabIndex = 318;
             cmdBuscar.Text = "Buscar";
             cmdBuscar.UseVisualStyleBackColor = true;
+            cmdBuscar.Click += cmdBuscar_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(424, 51);
+            label1.Location = new Point(424, 32);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(63, 12);
@@ -155,7 +156,7 @@
             // 
             // dtpFecha
             // 
-            dtpFecha.Location = new Point(489, 42);
+            dtpFecha.Location = new Point(489, 22);
             dtpFecha.Margin = new Padding(4, 2, 4, 2);
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(186, 23);
@@ -165,7 +166,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(788, 248);
+            ClientSize = new Size(793, 239);
             Controls.Add(cmdBuscar);
             Controls.Add(label1);
             Controls.Add(dtpFecha);
@@ -175,8 +176,8 @@
             Controls.Add(cmdRegistrar);
             Controls.Add(cboIdCliente);
             Controls.Add(lblIdCliente);
-            Controls.Add(cboIdCobro);
-            Controls.Add(lblIdCobro);
+            Controls.Add(cboIdCita);
+            Controls.Add(lblIdCita);
             Controls.Add(lblHeader);
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmFacturas";
@@ -195,9 +196,9 @@
         private ComboBox cboIdCliente;
         private Label lblIdCliente;
         private ComboBox comboBox1;
-        private Label lblIdCobro;
+        private Label lblIdCita;
         private Label lblHeader;
-        private ComboBox cboIdCobro;
+        private ComboBox cboIdCita;
         private DataGridView dgvData;
         private DataGridView dataGridView1;
         private Button cmdBuscar;

@@ -94,7 +94,7 @@
             dgvData.Location = new Point(293, 49);
             dgvData.Margin = new Padding(4, 2, 4, 2);
             dgvData.Name = "dgvData";
-            dgvData.Size = new Size(461, 188);
+            dgvData.Size = new Size(634, 188);
             dgvData.TabIndex = 358;
             // 
             // dtpFechaInicial
@@ -144,7 +144,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(795, 279);
+            ClientSize = new Size(970, 279);
             Controls.Add(dataGridView1);
             Controls.Add(lblFechaFinal);
             Controls.Add(dtpFechaFinal);

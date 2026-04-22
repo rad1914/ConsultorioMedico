@@ -93,5 +93,11 @@ namespace ConsultorioMedico
             var FrmCGFacturas = new frmCGFacturas();
             FrmCGFacturas.Show();
         }
+
+        private void gestorDeReportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var FrmReportes = new frmReportes();
+            FrmReportes.Show();
+        }
     }
 }

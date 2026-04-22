@@ -300,6 +300,7 @@
             cmdBuscar.TabIndex = 294;
             cmdBuscar.Text = "Buscar";
             cmdBuscar.UseVisualStyleBackColor = true;
+            cmdBuscar.Click += cmdBuscar_Click;
             // 
             // frmCobros
             // 
