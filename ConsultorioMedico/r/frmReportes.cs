@@ -1,10 +1,10 @@
-﻿using Microsoft.Reporting.WinForms;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Reporting.WinForms;
+using Microsoft.VisualBasic;
 using System;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
-using Microsoft.VisualBasic;
 
 namespace ConsultorioMedico
 {
@@ -17,104 +17,64 @@ namespace ConsultorioMedico
             InitializeComponent();
         }
 
-        string Ask(string label, string def = "")
-        {
-            return Interaction.InputBox(label, "Parámetro", def);
-        }
+        string Ask(string msg) => Interaction.InputBox(msg, "Parámetro");
 
-        DateTime AskDate(string label)
-        {
-            var s = Ask(label, DateTime.Now.ToString("yyyy-MM-dd"));
-            if (!DateTime.TryParse(s, out var d))
-                throw new Exception($"Fecha inválida: {s}");
-            return d;
-        }
+        DateTime AskDate(string msg) => DateTime.Parse(Ask(msg));
 
-        int AskInt(string label)
-        {
-            var s = Ask(label);
-            if (!int.TryParse(s, out var i))
-                throw new Exception($"Entero inválido: {s}");
-            return i;
-        }
+        int AskInt(string msg) => int.Parse(Ask(msg));
 
-        private DataTable ToDynamic(DataTable original)
+        void Run(string sp, string title, params SqlParameter[] p)
         {
             var dt = new DataTable();
-            dt.Columns.Add("Linea", typeof(string));
 
-            if (original == null || original.Rows.Count == 0)
-                return dt;
-
-            foreach (DataRow row in original.Rows)
+            using (var da = new SqlDataAdapter(sp, cs))
             {
-                var parts = new System.Collections.Generic.List<string>();
-
-                foreach (DataColumn col in original.Columns)
-                {
-                    var val = row[col] == DBNull.Value ? "NULL" : row[col].ToString();
-                    parts.Add($"{col.ColumnName}: {val}");
-                }
-
-                dt.Rows.Add(string.Join(Environment.NewLine, parts));
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                if (p != null) da.SelectCommand.Parameters.AddRange(p);
+                da.Fill(dt);
             }
 
-            return dt;
-        }
-
-        void Run(string sp, params SqlParameter[] p)
-        {
-            var dt = new DataTable();
-
-            using var da = new SqlDataAdapter(sp, cs);
-            da.SelectCommand.CommandType = CommandType.StoredProcedure;
-            if (p != null) da.SelectCommand.Parameters.AddRange(p);
-            da.Fill(dt);
-
-            var dtFinal = ToDynamic(dt);
-
-            var rv = new ReportViewer { Dock = DockStyle.Fill, ProcessingMode = ProcessingMode.Local };
-
-            rv.Reset();
-
-            rv.LocalReport.ReportPath =
-                Path.Combine(Application.StartupPath, "Report.rdlc");
-
-            rv.LocalReport.DataSources.Clear();
-            rv.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", dtFinal));
+            var rv = new ReportViewer { Dock = DockStyle.Fill };
+            rv.LocalReport.LoadReportDefinition(
+                new StringReader(new ReportDefinitionBuilder().Build(dt, title))
+            );
+            rv.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", dt));
             rv.RefreshReport();
 
-            var win = new Form
+            var form = new Form
             {
-                Text = "Reporte",
-                Size = new System.Drawing.Size(900, 600),
-                StartPosition = FormStartPosition.CenterScreen
+                Text = title,
+                Width = 1000,
+                Height = 450
             };
-            win.Controls.Add(rv);
-            win.Show();
+            form.Controls.Add(rv);
+            form.Show();
         }
 
-        void cmdGetClientes_Click(object s, EventArgs e) => Run("sp_GetClientes");
-        void cmdGetPacientes_Click(object s, EventArgs e) => Run("sp_GetPacientes");
+        void cmdGetClientes_Click(object s, EventArgs e) =>
+            Run("sp_GetClientes", "Clientes");
+
+        void cmdGetPacientes_Click(object s, EventArgs e) =>
+            Run("sp_GetPacientes", "Pacientes");
 
         void cmdCitasPorEstadoFecha_Click(object s, EventArgs e) =>
-            Run("sp_CitasPorEstadoFecha",
-                new SqlParameter("@Estado", Ask("Estado")),
-                new SqlParameter("@Fecha", AskDate("Fecha (yyyy-MM-dd)")));
+            Run("sp_CitasPorEstadoFecha", "Citas",
+                new SqlParameter("@Fecha", AskDate("Fecha")),
+                new SqlParameter("@Estado", Ask("Estado")));
 
         void cmdCobrosPorPeriodo_Click(object s, EventArgs e) =>
-            Run("sp_CobrosPorPeriodo",
-                new SqlParameter("@FechaInicio", AskDate("Fecha Inicio")),
-                new SqlParameter("@FechaFin", AskDate("Fecha Fin")));
+            Run("sp_CobrosPorPeriodo", "Cobros",
+                new SqlParameter("@FechaInicio", AskDate("Inicio")),
+                new SqlParameter("@FechaFin", AskDate("Fin")));
 
         void cmdFacturasPorPeriodo_Click(object s, EventArgs e) =>
-            Run("sp_FacturasPorPeriodo",
-                new SqlParameter("@FechaInicio", AskDate("Fecha Inicio")),
-                new SqlParameter("@FechaFin", AskDate("Fecha Fin")));
+            Run("sp_FacturasPorPeriodo", "Facturas",
+                new SqlParameter("@FechaInicio", AskDate("Inicio")),
+                new SqlParameter("@FechaFin", AskDate("Fin")));
 
         void cmdExpedientePorPaciente_Click(object s, EventArgs e) =>
-            Run("sp_ExpedientePorPaciente",
-                new SqlParameter("@IdPaciente", AskInt("IdPaciente")));
+            Run("sp_ExpedientePorPaciente", "Expediente",
+                new SqlParameter("@IdPaciente", AskInt("Id")));
 
         void cmdSalir_Click(object s, EventArgs e) => Close();
     }

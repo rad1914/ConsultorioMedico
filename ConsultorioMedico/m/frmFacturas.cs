@@ -138,13 +138,7 @@ namespace ConsultorioMedico
 
             SqlDataAdapter da = new SqlDataAdapter(query, conn);
             da.SelectCommand.Parameters.AddWithValue("@fecha", dtpFecha.Value.Date);
-
             da.Fill(facturas);
-
-            if (facturas.Rows.Count == 0)
-            {
-                MessageBox.Show("No hay facturas en esa fecha.");
-            }
 
             bs.DataSource = facturas;
             dgvData.DataSource = bs;

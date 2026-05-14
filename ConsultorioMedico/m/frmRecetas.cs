@@ -146,6 +146,30 @@ namespace ConsultorioMedico
         {
             conn.Open();
 
+            if (idExpediente == 0)
+            {
+                SqlCommand cmdExp = new SqlCommand(@"
+                    INSERT INTO Expedientes
+                        (IdCita, Peso, Estatura, Temperatura, Presion,
+                         Sintomas, Diagnostico, Tratamiento, Estudios)
+                    VALUES
+                        (@idCita, @peso, @est, @temp, @pres,
+                         @sint, @diag, @trat, @estu);
+                    SELECT SCOPE_IDENTITY();", conn);
+
+                cmdExp.Parameters.AddWithValue("@idCita", idCita);
+                cmdExp.Parameters.AddWithValue("@peso", txtPeso.Text);
+                cmdExp.Parameters.AddWithValue("@est", txtEstatura.Text);
+                cmdExp.Parameters.AddWithValue("@temp", txtTemperatura.Text);
+                cmdExp.Parameters.AddWithValue("@pres", txtPresion.Text);
+                cmdExp.Parameters.AddWithValue("@sint", txtSintomas.Text);
+                cmdExp.Parameters.AddWithValue("@diag", txtDiagnostico.Text);
+                cmdExp.Parameters.AddWithValue("@trat", txtTratamiento.Text);
+                cmdExp.Parameters.AddWithValue("@estu", txtEstudios.Text);
+
+                idExpediente = Convert.ToInt32(cmdExp.ExecuteScalar());
+            }
+
             SqlCommand cmdMed = new SqlCommand(
                 "SELECT IdMedico FROM Citas WHERE IdCita = @idCita", conn);
             cmdMed.Parameters.AddWithValue("@idCita", idCita);
@@ -193,6 +217,8 @@ namespace ConsultorioMedico
                 "UPDATE Citas SET Estado = 'M' WHERE IdCita = @idCita", conn);
             update.Parameters.AddWithValue("@idCita", idCita);
             update.ExecuteNonQuery();
+
+            MessageBox.Show("Receta registrada. Ejecute nuevamente el formulario si desea refrescar los Datos.");
 
             conn.Close();
             tablaDetalle.Clear();

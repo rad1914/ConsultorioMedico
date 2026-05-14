@@ -100,9 +100,9 @@
             lblIdCita.Location = new Point(77, 114);
             lblIdCita.Margin = new Padding(4, 0, 4, 0);
             lblIdCita.Name = "lblIdCita";
-            lblIdCita.Size = new Size(38, 12);
+            lblIdCita.Size = new Size(16, 12);
             lblIdCita.TabIndex = 301;
-            lblIdCita.Text = "idCita";
+            lblIdCita.Text = "id";
             // 
             // lblHeader
             // 

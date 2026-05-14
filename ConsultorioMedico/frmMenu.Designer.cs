@@ -52,12 +52,13 @@ namespace ConsultorioMedico
             consGralFacturasPorFechaToolStripMenuItem = new ToolStripMenuItem();
             reportesToolStripMenuItem = new ToolStripMenuItem();
             gestorDeReportesToolStripMenuItem = new ToolStripMenuItem();
+            ayudaToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { catalgosToolStripMenuItem, movimientosToolStripMenuItem, toolStripMenuItem1, reportesToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { catalgosToolStripMenuItem, movimientosToolStripMenuItem, toolStripMenuItem1, reportesToolStripMenuItem, ayudaToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -190,6 +191,13 @@ namespace ConsultorioMedico
             gestorDeReportesToolStripMenuItem.Text = "Gestor de Reportes";
             gestorDeReportesToolStripMenuItem.Click += gestorDeReportesToolStripMenuItem_Click;
             // 
+            // ayudaToolStripMenuItem
+            // 
+            ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            ayudaToolStripMenuItem.Size = new Size(55, 20);
+            ayudaToolStripMenuItem.Text = "Ayuda";
+            ayudaToolStripMenuItem.Click += ayudaToolStripMenuItem_Click;
+            // 
             // frmMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 12F);
@@ -229,5 +237,6 @@ namespace ConsultorioMedico
         private ToolStripMenuItem consIndivRecetaIdRecetaToolStripMenuItem1;
         private ToolStripMenuItem reportesToolStripMenuItem;
         private ToolStripMenuItem gestorDeReportesToolStripMenuItem;
+        private ToolStripMenuItem ayudaToolStripMenuItem;
     }
 }

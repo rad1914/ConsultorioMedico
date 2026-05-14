@@ -1,0 +1,14 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=ConsultorioMedico.chm
+Contents file=Table of Contents.hhc
+Index file=Index.hhk
+Default topic=PRINCIPAL.HTML
+Display compile progress=No
+Full-text search=Yes
+Language=0x40A Español (México)
+
+[FILES]
+PRINCIPAL.HTML
+CLIENTES.HTML
+PACIENTES.HTML

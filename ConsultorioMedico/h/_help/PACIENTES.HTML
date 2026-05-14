@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Módulo Pacientes</title>
+</head>
+<body>
+
+<h1>Módulo Pacientes</h1>
+
+<h2>Características</h2>
+
+<ul>
+<li>Registro de pacientes</li>
+<li>Edición de expedientes</li>
+<li>Manejo de tipo de sangre</li>
+<li>Control de alergias</li>
+<li>Filtrado por nombre</li>
+</ul>
+
+<h2>Campos del Sistema</h2>
+
+<table border="1" cellpadding="5">
+<tr><th>Campo</th><th>Descripción</th></tr>
+<tr><td>Nombre</td><td>Nombre del paciente</td></tr>
+<tr><td>Genero</td><td>M/F/X</td></tr>
+<tr><td>TipoSangre</td><td>Clasificación sanguínea</td></tr>
+<tr><td>Alergias</td><td>Alergias registradas</td></tr>
+</table>
+
+<h2>Operaciones SQL</h2>
+
+<pre>
+SELECT * FROM Pacientes
+
+INSERT INTO Pacientes (...)
+
+UPDATE Pacientes
+SET Nombre=@Nombre
+</pre>
+
+<p>El sistema utiliza SqlConnection, SqlCommand y DataTable para persistencia de datos.</p>
+
+</body>
+</html>

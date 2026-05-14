@@ -168,6 +168,7 @@
             // 
             // cboCitaPagar
             // 
+            cboCitaPagar.Enabled = false;
             cboCitaPagar.FormattingEnabled = true;
             cboCitaPagar.Location = new Point(171, 209);
             cboCitaPagar.Margin = new Padding(3, 2, 3, 2);
@@ -187,6 +188,7 @@
             // 
             // cboTipoPago
             // 
+            cboTipoPago.Enabled = false;
             cboTipoPago.FormattingEnabled = true;
             cboTipoPago.Location = new Point(171, 233);
             cboTipoPago.Margin = new Padding(3, 2, 3, 2);
@@ -206,6 +208,7 @@
             // 
             // txtMonto
             // 
+            txtMonto.Enabled = false;
             txtMonto.Location = new Point(171, 257);
             txtMonto.Margin = new Padding(4, 2, 4, 2);
             txtMonto.Name = "txtMonto";

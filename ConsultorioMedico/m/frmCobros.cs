@@ -98,6 +98,9 @@ namespace ConsultorioMedico
             cboTipoPago.SelectedIndex = -1;
 
             cmdRegistrar.Enabled = true;
+            cboCitaPagar.Enabled = true;
+            cboTipoPago.Enabled = true;
+            txtMonto.Enabled = true;
             cmdNuevo.Enabled = false;
         }
 

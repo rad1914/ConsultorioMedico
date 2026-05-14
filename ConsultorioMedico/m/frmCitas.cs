@@ -140,27 +140,28 @@ namespace ConsultorioMedico
 
         void cmdCancelar_Click(object s, EventArgs e)
         {
-            dgvData.EndEdit();
-            bs.EndEdit();
+            if (dgvData.CurrentRow == null) return;
 
-            foreach (DataRow row in citas.Rows)
-            {
-                if (row.RowState == DataRowState.Modified)
-                {
-                    SqlCommand comando = conn.CreateCommand();
+            int id = Convert.ToInt32(dgvData.CurrentRow.Cells["IdCita"].Value);
 
-                    comando.CommandText = @"UPDATE Citas 
-                                           SET Estado=@Estado 
-                                           WHERE IdCita=@IdCita";
+            SqlCommand comando = conn.CreateCommand();
+            comando.CommandText = @"UPDATE Citas 
+                            SET Estado = 'C' 
+                            WHERE IdCita = @IdCita";
 
-                    comando.Parameters.AddWithValue("@Estado", row["Estado"]);
-                    comando.Parameters.AddWithValue("@IdCita", row["IdCita"]);
+            comando.Parameters.AddWithValue("@IdCita", id);
 
-                    conn.Open();
-                    comando.ExecuteNonQuery();
-                    conn.Close();
-                }
-            }
+            conn.Open();
+            comando.ExecuteNonQuery();
+            conn.Close();
+
+            citas.Clear();
+            SqlCommand reload = new SqlCommand(R, conn);
+
+            conn.Open();
+            SqlDataReader reader = reload.ExecuteReader();
+            citas.Load(reader);
+            conn.Close();
         }
 
         private void cmdSalir_Click(object sender, EventArgs e)

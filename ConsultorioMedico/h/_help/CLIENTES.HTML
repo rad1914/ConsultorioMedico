@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Módulo Clientes</title>
+</head>
+<body>
+
+<h1>Módulo Clientes</h1>
+
+<h2>Funciones</h2>
+
+<ul>
+<li>Agregar Clientes</li>
+<li>Modificar Clientes</li>
+<li>Buscar Clientes</li>
+<li>Navegación de registros</li>
+<li>Persistencia en SQL Server</li>
+</ul>
+
+<h2>Controles Principales</h2>
+
+<table border="1" cellpadding="5">
+<tr><th>Control</th><th>Descripción</th></tr>
+<tr><td>cmdNuevo</td><td>Crea un nuevo registro</td></tr>
+<tr><td>cmdGrabar</td><td>Guarda cambios en la base de datos</td></tr>
+<tr><td>cmdBuscar</td><td>Filtra clientes por nombre</td></tr>
+<tr><td>dgvData</td><td>Muestra información de clientes</td></tr>
+</table>
+
+<h2>Consultas SQL</h2>
+
+<pre>
+SELECT * FROM Clientes
+
+INSERT INTO Clientes
+(RFC, NombreContribuyente, DomicilioFiscal, Email)
+
+UPDATE Clientes
+SET RFC=@RFC
+</pre>
+
+<h2>BindingSource</h2>
+
+<p>Se utiliza BindingSource para sincronizar controles visuales con DataTable.</p>
+
+</body>
+</html>

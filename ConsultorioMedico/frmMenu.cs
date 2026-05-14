@@ -1,5 +1,4 @@
 using ConsultorioMedico;
-using ConsultorioMedico;
 using System;
 using System.Windows.Forms;
 
@@ -98,6 +97,12 @@ namespace ConsultorioMedico
         {
             var FrmReportes = new frmReportes();
             FrmReportes.Show();
+        }
+
+        private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var FrmAyuda = new frmAyuda();
+           FrmAyuda.Show();
         }
     }
 }

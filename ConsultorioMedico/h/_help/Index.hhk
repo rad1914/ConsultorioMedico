@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<BODY>
+<UL>
+    <LI><OBJECT type="text/sitemap">
+        <param name="Name" value="Clientes">
+        <param name="Local" value="CLIENTES.HTML">
+    </OBJECT>
+
+    <LI><OBJECT type="text/sitemap">
+        <param name="Name" value="Pacientes">
+        <param name="Local" value="PACIENTES.HTML">
+    </OBJECT>
+
+    <LI><OBJECT type="text/sitemap">
+        <param name="Name" value="Consultorio Médico">
+        <param name="Local" value="PRINCIPAL.HTML">
+    </OBJECT>
+</UL>
+</BODY>
+</HTML>

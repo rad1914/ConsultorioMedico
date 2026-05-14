@@ -177,7 +177,7 @@ namespace ConsultorioMedico
             tablaExp.Clear();
             adapterExp.Fill(tablaExp);
 
-            MessageBox.Show("Expediente registrado");
+            MessageBox.Show("Expediente registrado. Ejecute nuevamente el formulario si desea refrescar los Datos.");
         }
 
         private void cmdAtender_Click(object sender, EventArgs e)
